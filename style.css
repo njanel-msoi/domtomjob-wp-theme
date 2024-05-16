@@ -1,11 +1,12 @@
-/*
-Theme Name: DomTomJob
-Theme URI: http://wpjobboard.net/
-Author: WPJobBoard + Nicolas Janel (n.janel@msoi.re)
-Template: jobeleon
-GitHub Theme URI: https://github.com/njanel-msoi/domtomjob-wp-theme
-Primary Branch: main
-Version: 5.0.2
+/**
+ * Theme Name:          DomTomJob
+ * Version:             5.0.2
+ * Author:              WPJobBoard + Nicolas Janel (n.janel@msoi.re)
+ * License:             GNU General Public License 
+ * Template:            jobeleon
+ * Template Version:    1.9.2
+ * GitHub Theme URI:    njanel-msoi/domtomjob-wp-theme
+ * Primary Branch:      main
 */
 #header, #footer, .table-row {
   display: block;
