@@ -1,0 +1,6 @@
+#wpadminbar {
+  background: #681fd9;
+}
+#wpadminbar::after {
+  content: "DEV SERVER";
+}/*# sourceMappingURL=admin-style-dev.domtomjob.com.css.map */
