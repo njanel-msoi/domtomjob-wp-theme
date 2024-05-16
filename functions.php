@@ -1,4 +1,6 @@
 <?php
+include_once 'data/data_regions.php';
+
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 });
@@ -56,7 +58,8 @@ function set_field_value_from_resume($field, $supported_fields_arr)
 }
 
 // add the "by region" parameter in url
-
+// NEED DEBUG
+/*
 add_action('init', function () {
     add_rewrite_rule('region/(.+)[/]?$', 'index.php?region=$matches[1]', 'top');
 });
@@ -72,3 +75,4 @@ add_filter('template_include', function ($template) {
 
     return get_theme_file_path() . '/jobs-by-region.php';
 });
+*/
