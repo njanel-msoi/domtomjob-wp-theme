@@ -5,47 +5,45 @@ Author: WPJobBoard + Nicolas Janel (n.janel@msoi.re)
 Template: jobeleon
 GitHub Theme URI: https://github.com/njanel-msoi/domtomjob-wp-theme
 Primary Branch: main
-Version: 0.1.2
+Version: 0.1.3
 */
-@import './scss/_reset_theme';
-@import './scss/_utils';
-@import './scss/_layout'; 
-@import './scss/_header';
-@import './scss/_footer';
+@import "./scss/_reset_theme";
+@import "./scss/_utils";
+@import "./scss/_layout";
+@import "./scss/_header";
+@import "./scss/_footer";
 
 html {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
-
 
 #content.full-width {
-    width: 100%;
+  width: 100%;
 }
-.wpjb #wpjb-main { 
-    padding: 30px;
-    width: calc(100% - 60px);
+.wpjb #wpjb-main {
+  padding: 30px;
+  width: calc(100% - 60px);
 }
 #wpjb-job-list {
-    width: 100%;
-    left: 0; 
+  width: 100%;
+  left: 0;
 }
 /* wrapper for search bar in shortcode */
 .index-where-am-i {
-    width: calc(100% - 60px);
-    padding: 30px 30px;
-    margin-bottom: 30px;
-    background: #f8f9f9;
+  width: calc(100% - 60px);
+  padding: 30px 30px;
+  margin-bottom: 30px;
+  background: #f8f9f9;
 }
 /* Auto title in WPJB templates */
 /*.where-am-i:not(.index-where-am-i) {
     display: none;
 }*/
 
-
 /* Top small bar */
 body:after {
-    display: none;
+  display: none;
 }
 body > .wrapper {
-    padding-top: 0px;
+  padding-top: 0px;
 }

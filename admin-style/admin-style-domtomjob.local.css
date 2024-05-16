@@ -1,0 +1,6 @@
+#wpadminbar {
+  background: #d17000;
+}
+#wpadminbar::after {
+  content: "LOCAL SERVER";
+}/*# sourceMappingURL=admin-style-domtomjob.local.css.map */

@@ -1,0 +1,11 @@
+#wpadminbar::after {
+  display: block;
+  position: absolute;
+  top: -12px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+  color: white;
+  height: 32px;
+}/*# sourceMappingURL=admin-style.css.map */

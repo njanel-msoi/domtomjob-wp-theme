@@ -2,6 +2,11 @@
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 });
+add_action('admin_enqueue_scripts', function () {
+    $host = parse_url(get_site_url(), PHP_URL_HOST);
+    wp_enqueue_style('admin-custom', get_stylesheet_directory_uri() . '/admin-style/admin-style.css');
+    wp_enqueue_style('admin-custom-domain', get_stylesheet_directory_uri() . '/admin-style/admin-style-' . $host . '.css');
+});
 
 function preDump($var)
 {

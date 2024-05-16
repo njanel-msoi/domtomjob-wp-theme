@@ -1,0 +1,6 @@
+#wpadminbar {
+  background: #d17000;
+  &::after {
+    content: "LOCAL SERVER";
+  }
+}
