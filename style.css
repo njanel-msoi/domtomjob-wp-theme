@@ -2,11 +2,10 @@
 Theme Name: DomTomJob
 Theme URI: http://wpjobboard.net/
 Author: WPJobBoard + Nicolas Janel (n.janel@msoi.re)
-Author URI: http://wpjobboard.net/
 Template: jobeleon
-Description: Jobeleon is a neologism, it stands for job board and cameleon, because this is a job board theme (for use with WPJobBoard plugin only) which changes colors with a click of a mouse.
-Version: 1.9.2
-License: GNU General Public License
+GitHub Theme URI: https://github.com/njanel-msoi/domtomjob-wp-theme
+Primary Branch: main
+Version: 0.1.2
 */
 #header, #footer, .table-row {
   display: block;
