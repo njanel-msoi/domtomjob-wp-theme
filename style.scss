@@ -1,0 +1,52 @@
+/*
+Theme Name: DomTomJob
+Theme URI: http://wpjobboard.net/
+Author: WPJobBoard + Nicolas Janel (n.janel@msoi.re)
+Author URI: http://wpjobboard.net/
+Template: jobeleon
+Description: Jobeleon is a neologism, it stands for job board and cameleon, because this is a job board theme (for use with WPJobBoard plugin only) which changes colors with a click of a mouse.
+Version: 1.9.2
+License: GNU General Public License
+*/
+@import './scss/_reset_theme';
+@import './scss/_utils';
+@import './scss/_layout'; 
+@import './scss/_header';
+@import './scss/_footer';
+
+html {
+    overflow-y: scroll;
+}
+
+
+#content.full-width {
+    width: 100%;
+}
+.wpjb #wpjb-main { 
+    padding: 30px;
+    width: calc(100% - 60px);
+}
+#wpjb-job-list {
+    width: 100%;
+    left: 0; 
+}
+/* wrapper for search bar in shortcode */
+.index-where-am-i {
+    width: calc(100% - 60px);
+    padding: 30px 30px;
+    margin-bottom: 30px;
+    background: #f8f9f9;
+}
+/* Auto title in WPJB templates */
+/*.where-am-i:not(.index-where-am-i) {
+    display: none;
+}*/
+
+
+/* Top small bar */
+body:after {
+    display: none;
+}
+body > .wrapper {
+    padding-top: 0px;
+}
