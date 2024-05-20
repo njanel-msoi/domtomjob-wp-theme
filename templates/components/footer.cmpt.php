@@ -17,12 +17,32 @@ $isRecruteurPage = isRecruteurPage();
 <footer id="footer" role="contentinfo" class="<?php if ($isRecruteurPage) echo 'pro-bg' ?>">
     <nav class="container list-inline">
         <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
+
+        <hr>
+        <?php
+        global $REGIONS;
+        foreach ($REGIONS as $region) : ?>
+
+            <a href="/regions/<?= urlencode($region) ?>"><?= $region ?></a>&nbsp;
+
+        <?php endforeach; ?>
+
+        <hr>
+        <?php
+        global $CATEGORIES;
+        foreach ($CATEGORIES as $category) : ?>
+
+            <a href="/jobs/category/<?= urlencode($category->get('slug')) ?>"><?= $category->get('title') ?></a>&nbsp;
+
+        <?php endforeach; ?>
+
+
     </nav>
 </footer><!-- #colophon .site-footer -->
 
 <?php wp_footer(); ?>
 
-<script src="<?= get_stylesheet_directory_uri() . '/js/dtj.js' ?>"></script>
+<script src=" <?= get_stylesheet_directory_uri() . '/js/dtj.js' ?>"></script>
 
 </body>
 
