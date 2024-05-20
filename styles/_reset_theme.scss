@@ -1,0 +1,49 @@
+#header,
+#footer,
+.table-row {
+  display: block;
+}
+#footer {
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.hentry {
+  padding: 0;
+  margin: 0;
+}
+
+body:before {
+  display: none;
+}
+/* Top small bar */
+body:after {
+  display: none;
+}
+body > .wrapper {
+  padding-top: 0px;
+}
+
+.wpjb #wpjb-main {
+  padding: 30px;
+  width: calc(100% - 60px);
+}
+#wpjb-job-list {
+  width: 100%;
+  left: 0;
+}
+#content.full-width {
+  width: 100%;
+}
+/* wrapper for search bar in shortcode */
+.index-where-am-i {
+  width: calc(100% - 60px);
+  padding: 30px 30px;
+  margin-bottom: 30px;
+  background: #f8f9f9;
+}
+/* Auto title in WPJB templates */
+/*.where-am-i:not(.index-where-am-i) {
+      display: none;
+  }*/

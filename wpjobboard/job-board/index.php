@@ -1,4 +1,5 @@
 <?php
+
 /**
  * [Overwrite the file in the parent template]
  * ! Careful of the parent template updates !
@@ -20,6 +21,7 @@
 ?>
 
 <?php
+/*
 $all_null = true;
 
 foreach (array("query", "category", "type", "job_title", "meta__new_field") as $p) {
@@ -52,12 +54,12 @@ $current_type = null;
 $tag_type = get_query_var('wpjb-tag');
 $tag_slug = get_query_var('wpjb-slug');
 
-if($tag_type == 'type' || $tag_type == 'category') {
+if ($tag_type == 'type' || $tag_type == 'category') {
     $q = Daq_Db_Query::create();
-    $param[ $tag_type ] = $q->select()->from("Wpjb_Model_Tag t")
-                                      ->where("t.slug = ?", $tag_slug)
-                                      ->where("t.type = ?", $tag_type)
-                                      ->fetchColumn();
+    $param[$tag_type] = $q->select()->from("Wpjb_Model_Tag t")
+        ->where("t.slug = ?", $tag_slug)
+        ->where("t.type = ?", $tag_type)
+        ->fetchColumn();
 }
 
 if ($param["type"] > 0) {
@@ -73,10 +75,11 @@ if ($param["category"] > 0) {
         $current_category = null;
     }
 }
+*/
 ?>
 
 <div id="wpjb-main" class="wpjb-page-index">
-    
+
     <a href="#" class="wpjb-button wpjb-subscribe wpjb-glyphs wpjb-icon-bell-alt"><?php _e("Subscribe To This Search", "jobeleon") ?></a>
 
     <?php wpjb_flash(); ?>
@@ -84,11 +87,11 @@ if ($param["category"] > 0) {
     <table id="wpjb-job-list" class="wpjb-table">
         <tbody class="wpjb-job-list">
             <?php $result = apply_filters("wpjb_filter_jobs", wpjb_find_jobs($param), $atts, "list") ?>
-            <?php if ($result->count) : foreach ($result->job as $job): ?>
+            <?php if ($result->count) : foreach ($result->job as $job) : ?>
                     <?php /* @var $job Wpjb_Model_Job */ ?>
                     <?php $this->job = $job; ?>
                     <?php $this->render("index-item.php") ?>
-                    <?php
+                <?php
                 endforeach;
             else :
                 ?>
@@ -101,27 +104,13 @@ if ($param["category"] > 0) {
         </tbody>
     </table>
 
-    <?php if($pagination): ?>
-    <div id="wpjb-paginate-links">
-        <?php wpjb_paginate_links($url, $result->pages, $result->page, $query, $format) ?>
-    </div>
+    <?php if ($pagination) : ?>
+        <div id="wpjb-paginate-links">
+            <?php wpjb_paginate_links($url, $result->pages, $result->page, $query, $format) ?>
+        </div>
     <?php endif; ?>
 
-
 </div>
-
-<?php if (get_option("wpjobboard_theme_ls")): ?>
-<?php wp_enqueue_script('wpjobboard_theme_live_search') ?>
-    <script type="text/javascript">
-        if (typeof ajaxurl === 'undefined') {
-            ajaxurl = "<?php echo admin_url('admin-ajax.php') ?>";
-        }
-        jQuery(function($) {
-            WPJB_SEARCH_CRITERIA = <?php echo json_encode($search_init) ?>;
-            wpjb_ls_jobs_init();
-        });
-    </script>
-<?php endif; ?>
 
 <!-- Begin: Subscribe to anything -->
 <?php Wpjb_Project::getInstance()->setEnv("search_feed_url", $result->url->feed); ?>

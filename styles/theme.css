@@ -1,0 +1,102 @@
+/**
+Theme override and custom styles for current theme
+*/
+#header,
+#footer,
+.table-row {
+  display: block;
+}
+
+#footer {
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.hentry {
+  padding: 0;
+  margin: 0;
+}
+
+body:before {
+  display: none;
+}
+
+/* Top small bar */
+body:after {
+  display: none;
+}
+
+body > .wrapper {
+  padding-top: 0px;
+}
+
+.wpjb #wpjb-main {
+  padding: 30px;
+  width: calc(100% - 60px);
+}
+
+#wpjb-job-list {
+  width: 100%;
+  left: 0;
+}
+
+#content.full-width {
+  width: 100%;
+}
+
+/* wrapper for search bar in shortcode */
+.index-where-am-i {
+  width: calc(100% - 60px);
+  padding: 30px 30px;
+  margin-bottom: 30px;
+  background: #f8f9f9;
+}
+
+/* Auto title in WPJB templates */
+/*.where-am-i:not(.index-where-am-i) {
+      display: none;
+  }*/
+.list-inline ul, .list-inlineul {
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.list-inline ul li, .list-inlineul li {
+  list-style: none;
+  margin-right: 10px;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+/* Change background for top & bottom bar for menu pro */
+#header.pro-bg,
+#footer.pro-bg {
+  background-color: #5cace2;
+}
+#header.pro-bg a,
+#footer.pro-bg a {
+  color: #fff;
+}
+
+/* Header logo */
+.site-title .logo {
+  width: 150px;
+}
+
+#header, #header .table-wrapper {
+  height: 80px;
+}
+
+footer#footer {
+  text-align: center;
+  padding: 20px;
+}
+
+.dtj-page > div {
+  border: solid 2px black;
+  margin: 10px 0;
+  padding: 10px;
+}/*# sourceMappingURL=theme.css.map */

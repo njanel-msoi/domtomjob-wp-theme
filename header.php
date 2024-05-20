@@ -75,38 +75,4 @@ $is_map = basename(get_page_template()) == "home-map.php";
         </div>
     </header>
     <div id="main" class="container">
-        <!-- Main content (centered and responsive) -->
-
-        <?php /*
-        <div class="wrapper <?php echo $is_wpjb ?>">
-            <header id="header" role="banner" class="site-header <?php echo wp_get_nav_menu_name('primary') ?>">
-                <div class="primary">
-                    <div class="table-wrapper">
-                        <h1 class="site-title">
-                            <?php if (get_theme_mod('wpjobboard_theme_logo')) : ?>
-                                <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><img src="<?php echo get_theme_mod('wpjobboard_theme_logo'); ?>" alt="<?php bloginfo('name'); ?> logo" class="logo" /></a>
-                            <?php else : ?>
-                                <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><?php bloginfo('name'); ?></a>
-                            <?php endif; ?>
-                        </h1>
-
-                        <nav role="navigation" id="site-navigation" class="site-navigation main-navigation ">
-                            <h1 class="assistive-text"><?php _e('Menu', 'jobeleon'); ?></h1>
-                            <div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e('Skip to content', 'jobeleon'); ?>"><?php _e('Skip to content', 'jobeleon'); ?></a></div>
-                            
-                            <a href="#" class="hamburger-menu"><span class="wpjb-glyphs wpjb-icon-menu"></a>
-                            <a href="#" class="hamburger-menu-close"><span class="wpjb-glyphs wpjb-icon-cancel"></a>
-
-                            <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
-                        </nav><!-- .site-navigation .main-navigation -->
-                    </div><!-- .table-wrapper -->
-                </div><!-- .primary -->
-            </header><!-- #header .site-header -->
-            
-            <?php if(!$is_map): ?>
-            <div class="table-row">
-                <div id="primary" class="primary">
-                    <div id="main" class="site-main">
-            <?php endif; ?>
-            */
-        ?>
+        <!-- Main content centered -->

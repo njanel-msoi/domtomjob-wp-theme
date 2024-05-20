@@ -1,0 +1,14 @@
+html {
+  overflow-y: scroll;
+}
+
+/* Change background for top & bottom bar for menu pro */
+#header,
+#footer {
+  &.pro-bg {
+    background-color: #5cace2;
+  }
+  &.pro-bg a {
+    color: #fff;
+  }
+}
