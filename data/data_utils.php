@@ -1,0 +1,34 @@
+<?php
+function str_arr_to_data_map($strArr)
+{
+    $dataMap = array();
+    foreach ($strArr as $value) {
+        // Conversion de la valeur en une clé sans accents ni espaces
+        $key = strtolower(str_replace(' ', '', iconv('UTF-8', 'ASCII//TRANSLIT', $value)));
+        // Création de l'objet
+        $objet = array(
+            "key" => $key,
+            "value" => $value,
+            "description" => $value
+        );
+        // Ajout de l'objet au tableau
+        $dataMap[] = $objet;
+    }
+    return $dataMap;
+}
+
+function object_arr_to_data_map($objArr, $titleKey)
+{
+    $dataMap = array();
+    foreach ($objArr as $value) {
+        // Création de l'objet
+        $objet = array(
+            "key" => $value->id,
+            "value" => $value->get($titleKey),
+            "description" => $value->get($titleKey)
+        );
+        // Ajout de l'objet au tableau
+        $dataMap[] = $objet;
+    }
+    return $dataMap;
+}

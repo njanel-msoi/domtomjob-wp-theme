@@ -50,6 +50,9 @@
             </form>
         </div><!-- .wpjb-subscribe-content -->
 
+        <?php
+        // Remove RSS Subscribtion
+        /*
         <div class="wpjb-subscribe-content wpjb-subscribe-rss">
             <strong>
                 <img src="<?php esc_attr_e(get_template_directory_uri() . '/wpjobboard/images/rss-feed-icon.png') ?>" alt="" />
@@ -68,7 +71,8 @@
                 </div>
                 </p>
             </form>
-        </div>
+        </div>*/
+        ?>
     </div>
 </div>
 

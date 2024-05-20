@@ -13,7 +13,7 @@ get_header();
         <h2>Trouvez un emploi ou une formation</h2>
         <p>dans les DROM-COM et l'Océan Indien</p>
 
-        <?php echo do_shortcode('[wpjb_jobs_search]'); ?>
+        <?php echo do_shortcode('[wpjb_jobs_search form_code="search_home"]'); ?>
     </div>
 
     <!-- bloc "annonces à la une" -->
@@ -45,7 +45,7 @@ get_header();
 
         <h2>Ils recrutent</h2>
 
-        <?php echo do_shortcode('[wpjb_employers_list filter="public"]'); ?>
+        <?php echo do_shortcode('[wpjb_employers_list filter="active"]'); ?>
     </div>
 
 </div>

@@ -23,19 +23,7 @@ $REGIONS = array(
     "Wallis et Futuna"
 );
 // build a format compatible with wpjb plugin
-$REGIONS_MAP = array();
-foreach ($REGIONS as $value) {
-    // Conversion de la valeur en une clé sans accents ni espaces
-    $key = strtolower(str_replace(' ', '', iconv('UTF-8', 'ASCII//TRANSLIT', $value)));
-    // Création de l'objet
-    $objet = array(
-        "key" => $key,
-        "value" => $value,
-        "description" => $value
-    );
-    // Ajout de l'objet au tableau
-    $REGIONS_MAP[] = $objet;
-}
+$REGIONS_MAP = str_arr_to_data_map($REGIONS);
 
 function dtj_get_regions()
 {

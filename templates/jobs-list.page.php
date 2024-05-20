@@ -15,8 +15,8 @@ get_header();
         <?php echo do_shortcode('[wpjb_jobs_search]'); ?>
     </div>
 
-    <!-- bloc "annonces à la une" -->
-    <div class="featured-jobs">
+    <!-- bloc "search results" -->
+    <div class="search-result">
 
         <?php echo do_shortcode('[wpjb_jobs_list]'); ?>
 
