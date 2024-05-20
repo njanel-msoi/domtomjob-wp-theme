@@ -32,7 +32,7 @@ $isRecruteurPage = isRecruteurPage();
         global $CATEGORIES;
         foreach ($CATEGORIES as $category) : ?>
 
-            <a href="/jobs/category/<?= urlencode($category->get('slug')) ?>"><?= $category->get('title') ?></a>&nbsp;
+            <a href="/categories/<?= urlencode($category->get('id')) ?>/<?= urlencode($category->get('title')) ?>"><?= $category->get('title') ?></a>&nbsp;
 
         <?php endforeach; ?>
 

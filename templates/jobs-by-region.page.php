@@ -10,15 +10,17 @@ get_header();
 ?>
 
 
-
-<div id="content" class="site-content full-width" role="main">
-
+<div class="dtj-page jobs-list">
     <?php $region = urldecode(get_query_var('regions')); ?>
 
-    <h1>Jobs de la région <?= $region; ?></h1>
+    <!-- bloc top search -->
+    <div class="search-result">
+        <h1>Jobs de la région <?= $region; ?></h1>
 
-    <?php echo do_shortcode('[wpjb_jobs_list meta__region="' . $region . '"]'); ?>
+        <?php echo do_shortcode('[wpjb_jobs_list meta__region="' . $region . '"]'); ?>
 
-</div><!-- #content -->
+    </div>
+
+</div>
 
 <?php get_footer(); ?>
