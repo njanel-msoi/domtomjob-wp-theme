@@ -16,6 +16,7 @@ $isRecruteurPage = isRecruteurPage();
 
 <footer id="footer" role="contentinfo" class="<?php if ($isRecruteurPage) echo 'pro-bg' ?>">
     <nav class="container list-inline">
+
         <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
 
         <hr>

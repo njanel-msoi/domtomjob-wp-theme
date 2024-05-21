@@ -50,7 +50,7 @@
                     <?php } else { ?>
                         <a href="<?= get_permalink('16') ?>" class="btn btn-link btn-sm">Nos offres</a>
                         <a href="<?= get_permalink('8') ?>" class="btn btn-link btn-sm">Publier une annonce</a>
-                        <a href="<?= get_permalink('31') ?>" class="btn btn-link btn-sm">Site candidats</a>
+                        <a href="<?= get_permalink('239') ?>" class="btn btn-link btn-sm">Contact</a>
                     <?php } ?>
                 </div>
                 <!-- right links -->
@@ -59,6 +59,7 @@
                         <a href="<?= get_permalink('95') ?>" class="btn btn-outline-primary btn-sm">Site employeurs</a>
                         <a href="<?= get_permalink('14') ?>" class="btn btn-primary btn-sm">Espace candidat</a>
                     <?php } else { ?>
+                        <a href="<?= get_permalink('31') ?>" class="btn btn-outline-primary btn-sm">Site candidats</a>
                         <a href="<?= get_permalink('12') ?>" class="btn btn-primary btn-sm">Espace recruteur</a>
                     <?php } ?>
                 </div>

@@ -90,6 +90,7 @@ body > .wrapper {
   display: flex;
   padding: 0;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .list-inline ul li, .list-inlineul li {
   list-style: none;

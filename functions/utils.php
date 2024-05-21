@@ -9,7 +9,7 @@ function preDump($var)
 
 function isRecruteurPage()
 {
-    $pagesRecruteur = array(222, 16, 8, 95, 12, 10);
+    $pagesRecruteur = array(222, 16, 8, 95, 12, 10, 239);
     if (in_array(get_the_ID(), $pagesRecruteur)) return true;
 
     // is from single cv page ? (from rewrite rule)
