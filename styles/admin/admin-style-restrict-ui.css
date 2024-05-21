@@ -1,0 +1,20 @@
+.menu-admin {
+  display: none;
+}
+
+#loco-admin h1 > ul > li:not(:last-child) {
+  display: none;
+}
+#loco-admin h1::before {
+  content: "Traductions ";
+}
+#loco-admin h2.nav-tab-wrapper {
+  display: none;
+}
+#loco-admin #loco-content > h3 > a {
+  display: none;
+}
+
+#contextual-help-link-wrap {
+  display: none;
+}/*# sourceMappingURL=admin-style-restrict-ui.css.map */

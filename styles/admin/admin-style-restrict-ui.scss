@@ -1,0 +1,36 @@
+.menu-admin {
+  display: none;
+}
+
+#loco-admin {
+  h1 {
+    > ul > li {
+      &:not(:last-child) {
+        display: none;
+      }
+    }
+    &::before {
+      content: "Traductions ";
+    }
+  }
+  h2.nav-tab-wrapper {
+    display: none;
+  }
+
+  #loco-content {
+    > h3 > a {
+      display: none;
+    }
+  }
+}
+
+#contextual-help-link-wrap {
+  display: none;
+}
+
+table.table-view-list.users {
+  tr#user-5 {
+    // uncomment this line to hide "super admin" from standard admin users
+    // display: none;
+  }
+}
