@@ -111,6 +111,17 @@ html {
   color: #fff;
 }
 
+/* Admin top bar */
+#wpadminbar #wp-admin-bar-wp-logo,
+#wpadminbar #wp-admin-bar-comments,
+#wpadminbar #wp-admin-bar-new-content,
+#wpadminbar #wp-admin-bar-customize,
+#wpadminbar #wp-admin-bar-edit,
+#wpadminbar #wp-admin-bar-search,
+#wpadminbar .ab-sub-wrapper {
+  display: none !important;
+}
+
 .popup {
   position: fixed;
   top: 0;

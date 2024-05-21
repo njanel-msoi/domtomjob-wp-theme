@@ -2,6 +2,14 @@
   display: none;
 }
 
+#wpadminbar {
+  #wp-admin-bar-wp-logo,
+  #wp-admin-bar-comments,
+  #wp-admin-bar-new-content {
+    display: none;
+  }
+}
+
 #loco-admin {
   h1 {
     > ul > li {
