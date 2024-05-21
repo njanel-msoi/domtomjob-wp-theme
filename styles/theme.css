@@ -162,6 +162,14 @@ footer#footer {
   padding: 20px;
 }
 
+.post-15 > .entry-content > .where-am-i {
+  display: none;
+}
+.post-15 .wpjb-fieldset-experience,
+.post-15 .wpjb-fieldset-education {
+  display: none;
+}
+
 .dtj-page > div {
   border: solid 2px black;
   margin: 10px 0;

@@ -21,15 +21,6 @@ $standalone = true; // !( (defined("DOING_AJAX") && DOING_AJAX) || ($page_class 
 
 ?>
 
-<?php if ($standalone) : ?>
-    <div class="where-am-i">
-        <?php if (isset($breadcrumbs)) : wpjb_breadcrumbs($breadcrumbs);
-        else : ?>
-            <h2><?php _e('Form', 'jobeleon'); ?></h2>
-        <?php endif; ?>
-    </div><!-- .where-am-i -->
-<?php endif; ?>
-
 <div <?php if ($standalone) : ?>id="wpjb-main" <?php endif; ?> class="wpjb-page-default-form <?php if (isset($page_class)) echo $page_class ?>">
 
     <?php wpjb_flash() ?>
