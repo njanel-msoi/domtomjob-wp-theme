@@ -55,3 +55,10 @@ body > .wrapper {
 #wpjb-main fieldset:after {
   display: none;
 }
+#wpjb-main.wpjr-page-my-resume legend,
+#wpjb-main.wpjr-page-my-resume .wpjb-job-content h3,
+#wpjb-main.wpjr-page-resume legend,
+#wpjb-main.wpjr-page-resume .wpjb-job-content h3 {
+  width: 100%;
+  left: 0;
+}
