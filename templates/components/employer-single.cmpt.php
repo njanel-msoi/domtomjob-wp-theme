@@ -32,7 +32,7 @@ $suffix = !empty($color_scheme) ? $color_scheme : $suffix;
                     <td class="wpjb-info-label"><?php _e("Company Location", "jobeleon") ?></td>
                     <td>
                         <span class="wpjb-glyphs wpjb-icon-location jobeleon-darken-color"></span>
-                        <?php esc_html_e($company->getMeta()->region->getValues()[0]->value);        ?>
+                        <?= get_meta_region($company); ?>
 
                     </td>
                 </tr>

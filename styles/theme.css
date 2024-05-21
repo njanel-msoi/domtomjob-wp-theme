@@ -53,10 +53,6 @@ body > .wrapper {
   background: #f8f9f9;
 }
 
-/* Auto title in WPJB templates */
-/*.where-am-i:not(.index-where-am-i) {
-      display: none;
-  }*/
 .wpjb-info {
   width: 100%;
   margin-left: 0;
@@ -72,6 +68,22 @@ body > .wrapper {
 #wpjb-main.wpjr-page-resume .wpjb-job-content h3 {
   width: 100%;
   left: 0;
+}
+
+.wpjb-step-container:after {
+  display: none;
+}
+
+.wpjr-page-resume .wpjb-resume-headline:after {
+  display: none;
+}
+
+.wpjr-page-resume .wpjb-summary:after {
+  display: none;
+}
+
+.where-am-i {
+  min-height: 30px;
 }
 
 .list-inline ul, .list-inlineul {
@@ -153,4 +165,14 @@ footer#footer {
   border: solid 2px black;
   margin: 10px 0;
   padding: 10px;
+}
+
+/* Country must be included to avoid bug in plugin but is hiden for our purpose (location in handled by "region" field) */
+.wpjb-element-name-candidate_country {
+  display: none;
+}
+
+/* Uncomment to enable profil completion display for candidat dashboard */
+.wpjr-page-my-home > .wpjb-layer-inside {
+  display: none;
 }/*# sourceMappingURL=theme.css.map */

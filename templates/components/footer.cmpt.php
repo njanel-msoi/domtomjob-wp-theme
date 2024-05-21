@@ -23,7 +23,7 @@ $isRecruteurPage = isRecruteurPage();
         global $REGIONS;
         foreach ($REGIONS as $region) : ?>
 
-            <a href="/regions/<?= urlencode($region) ?>"><?= $region ?></a>&nbsp;
+            <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>&nbsp;
 
         <?php endforeach; ?>
 
@@ -32,7 +32,7 @@ $isRecruteurPage = isRecruteurPage();
         global $CATEGORIES;
         foreach ($CATEGORIES as $category) : ?>
 
-            <a href="/categories/<?= urlencode($category->get('id')) ?>/<?= urlencode($category->get('title')) ?>"><?= $category->get('title') ?></a>&nbsp;
+            <a href="/categories/<?= urlencode($category->get('id')) ?>/<?= urlencode($category->get('title')) ?>" title="Offres d'emploi <?= $category->get('title') ?>"><?= $category->get('title') ?></a>&nbsp;
 
         <?php endforeach; ?>
 

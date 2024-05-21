@@ -15,10 +15,10 @@ add_filter('query_vars', function ($query_vars) {
 });
 
 add_filter('template_include', function ($template) {
-    if (get_query_var('regions') == true && get_query_var('regions') != '') {
+    if (is_from_rewrite_rule('regions')) {
         return get_theme_file_path() . '/templates/jobs-by-region.page.php';
     }
-    if (get_query_var('categoryId') == true && get_query_var('categoryId') != '') {
+    if (is_from_rewrite_rule('categoryId')) {
         return get_theme_file_path() . '/templates/jobs-by-category.page.php';
     }
     return $template;

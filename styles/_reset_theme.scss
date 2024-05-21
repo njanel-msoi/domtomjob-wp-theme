@@ -43,10 +43,6 @@ body > .wrapper {
   margin-bottom: 30px;
   background: #f8f9f9;
 }
-/* Auto title in WPJB templates */
-/*.where-am-i:not(.index-where-am-i) {
-      display: none;
-  }*/
 
 .wpjb-info {
   width: 100%;
@@ -61,4 +57,16 @@ body > .wrapper {
 #wpjb-main.wpjr-page-resume .wpjb-job-content h3 {
   width: 100%;
   left: 0;
+}
+.wpjb-step-container:after {
+  display: none;
+}
+.wpjr-page-resume .wpjb-resume-headline:after {
+  display: none;
+}
+.wpjr-page-resume .wpjb-summary:after {
+  display: none;
+}
+.where-am-i {
+  min-height: 30px;
 }

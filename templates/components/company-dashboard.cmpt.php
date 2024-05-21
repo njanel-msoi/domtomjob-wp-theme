@@ -10,7 +10,8 @@
 
     <?php do_action("wpjb_employer_panel_heading", "top") ?>
     <?php
-    $dashboard['manage']['links'][] = array('title' => "CVThèque", "icon" => "wpjb-icon-plus", "capability" => NULL, "url" => get_page_link(10))
+    $dashboard['manage']['links']['membership']['icon'] = 'wpjb-icon-star';
+    $dashboard['manage']['links']['cvtheque'] = array('title' => "CVThèque", "icon" => "wpjb-icon-users", "capability" => NULL, "url" => get_page_link(10))
     ?>
 
     <?php foreach ($dashboard as $gname => $group) : ?>

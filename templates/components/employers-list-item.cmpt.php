@@ -29,7 +29,7 @@ $random_logo_colors = array('#dbc0e0', '#d7d7d7', '#cde0c0');
     </td>
     <td class="wpjb-column-location">
         <span class="wpjb-glyphs wpjb-icon-location jobeleon-darken-color"></span>
-        <?php esc_html_e($company->getMeta()->region->getValues()[0]->value);        ?>
+        <?= get_meta_region($company); ?>
     </td>
     <td class="wpjb-column-date wpjb-last">
         <?php echo wpjb_date_display("M, d", $company->getUser(true)->user_registered, false); ?>

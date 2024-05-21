@@ -9,8 +9,13 @@ function preDump($var)
 
 function isRecruteurPage()
 {
-    $pagesRecruteur = array(222, 16, 8, 95, 12);
-    return in_array(get_the_ID(), $pagesRecruteur);
+    $pagesRecruteur = array(222, 16, 8, 95, 12, 10);
+    if (in_array(get_the_ID(), $pagesRecruteur)) return true;
+
+    // is from single cv page ? (from rewrite rule)
+    if (get_post_type() == 'resume') return true;
+
+    return false;
 }
 
 function is_company_connected()
@@ -45,4 +50,14 @@ function set_field_value_from_resume($field, $supported_fields_arr)
 
     $value = get_current_resume_field($fieldName);
     $field->setValue($value);
+}
+
+function is_from_rewrite_rule($queryPath)
+{
+    return get_query_var($queryPath) == true && get_query_var($queryPath) != '';
+}
+
+function get_meta_region($object)
+{
+    return esc_html($object->getMeta()->region->getValues()[0]->value);
 }
