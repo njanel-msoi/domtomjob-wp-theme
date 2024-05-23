@@ -118,6 +118,7 @@ html {
 #wpadminbar #wp-admin-bar-customize,
 #wpadminbar #wp-admin-bar-edit,
 #wpadminbar #wp-admin-bar-search,
+#wpadminbar #wp-admin-bar-wp_adminer,
 #wpadminbar .ab-sub-wrapper {
   display: none !important;
 }

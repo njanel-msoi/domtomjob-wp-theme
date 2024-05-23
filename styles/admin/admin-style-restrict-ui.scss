@@ -5,7 +5,8 @@
 #wpadminbar {
   #wp-admin-bar-wp-logo,
   #wp-admin-bar-comments,
-  #wp-admin-bar-new-content {
+  #wp-admin-bar-new-content,
+  #wp-admin-bar-wp_adminer {
     display: none;
   }
 }
@@ -39,6 +40,6 @@
 table.table-view-list.users {
   tr#user-5 {
     // uncomment this line to hide "super admin" from standard admin users
-    // display: none;
+    display: none;
   }
 }

