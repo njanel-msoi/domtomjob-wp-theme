@@ -12,4 +12,4 @@
  * 
  */
 
-include "./wp-content/themes/domtomjob-wp-theme/templates/components/job-details.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/job-details.cmpt.php";

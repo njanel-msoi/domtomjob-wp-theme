@@ -188,6 +188,10 @@ footer#footer {
   padding: 10px;
 }
 
+.wpjb-element-name-job_country {
+  display: none;
+}
+
 /* Country must be included to avoid bug in plugin but is hiden for our purpose (location in handled by "region" field) */
 .wpjb-element-name-candidate_country {
   display: none;

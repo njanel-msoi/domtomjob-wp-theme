@@ -9,4 +9,4 @@
  * @since wpjobboard_theme 1.0
  */
 
-include "./wp-content/themes/domtomjob-wp-theme/templates/components/footer.cmpt.php";
+include dirname(__FILE__) . "/templates/components/footer.cmpt.php";

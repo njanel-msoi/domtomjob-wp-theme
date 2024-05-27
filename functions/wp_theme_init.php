@@ -52,3 +52,26 @@ add_filter('admin_init', function () {
     wp_safe_redirect($url);
     exit();
 }, 10);
+// remove gutenberg css
+add_action('wp_print_styles', function () {
+    wp_dequeue_style('wp-block-library');
+}, 100);
+
+// the subscribe form is in a simple way
+add_filter("wpjr_form_init_register", function ($form) {
+
+    $fields_to_hide = array("field_name_1", "field_name_2");
+
+    foreach ($fields_to_hide as $field_name) {
+
+        if ($form->hasElement($field_name)) {
+            $form->removeElement($field_name);
+        }
+    }
+
+    // If you do not want to remove education and/or experience sections, please remove those two lines
+    $form->removeGroup("education");
+    $form->removeGroup("experience");
+
+    return $form;
+});

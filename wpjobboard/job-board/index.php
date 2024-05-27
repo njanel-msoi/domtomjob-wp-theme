@@ -21,4 +21,4 @@
 
 
 
-include "./wp-content/themes/domtomjob-wp-theme/templates/components/jobs-list.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/jobs-list.cmpt.php";

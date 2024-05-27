@@ -14,4 +14,4 @@
  */
 /* @var $form Wpjb_Form_AdvancedSearch */
 
-include "./wp-content/themes/domtomjob-wp-theme/templates/components/search-form.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/search-form.cmpt.php";

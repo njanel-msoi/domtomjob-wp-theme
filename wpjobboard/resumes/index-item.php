@@ -1,3 +1,3 @@
 <?php
 
-include "./wp-content/themes/domtomjob-wp-theme/templates/components/resume-list-item.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/resume-list-item.cmpt.php";

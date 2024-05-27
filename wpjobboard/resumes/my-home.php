@@ -14,4 +14,4 @@
 /* @var $form Wpjb_Form_Frontend_Company Company edit form */
 /* @var $company Wpjb_Model_Employer Currently logged in employer object */
 
-include "./wp-content/themes/domtomjob-wp-theme/templates/components/applicant-dashboard.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/applicant-dashboard.cmpt.php";

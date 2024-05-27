@@ -5,4 +5,4 @@
  */
 
 
-include "./wp-content/themes/domtomjob-wp-theme/templates/components/employers-list-item.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/employers-list-item.cmpt.php";

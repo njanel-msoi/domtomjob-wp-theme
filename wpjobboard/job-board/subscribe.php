@@ -4,4 +4,4 @@
  * Subscribe popup page
  */
 
-include "./wp-content/themes/domtomjob-wp-theme/templates/components/subscribe.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/subscribe.cmpt.php";

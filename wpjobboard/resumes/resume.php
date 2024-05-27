@@ -13,4 +13,4 @@
 /* @var $resume Wpjb_Model_Resume */
 /* @var $can_browse boolean True if user has access to resumes */
 
-include "./wp-content/themes/domtomjob-wp-theme/templates/components/applicant-single.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/applicant-single.cmpt.php";

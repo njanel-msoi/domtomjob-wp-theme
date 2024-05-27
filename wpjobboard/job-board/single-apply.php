@@ -9,4 +9,4 @@
  */
 
 
-include "./wp-content/themes/domtomjob-wp-theme/templates/components/job-apply.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/job-apply.cmpt.php";
