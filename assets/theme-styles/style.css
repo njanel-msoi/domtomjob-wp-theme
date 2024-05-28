@@ -2,11 +2,16 @@
 Theme override and custom styles for current theme
 */
 @import url(https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800);
+.btn.btn-default.btn-default-small {
+  padding: 5px 15px;
+  font-size: 13px;
+}
+
 header.header {
   position: sticky;
   top: 0px;
   background-color: #fff;
-  z-index: 9;
+  z-index: 50;
   padding: 20px 0;
 }
 header.header.stuck {
@@ -62,6 +67,65 @@ header.header .main-menu > li:last-child {
 
 footer.footer .footer-logo {
   width: 150px;
+}
+
+.wpjb-overlay {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4196078431);
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  text-align: center;
+}
+.wpjb-overlay > div {
+  background: #fff;
+  padding: 20px;
+  display: inline-block;
+  width: 600px;
+  margin-top: 100px;
+  border-radius: 10px;
+}
+
+.box-view-type > .btn {
+  margin-top: -13px;
+}
+
+.logo-placeholder {
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+  background-color: #ccc;
+  margin-bottom: 6px;
+}
+
+.card-grid-2:not(.job-featured) {
+  background-color: #fff;
+}
+.card-grid-2:not(.job-featured) .flash {
+  display: none;
+}
+
+.pagination .page-numbers {
+  font-weight: bold;
+  color: #a0abb8;
+  font-size: 18px;
+  padding: 10px;
+  color: #a0abb8;
+  border-radius: 50%;
+}
+.pagination .page-numbers.next, .pagination .page-numbers.prev, .pagination .page-numbers.current {
+  background-color: #e0e6f7;
+}
+.pagination .page-numbers.current {
+  padding: 0;
+  display: inline-block;
+  height: 26px;
+  width: 26px;
+  text-align: center;
+  color: #000;
+  margin-top: 9px;
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {

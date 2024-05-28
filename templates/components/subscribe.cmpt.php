@@ -1,78 +1,67 @@
-<?php
-
-/**
- * Subscribe popup page
- */
-?>
-
 <!-- START: Subscribe overlay -->
-<div id="wpjb-overlay" class="wpjb-overlay">
+<div id="wpjb-overlay" class="wpjb wpjb-overlay wpjb-subscribe-rss">
     <div>
-        <div class="wpjb-subscribe-head">
-            <h2>
-                <?php _e("Subscribe To Personalized Notifications", "jobeleon") ?>
-                <a href="#" class="wpjb-overlay-close"><img src="<?php esc_attr_e(get_template_directory_uri() . '/wpjobboard/images/close-icon.png') ?>" alt="" /></a>
-            </h2>
+        <h2>
+            <?php _e("Subscribe To Personalized Notifications", "wpjobboard") ?>
+            <a href="#" class="wpjb-overlay-close wpjb-glyphs wpjb-icon-cancel" title="<?php _e("Close", "wpjobboard") ?>"></a>
+        </h2>
 
-            <p>
-                <?php _e("You are subscribing to jobs matching your current search criteria.", "jobeleon") ?>
-            </p>
-        </div><!-- .wpjb-subscribe-head -->
-        <div class="wpjb-subscribe-content wpjb-subscribe-email">
+        <p>
+            <?php _e("You are subscribing to jobs matching your current search criteria.", "wpjobboard") ?>
+        </p>
+
+
+        <div>
             <strong>
-                <img src="<?php esc_attr_e(get_template_directory_uri() . '/wpjobboard/images/email-icon.png') ?>" alt="" />
-                <?php _e("Email Notifications", "jobeleon") ?>
+                <span class="wpjb-glyphs wpjb-icon-mail-alt" style="font-size:1.4em"></span>
+                <?php _e("Email Notifications", "wpjobboard") ?>
             </strong>
-            <form action="" method="post">
-                <p>
-                    <span><?php _e("Email notifications will be sent to you", "jobeleon") ?></span>
+            <?php if ($alerts['current'] < $alerts['max'] || $alerts['max'] == -1) : ?>
+                <form action="" method="post">
+                    <p>
+                        <span><?php _e("Email notifications will be sent to you", "wpjobboard") ?></span>
 
-                    <label class="wpjb-mail-frequency" for="wpjb-mail-frequency-daily"><?php _e("Daily", "jobeleon") ?>
                         <input type="radio" value="1" name="frequency[]" id="wpjb-mail-frequency-daily" class="wpjb-subscribe-frequency" checked="checked" />
-                    </label>
+                        <label for="wpjb-mail-frequency-daily"><?php _e("Daily", "wpjobboard") ?></label>
 
-                    <label class="wpjb-mail-frequency" for="wpjb-mail-frequency-weekly"><?php _e("Weekly", "jobeleon") ?>
                         <input type="radio" value="2" name="frequency[]" id="wpjb-mail-frequency-weekly" class="wpjb-subscribe-frequency" />
-                    </label>
+                        <label for="wpjb-mail-frequency-weekly"><?php _e("Weekly", "wpjobboard") ?></label>
 
 
-                <div class="wpjb-btn-with-input">
-                    <input type="text" placeholder="<?php _e("enter your email address here ...", "jobeleon") ?>" id="wpjb-subscribe-email" value="" name="email" />
-                    <a href="" class="wpjb-button wpjb-subscribe-save btn">
-                        <?php _e("Subscribe", "jobeleon") ?>
-                    </a>
-                </div>
+                        <input type="text" placeholder="<?php _e("enter your email address here ...", "wpjobboard") ?>" id="wpjb-subscribe-email" value="" name="alert_email" style="width:60%" />
+                        <a href="" class="wpjb-button wpjb-subscribe-save">
+                            <?php _e("Subscribe", "wpjobboard") ?>
+                        </a>
+                        <img alt="" class="wpjb-subscribe-load" src="<?php echo get_admin_url() ?>/images/wpspin_light.gif" style="display:none" />
 
-                <img alt="" class="wpjb-subscribe-load" src="<?php echo get_admin_url() ?>/images/wpspin_light.gif" style="display:none" />
-
-                <span class="wpjb-subscribe-result">&nbsp;</span>
+                    <div class="wpjb-flash-info wpjb-subscribe-result wpjb-none">&nbsp;</div>
+                    </p>
+                </form>
+            <?php else : ?>
+                <p>
+                    <?php printf(__("Alerts limit reached %d/%d", "wpjobboard"), $alerts['current'], $alerts['max']); ?>
                 </p>
-            </form>
-        </div><!-- .wpjb-subscribe-content -->
+            <?php endif; ?>
+        </div>
 
-        <?php
-        // Remove RSS Subscribtion
-        /*
-        <div class="wpjb-subscribe-content wpjb-subscribe-rss">
+
+        <!-- <div>
             <strong>
-                <img src="<?php esc_attr_e(get_template_directory_uri() . '/wpjobboard/images/rss-feed-icon.png') ?>" alt="" />
-                <?php _e("Custom RSS Feed", "jobeleon") ?>
+                <span class="wpjb-glyphs wpjb-icon-rss-squared" style="font-size:1.4em"></span>
+                <?php _e("Custom RSS Feed", "wpjobboard") ?>
             </strong>
             <form action="" method="post">
 
                 <p>
-                    <span><?php _e("Your personalized RSS Feed is below, copy the address to your RSS reader.", "jobeleon") ?></span>
+                    <span><?php _e("Your personalized RSS Feed is below, copy the address to your RSS reader.", "wpjobboard") ?></span> <br />
 
-                <div class="wpjb-btn-with-input">
-                    <input type="text" value="<?php esc_attr_e($feed_url) ?>" name="feed" readonly="readonly" />
+                    <input type="text" value="<?php esc_attr_e($feed_url) ?>" name="feed" style="width:60%" />
                     <a href="<?php esc_attr_e($feed_url) ?>" class="wpjb-button btn">
-                        <?php _e("Subscribe", "jobeleon") ?>
+                        <?php _e("Subscribe", "wpjobboard") ?>
                     </a>
-                </div>
                 </p>
             </form>
-        </div>*/
-        ?>
+        </div> -->
     </div>
 </div>
 
@@ -80,11 +69,7 @@
     if (typeof ajaxurl === 'undefined') {
         ajaxurl = "<?php echo admin_url('admin-ajax.php') ?>";
     }
-    <?php $pj = array() ?>
-    <?php foreach ($param as $k => $v) : ?>
-        <?php if (!empty($v) && !in_array($k, array("page", "count"))) $pj[$k] = $v ?>
-    <?php endforeach; ?>
-    WPJB_SEARCH_CRITERIA = <?php echo json_encode($pj) ?>;
+    WPJB_SEARCH_CRITERIA = <?php echo wp_json_encode($param) ?>;
 </script>
 
 <!-- END: Subscribe overlay -->

@@ -9,6 +9,7 @@
  * @var $show_related boolean
  */
 ?>
+
 <div id="wpjb-main" class="wpjb-job wpjb-page-single wpjb">
     <?php wpjb_flash() ?>
     <header class="entry-header">

@@ -11,9 +11,17 @@
 //     }
 // }
 
+// remove inline style of jobeleon
+add_action('wp_head', function () {
+    remove_action('wp_head', 'wpjobboard_theme_color_scheme');
+}, 9);
+
 // dequeue child theme scripts & styles
 add_action('wp_print_styles', function () {
-    // wp_dequeue_style('wp-block-library');
+    $styles_to_dequeue = ['wpjobboard_theme-style'];
+    foreach ($styles_to_dequeue as $style) {
+        wp_dequeue_style($style);
+    }
 }, 100);
 add_action('wp_print_scripts', function () {
     $scripts_to_dequeue = ['wpjobboard_theme-navigation', 'wpjobboard_theme_scripts', 'wpjobboard_theme-skip-link-focus-fix'];
