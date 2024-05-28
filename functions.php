@@ -7,11 +7,11 @@ $VERSION = "0.1.3";
  * This file is responsible to call the data initialization, homemade helper functions and wp related initialization
  */
 
-// general config
-Wpjb_Model_Resume::$skip = array('geo_loc' => true);
-
+include_once 'functions/pages-urls.php';
 include_once 'functions/utils.php';
-include_once 'data/data.php';
-include_once 'functions/wp_theme_init.php';
 
+include_once 'data/data.php';
+
+include_once 'functions/enqueue_style_scripts.php';
+include_once 'functions/wp_theme_init.php';
 include_once 'functions/routes.php';

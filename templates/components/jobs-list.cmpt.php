@@ -8,21 +8,18 @@
  * @var $pagination bool Show or hide pagination
  */
 ?>
-
-<?php //preDump($param); 
-?>
+<?php wpjb_flash(); ?>
+<?php $result = apply_filters("wpjb_filter_jobs", wpjb_find_jobs($param), $atts, "list") ?>
+<?php $isNotHomePage = $param["is_featured"] != "1" ?>
 
 <div id="wpjb-main" class="wpjb-page-index">
 
-    <?php if ($param["is_featured"] != "1") : ?>
+    <?php if ($isNotHomePage != "1") : ?>
         <a href="#" class="wpjb-button wpjb-subscribe wpjb-glyphs wpjb-icon-bell-alt"><?php _e("Subscribe To This Search", "jobeleon") ?></a>
     <?php endif; ?>
 
-    <?php wpjb_flash(); ?>
-
     <table id="wpjb-job-list" class="wpjb-table">
         <tbody class="wpjb-job-list">
-            <?php $result = apply_filters("wpjb_filter_jobs", wpjb_find_jobs($param), $atts, "list") ?>
             <?php if ($result->count) : foreach ($result->job as $job) : ?>
                     <?php /* @var $job Wpjb_Model_Job */ ?>
                     <?php $this->job = $job; ?>

@@ -21,6 +21,7 @@
     <meta name="author" content=""> -->
     <!-- <meta name="msapplication-config" content="browserconfig.xml"> -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/template/favicon.svg"> -->
+    <link href="assets/css/style.css?version=4.1" rel="stylesheet">
     <title><?php wp_title('|', true, 'right'); ?></title>
 
     <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -29,9 +30,10 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-
-    <?php include dirname(__FILE__) . '/menu.cmpt.php'; ?>
+    <?php
+    $siteTitle = esc_attr(get_bloginfo('name', 'display'));
+    $siteLogo = get_stylesheet_directory_uri() . '/images/logo_dtj.png';
+    ?>
 
     <header id="header" role="banner" class="<?php if ($isRecruteurPage) echo 'pro-bg' ?>">
         <div class="container">
