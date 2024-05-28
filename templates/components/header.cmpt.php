@@ -33,33 +33,4 @@
 
     <?php include dirname(__FILE__) . '/menu.cmpt.php'; ?>
 
-    <header id="header" role="banner" class="<?php if ($isRecruteurPage) echo 'pro-bg' ?>">
-        <div class="container">
-            <nav class="d-flex align-items-center" role="navigation">
-                <!-- left logo -->
-                <h1 class="site-title">
-                    <a href="<?= get_permalink(31) ?>" title="<?= $siteTitle ?>" rel="home">
-                        <img src="<?= $siteLogo ?>" alt="<?php bloginfo('name'); ?> logo" class="logo" />
-                    </a>
-                </h1>
-                <!-- left links -->
-                <div class="div flex-fill">
-                    <a href="<?= get_permalink('7') ?>" class="btn btn-link btn-sm">Offres d'emploi</a>
-                    <a href="<?= get_permalink('44') ?>" class="btn btn-link btn-sm">Découverte des entreprises</a>
-                    <a href="<?= get_permalink('239') ?>" class="btn btn-link btn-sm">Contact</a>
-                    <a href="<?= get_permalink('16') ?>" class="btn btn-link btn-sm">Recruteurs :</a>
-                    <a href="<?= get_permalink('16') ?>" class="btn btn-link btn-sm">Nos offres</a>
-                    <a href="<?= get_permalink('8') ?>" class="btn btn-link btn-sm">Publier une annonce</a>
-                </div>
-                <!-- right links -->
-                <div class="div">
-                    <a href="<?= get_permalink('12') ?>" class="btn btn-primary btn-sm">Espace recruteur</a>
-                    <a href="<?= get_permalink('14') ?>" class="btn btn-primary btn-sm">Espace candidat</a>
-                </div>
-
-            </nav>
-        </div>
-        </div>
-    </header>
-    <div id="main" class="container">
-        <!-- Main content centered -->
+    <main class="main">

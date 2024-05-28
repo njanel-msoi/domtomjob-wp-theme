@@ -1,7 +1,4 @@
 <?php
-$siteTitle = esc_attr(get_bloginfo('name', 'display'));
-$siteLogo = get_stylesheet_directory_uri() . '/images/logo_dtj.png';
-
 ?>
 
 <!-- Desktop Menu -->
@@ -10,33 +7,38 @@ $siteLogo = get_stylesheet_directory_uri() . '/images/logo_dtj.png';
         <div class="main-header">
             <div class="header-left">
                 <div class="header-logo"><a class="d-flex" href="<?= PAGES_URLS->Accueil ?>">
-                        <img alt="<?= $siteTitle ?>" src="<?= $siteLogo ?>" style="height: 36px;">
+                        <img alt="<?= esc_attr(get_bloginfo('name', 'display')) ?>" src="<?= get_stylesheet_directory_uri() . '/images/logo_dtj.png' ?>">
                     </a></div>
             </div>
             <div class="header-nav">
                 <nav class="nav-main-menu">
                     <ul class="main-menu">
-                        <!-- <li><a href="<?= PAGES_URLS->Accueil ?>">Accueil</a> -->
-                        </li>
-                        <li class="has-children"><a href="jobs-grid.html">Recruteurs</a>
+
+                        <!-- <li><a href="<?= PAGES_URLS->ListeOffres ?>">Emploi</a></li>
+                        <li><a href="<?= PAGES_URLS->ListeEntreprises ?>">Entreprises</a></li>
+                        <li><a href="<?= PAGES_URLS->PublierAnnonce ?>">Publier une offre</a></li>
+                        <li><a href="<?= PAGES_URLS->NosOffres ?>">Tarifs</a></li> -->
+
+                        <li class="has-children"><a href="<?= PAGES_URLS->Accueil ?>">Recruteurs</a>
                             <ul class="sub-menu">
-                                <li><a href="jobs-list.html">Publier une offre</a></li>
-                                <li><a href="jobs-grid.html">Tarifs</a></li>
-                                <li><a href="job-details.html">Espace recruteur</a></li>
+                                <li><a href="<?= PAGES_URLS->PublierAnnonce ?>">Publier une offre</a></li>
+                                <li><a href="<?= PAGES_URLS->NosOffres ?>">Tarifs</a></li>
+                                <li><a href="<?= PAGES_URLS->EspaceRecruteur ?>">Espace recruteur</a></li>
                             </ul>
                         </li>
-                        <li class="has-children"><a href="candidates-grid.html">Emploi</a>
+                        <li class="has-children"><a href="<?= PAGES_URLS->ListeOffres ?>">Emploi</a>
                             <ul class="sub-menu">
-                                <li><a href="candidates-grid.html">Offres d'emploi</a></li>
-                                <li><a href="candidate-details.html">Espace candidat</a></li>
+                                <li><a href="<?= PAGES_URLS->ListeOffres ?>">Offres d'emploi</a></li>
+                                <li><a href="<?= PAGES_URLS->ListeEntreprises ?>">Découverte des entreprises</a></li>
+                                <li><a href="<?= PAGES_URLS->EspaceCandidat ?>">Espace candidat</a></li>
                             </ul>
                         </li>
-                        <li class="has-children"><a href="blog-grid.html">Régions</a>
+                        <!-- <li class="has-children"><a>Régions</a>
                             <ul class="sub-menu">
-                                <li><a href="page-about.html">Réunion</a></li>
+                                <li><a href="<?= PAGES_URLS->Accueil ?>">Réunion</a></li>
                                 <li><a href="page-about.html">France métropolitaine</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
                 <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
@@ -44,10 +46,10 @@ $siteLogo = get_stylesheet_directory_uri() . '/images/logo_dtj.png';
             <div class="header-right">
                 <nav class="nav-main-menu">
                     <ul class="main-menu">
-                        <li class="has-children"><a href="blog-grid.html" class="fw-bold">Mon espace</a>
+                        <li class="has-children"><a class="fw-bold">Mon espace</a>
                             <ul class="sub-menu">
-                                <li><a href="blog-grid.html">Espace candidat</a></li>
-                                <li><a href="blog-grid.html">Espace recruteur</a></li>
+                                <li><a href="<?= PAGES_URLS->EspaceCandidat ?>">Espace candidat</a></li>
+                                <li><a href="<?= PAGES_URLS->EspaceRecruteur ?>">Espace recruteur</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -62,3 +64,48 @@ $siteLogo = get_stylesheet_directory_uri() . '/images/logo_dtj.png';
 </header>
 
 <!-- Mobile Menu -->
+<div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
+    <div class="mobile-header-wrapper-inner">
+        <div class="mobile-header-content-area">
+
+            <div>
+                <!-- <div class="mobile-search mobile-header-border mb-30">
+                    <form action="#">
+                        <input type="text" placeholder="Search…"><i class="fi-rr-search"></i>
+                    </form>
+                </div> -->
+                <div class="mobile-menu-wrap mobile-header-border">
+                    <!-- mobile menu start-->
+                    <nav>
+                        <ul class="mobile-menu font-heading">
+
+                            <li class="has-children"><a>Recruteurs</a>
+                                <ul class="sub-menu">
+                                    <li><a href="jobs-list.html">Publier une offre</a></li>
+                                    <li><a href="jobs-grid.html">Tarifs</a></li>
+                                    <li><a href="job-details.html" class="fw-bold">Espace recruteur</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children"><a href="<?= PAGES_URLS->ListeOffres ?>">Candidats</a>
+                                <ul class="sub-menu">
+                                    <li><a href="candidates-grid.html">Offres d'emploi</a></li>
+                                    <li><a href="candidates-grid.html">Découverte des entreprises</a></li>
+                                    <li><a href="candidate-details.html" class="fw-bold">Espace candidat</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <!-- <div class="mobile-account">
+                    <h6 class="mb-10">Your Account</h6>
+                    <ul class="mobile-menu font-heading">
+                        <li><a href="blog-grid.html">Espace candidat</a></li>
+                        <li><a href="blog-grid.html">Espace recruteur</a></li>
+                    </ul>
+                </div> -->
+                <!-- <div class="site-copyright">Copyright 2022 &copy; JobBox.<br>Designed by AliThemes.</div> -->
+            </div>
+        </div>
+    </div>
+</div>

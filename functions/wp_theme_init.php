@@ -1,15 +1,14 @@
 <?php
 
-
 /**
  * Hide admin bar for non admin/moderator users
  */
 add_action('after_setup_theme', 'remove_admin_bar');
 function remove_admin_bar()
 {
-    if (!current_user_can('manage_options') && !is_admin()) {
-        show_admin_bar(false);
-    }
+    // if (!current_user_can('manage_options') && !is_admin()) {
+    show_admin_bar(false);
+    // }
 }
 
 //Login redirect on admin page

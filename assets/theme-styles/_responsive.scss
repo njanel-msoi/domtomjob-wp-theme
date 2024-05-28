@@ -1,0 +1,16 @@
+@import "../jobbox-styles/abstracts/variables";
+@import "../jobbox-styles/abstracts/mixins";
+
+@include media-breakpoint-between(lg, xl) {
+  .header {
+    .burger-icon {
+      display: none;
+    }
+    .main-header .header-right {
+      display: inline-block;
+    }
+    .nav-main-menu {
+      display: inline-block;
+    }
+  }
+}
