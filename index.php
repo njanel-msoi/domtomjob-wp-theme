@@ -5,7 +5,7 @@
  */
 get_header();
 ?>
-
+<h1>BONJOUR</h1>
 <div>
     <?php if ('post' == get_post_type()) : ?>
         <h2><?php _e('The blog', 'jobeleon'); ?></h2>
