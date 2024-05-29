@@ -8,13 +8,15 @@
  * 
  */
 ?>
-<?php if (!wpjb_conf("front_hide_apply_link")) : ?>
-    <div id="wpjb-form-job-apply-popup" class="popup <?php if ($show->apply) : ?>visible<?php endif; ?>">
-        <div class="container">
+<div id="wpjb-form-job-apply-popup" class="popup-container <?php if ($show->apply) : ?>visible<?php endif; ?>">
 
+    <div class="popup">
+        <div class="content">
+            <!-- close btn -->
             <div class="text-end">
                 <button class="btn btn-sm btn-outline-primary close-popup">X</button>
             </div>
+            <!-- start of form -->
 
             <?php if (isset($form_error)) : ?>
                 <div class="wpjb-flash-error" style="margin:5px">
@@ -61,6 +63,6 @@
                 </fieldset>
             </form>
         </div>
-        <div class="backdrop"></div>
     </div>
-<?php endif; ?>
+    <div class="backdrop"></div>
+</div>

@@ -65,3 +65,49 @@ function get_meta_region($object)
         return esc_html($metaValue[0]->value);
     return 'Région non définie';
 }
+
+function get_company_location($company)
+{
+    return get_meta_region($company);
+}
+
+function get_meta_value($object, $field)
+{
+    $meta = $object->getMeta()->$field;
+    if ($meta) {
+        $metaValues = $meta->getValues();
+        if (isset($metaValue[0]))
+            return esc_html($metaValue[0]->value);
+    }
+    return '';
+}
+
+function get_job_tag($job, $tag)
+{
+    $tag = $job->getTag()->$tag;
+    if (is_array($tag) && count($tag) > 0)
+        return $tag[0]->title;
+    return '';
+}
+function get_job_category($job)
+{
+    return get_job_tag($job, 'category');
+}
+
+function get_job_type($job)
+{
+    return get_job_tag($job, 'type');
+}
+
+function job_company_img($job, $forList = true)
+{
+    $image = $forList ? "50x50" : "85x85";
+
+    if ($job->getLogoUrl()) : ?>
+        <img src="<?php echo $job->getLogoUrl($image) ?>" />
+    <?php elseif ($job->getCompany(true)->getLogoUrl()) : ?>
+        <img src="<?php echo $job->getCompany(true)->getLogoUrl($image) ?>" />
+    <?php else : ?>
+        <div class="logo-placeholder <?= $forList ? 'for-list' : 'for-detail' ?>"></div>
+<?php endif;
+}

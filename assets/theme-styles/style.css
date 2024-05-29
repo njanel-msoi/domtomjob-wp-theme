@@ -7,14 +7,40 @@ Theme override and custom styles for current theme
   font-size: 13px;
 }
 
+.btn a.wpjb-button {
+  color: white !important;
+}
+.btn a.wpjb-button > span {
+  display: none;
+}
+
+.wpjb-errors,
+.wpjb-flash-error {
+  color: red;
+}
+
+.wpjb-flash-info {
+  width: 500px;
+  color: #3c65f5;
+  font-weight: bold;
+  text-align: center;
+  border: solid 2px #3c65f5;
+  border-radius: 3px;
+  margin: 17px auto;
+  padding: 5px;
+}
+
 header.header {
+  position: relative;
+}
+header.header.stickable {
   position: sticky;
   top: 0px;
   background-color: #fff;
   z-index: 50;
   padding: 20px 0;
 }
-header.header.stuck {
+header.header.stickable.stuck {
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
 }
 header.header .header-logo {
@@ -69,6 +95,48 @@ footer.footer .footer-logo {
   width: 150px;
 }
 
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.popup-container:not(.visible) {
+  display: none;
+}
+.popup-container > .popup {
+  background-color: #fff;
+  z-index: 2;
+  position: relative;
+  width: 650px;
+  max-width: 100%;
+  padding: 25px;
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 75px);
+}
+.popup-container .close-popup {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  padding: 5px;
+  width: 27px;
+  border-radius: 50%;
+}
+.popup-container .backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(153, 153, 153, 0.3333333333);
+}
+
 .wpjb-overlay {
   display: none;
   width: 100vw;
@@ -98,6 +166,10 @@ footer.footer .footer-logo {
   border-radius: 5px;
   background-color: #ccc;
   margin-bottom: 6px;
+}
+.logo-placeholder.for-detail {
+  height: 85px;
+  width: 85px;
 }
 
 .card-grid-2:not(.job-featured) {

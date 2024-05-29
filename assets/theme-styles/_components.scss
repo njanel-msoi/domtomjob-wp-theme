@@ -6,3 +6,12 @@
     }
   }
 }
+
+.btn {
+  a.wpjb-button {
+    color: white !important;
+    > span {
+      display: none;
+    }
+  }
+}

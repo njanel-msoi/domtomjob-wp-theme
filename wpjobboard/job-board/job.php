@@ -1,15 +1,7 @@
 <?php
 
 /**
- * Job details
- * 
- * This template is responsible for displaying job details on job details page
- * (template single.php) and job preview page (template preview.php)
- * 
- * @author Greg Winiarski
- * @package Templates
- * @subpackage JobBoard
- * 
+ * Job details presentation (called from single job & preview job page)
  */
 
-include dirname(__FILE__) . "/../../templates/components/job-details.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/job.cmpt.php";

@@ -9,6 +9,11 @@
   border-radius: 5px;
   background-color: #ccc;
   margin-bottom: 6px;
+
+  &.for-detail {
+    height: 85px;
+    width: 85px;
+  }
 }
 .card-grid-2 {
   &:not(.job-featured) {

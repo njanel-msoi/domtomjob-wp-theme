@@ -2,11 +2,14 @@
     ("use strict");
 
     /*====== Topbar sticky class ======*/
-    var rootElt = document.querySelector(':root'), headerElt = document.querySelector("header.header");
-    addEventListener("scroll", (event) => {
-        var stucked = rootElt.scrollTop != 0;
-        headerElt.classList.toggle('stuck', stucked);
-    });
+    var headerElt = document.querySelector("header.header.stickable");
+    if (headerElt) {
+        var rootElt = document.querySelector(':root');
+        addEventListener("scroll", (event) => {
+            var stucked = rootElt.scrollTop != 0;
+            headerElt.classList.toggle('stuck', stucked);
+        });
+    }
     /*====== Sidebar menu Active ======*/
     function mobileHeaderActive() {
         var navbarTrigger = $(".burger-icon"),
@@ -32,7 +35,32 @@
     }
     mobileHeaderActive();
 
-    /*====== Select2 ======*/
-    $("select").select2();
+    /*====== Select2 for bar search ======*/
+    $(".bar-search-form select").select2();
+
+    
+    /*====== submit form on filter change (job list) ======*/
+    $(".job-list-filters-form select, .job-list-filters-form input").on('change',function(){
+        $(".job-list-filters-form").submit();
+    });
+
+    /*====== Apply popup ======*/
+    $(".popup-container .close-popup").click(function(event){
+        $(this).parents('.popup-container').fadeOut('fast');
+        return false;
+    })
+    $(".wpjb-form-job-apply.wpjb-form-toggle")
+        .unbind()
+        .click(function(event) {
+            var id = $(this).data("wpjb-form");
+            $("#"+id+"-popup").fadeIn('fast');
+            return false;
+        });    
+
+    /*====== Clic on container trigger link ======*/
+        $(".click-on-link").click(function(event){
+            // if a link exists in children, clic on it
+            $(event.target).children("a").click();
+        })
     
 })(jQuery);

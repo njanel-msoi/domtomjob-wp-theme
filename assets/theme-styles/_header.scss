@@ -1,14 +1,18 @@
 $logoWidth: 150px;
 
 header.header {
-  position: sticky;
-  top: 0px;
-  background-color: #fff;
-  z-index: 50;
-  padding: 20px 0;
+  position: relative;
 
-  &.stuck {
-    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
+  &.stickable {
+    position: sticky;
+    top: 0px;
+    background-color: #fff;
+    z-index: 50;
+    padding: 20px 0;
+
+    &.stuck {
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
+    }
   }
 
   .header-logo {
