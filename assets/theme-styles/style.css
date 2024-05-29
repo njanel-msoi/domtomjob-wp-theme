@@ -230,9 +230,22 @@ footer.footer .footer-logo {
   background: url(../imgs/template/icons/industry.svg) no-repeat !important;
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
+@media (min-width: 992px) {
+  .main-menu.middle-screen {
+    display: none;
+  }
+}
+@media (max-width: 991.98px) {
+  .main-menu.large-screen {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199.98px) {
   .header .burger-icon {
     display: none;
+  }
+  .header .main-header .header-nav {
+    width: 100%;
   }
   .header .main-header .header-right {
     display: inline-block;

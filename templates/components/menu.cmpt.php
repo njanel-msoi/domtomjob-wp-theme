@@ -12,13 +12,13 @@
             </div>
             <div class="header-nav">
                 <nav class="nav-main-menu">
-                    <ul class="main-menu">
-
-                        <!-- <li><a href="<?= PAGES_URLS->ListeOffres ?>">Emploi</a></li>
+                    <ul class="main-menu large-screen">
+                        <li><a href="<?= PAGES_URLS->ListeOffres ?>">Emploi</a></li>
                         <li><a href="<?= PAGES_URLS->ListeEntreprises ?>">Entreprises</a></li>
                         <li><a href="<?= PAGES_URLS->PublierAnnonce ?>">Publier une offre</a></li>
-                        <li><a href="<?= PAGES_URLS->NosOffres ?>">Tarifs</a></li> -->
-
+                        <li><a href="<?= PAGES_URLS->NosOffres ?>">Tarifs</a></li>
+                    </ul>
+                    <ul class="main-menu middle-screen">
                         <li class="has-children"><a href="<?= PAGES_URLS->Accueil ?>">Recruteurs</a>
                             <ul class="sub-menu">
                                 <li><a href="<?= PAGES_URLS->PublierAnnonce ?>">Publier une offre</a></li>
@@ -33,12 +33,6 @@
                                 <li><a href="<?= PAGES_URLS->EspaceCandidat ?>">Espace candidat</a></li>
                             </ul>
                         </li>
-                        <!-- <li class="has-children"><a>Régions</a>
-                            <ul class="sub-menu">
-                                <li><a href="<?= PAGES_URLS->Accueil ?>">Réunion</a></li>
-                                <li><a href="page-about.html">France métropolitaine</a></li>
-                            </ul>
-                        </li> -->
                     </ul>
                 </nav>
                 <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>

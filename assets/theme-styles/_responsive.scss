@@ -1,10 +1,23 @@
 @import "../jobbox-styles/abstracts/variables";
 @import "../jobbox-styles/abstracts/mixins";
 
-@include media-breakpoint-between(lg, xl) {
+@include media-breakpoint-up(lg) {
+  .main-menu.middle-screen {
+    display: none;
+  }
+}
+@include media-breakpoint-down(lg) {
+  .main-menu.large-screen {
+    display: none;
+  }
+}
+@include media-breakpoint-between(md, xl) {
   .header {
     .burger-icon {
       display: none;
+    }
+    .main-header .header-nav {
+      width: 100%;
     }
     .main-header .header-right {
       display: inline-block;
