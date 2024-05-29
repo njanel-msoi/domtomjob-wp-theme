@@ -128,6 +128,36 @@ footer.footer .footer-logo {
   margin-top: 9px;
 }
 
+.bar-search-form input {
+  border: none !important;
+  border-radius: 0px;
+  padding: 7px 20px 10px 34px;
+  display: inline-block;
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+  font-size: 16px;
+  color: #4f5e64;
+  margin-right: 10px;
+  background: url(../imgs/page/homepage1/key-numbers.svg) no-repeat left 10px center;
+}
+.bar-search-form input:focus, .bar-search-form input:active {
+  border: none;
+}
+.bar-search-form input::-moz-placeholder {
+  font-size: 15px;
+}
+.bar-search-form input::placeholder {
+  font-size: 15px;
+}
+.bar-search-form .select2 {
+  padding-top: 11px !important;
+  max-width: 240px !important;
+}
+.bar-search-form .select2:first-of-type::before {
+  background: url(../imgs/template/icons/industry.svg) no-repeat !important;
+}
+
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .header .burger-icon {
     display: none;

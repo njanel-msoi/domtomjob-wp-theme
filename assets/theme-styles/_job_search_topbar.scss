@@ -1,0 +1,32 @@
+.bar-search-form {
+  input {
+    border: none !important;
+    border-radius: 0px;
+    padding: 7px 20px 10px 34px;
+    display: inline-block;
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+    font-size: 16px;
+    color: #4f5e64;
+    margin-right: 10px;
+
+    background: url(../imgs/page/homepage1/key-numbers.svg) no-repeat left 10px
+      center;
+    &:focus,
+    &:active {
+      border: none;
+    }
+    &::placeholder {
+      font-size: 15px;
+    }
+  }
+
+  .select2 {
+    padding-top: 11px !important;
+    max-width: 240px !important;
+    &:first-of-type::before {
+      background: url(../imgs/template/icons/industry.svg) no-repeat !important;
+    }
+  }
+}

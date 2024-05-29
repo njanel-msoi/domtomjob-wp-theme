@@ -103,8 +103,8 @@
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/waypoints.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/wow.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/magnific-popup.js"></script> -->
-<!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script> -->
-<!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/select2.min.js"></script> -->
+<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/select2.min.js"></script>
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/isotope.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/scrollup.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/swiper-bundle.min.js"></script> -->

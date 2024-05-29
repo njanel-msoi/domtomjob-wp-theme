@@ -32,5 +32,7 @@
     }
     mobileHeaderActive();
 
+    /*====== Select2 ======*/
+    $("select").select2();
     
 })(jQuery);

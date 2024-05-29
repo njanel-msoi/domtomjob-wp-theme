@@ -62,7 +62,7 @@ $random_logo_colors = array('#dbc0e0', '#d7d7d7', '#cde0c0');
             </div>
             <div class="right-info">
                 <a class="name-job" href=""><?= esc_html($job->company_name) ?></a>
-                <span class="location-small">New York, US</span>
+                <span class="location-small"><?= get_meta_region($job); ?></span>
             </div>
         </div>
         <div class="card-block-info">
