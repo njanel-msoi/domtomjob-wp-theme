@@ -2,28 +2,27 @@
 
 // Liste des éléments
 $REGIONS = array(
-    "France métropolitaine",
-    "Guadeloupe",
-    "Guyane",
-    "Île Maurice",
-    "Les Comores",
-    "Madagascar",
-    "Martinique",
-    "Mayotte",
-    "Nouvelle Calédonie",
-    "Outre-Mer",
-    "Pays voisins",
-    "Polynésie Française",
-    "Réunion",
-    "Saint Barthélémy",
-    "Saint-Martin",
-    "Saint-Pierre et Miquelon",
-    "Seychelles",
-    "T.A.A.F.",
-    "Wallis et Futuna"
+    'Francemetropolitaine' => 'France métropolitaine',
+    'Guadeloupe' => 'Guadeloupe',
+    'Guyane' => 'Guyane',
+    'IleMaurice' => 'Île Maurice',
+    'LesComores' => 'Les Comores',
+    'Madagascar' => 'Madagascar',
+    'Martinique' => 'Martinique',
+    'Mayotte' => 'Mayotte',
+    'NouvelleCaledonie' => 'Nouvelle Calédonie',
+    'PolynesieFrancaise' => 'Polynésie Française',
+    'Reunion' => 'Réunion',
+    'SaintBarthelemy' => 'Saint Barthélémy',
+    'SaintMartin' => 'Saint-Martin',
+    'SaintPierreetMiquelon' => 'Saint-Pierre et Miquelon',
+    'Seychelles' => 'Seychelles',
+    'TAAF' => 'T.A.A.F.',
+    'WallisetFutuna' => 'Wallis et Futuna'
 );
+
 // build a format compatible with wpjb plugin
-$REGIONS_MAP = str_arr_to_data_map($REGIONS);
+$REGIONS_MAP = str_arr_to_data_map($REGIONS, true);
 
 function dtj_get_regions()
 {

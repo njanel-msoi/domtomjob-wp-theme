@@ -111,3 +111,24 @@ function job_company_img($job, $forList = true)
         <div class="logo-placeholder <?= $forList ? 'for-list' : 'for-detail' ?>"></div>
 <?php endif;
 }
+
+/**
+ * Check if current user already applied to $job
+ * 
+ * @var $job Wpjb_Model_Job
+ * @return boolean True if current user already applied to $job
+ **/
+function my_wpjb_job_already_applied_to(Wpjb_Model_Job $job)
+{
+    $id = get_current_user_id();
+
+    $query = new Daq_Db_Query();
+    $query->from("Wpjb_Model_Application t");
+    $query->where("user_id = ?", $id);
+    $query->where("job_id = ?", $job->id);
+    $query->limit(1);
+
+    $result = $query->execute();
+
+    return !empty($result);
+}

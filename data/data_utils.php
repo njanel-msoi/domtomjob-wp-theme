@@ -1,10 +1,14 @@
 <?php
-function str_arr_to_data_map($strArr)
+function str_arr_to_data_map($strArr, $useArrayKeys = false)
 {
     $dataMap = array();
-    foreach ($strArr as $value) {
-        // Conversion de la valeur en une clé sans accents ni espaces
-        $key = strtolower(str_replace(' ', '', iconv('UTF-8', 'ASCII//TRANSLIT', $value)));
+    foreach ($strArr as $idx => $value) {
+        if (!$useArrayKeys) {
+            // Conversion de la valeur en une clé sans accents ni espaces
+            $key = strtolower(str_replace(' ', '', iconv('UTF-8', 'ASCII//TRANSLIT', $value)));
+        } else {
+            $key = $idx;
+        }
         // Création de l'objet
         $objet = array(
             "key" => $key,

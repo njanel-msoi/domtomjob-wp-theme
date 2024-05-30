@@ -7,6 +7,9 @@
  */
 ?>
 
+
+<!-- container end -->
+</div>
 <!-- main content end -->
 </main>
 <footer class="footer mt-50">

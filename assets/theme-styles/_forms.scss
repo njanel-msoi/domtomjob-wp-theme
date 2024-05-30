@@ -12,3 +12,53 @@
   margin: 17px auto;
   padding: 5px;
 }
+.wpjb-hint {
+  color: #999;
+  font-size: 13px;
+}
+
+form {
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="time"],
+  input[type="tel"],
+  .form-control {
+    height: 38px;
+    color: #000;
+    font-size: 14px;
+    padding: 0.375rem 0.75rem;
+  }
+
+  label.required {
+    &:after {
+      content: "*";
+    }
+  }
+}
+
+.group-coupon {
+  .field-container > label + div {
+    border: solid 1px #3c65f5;
+    padding: 5px;
+
+    > * {
+      padding-left: 10px;
+    }
+
+    .wpjb-listing-group {
+      font-weight: bold;
+      padding-top: 4px;
+      color: #3c65f5;
+      &:not(:first-child) {
+        border-top: solid 1px #3c65f5;
+      }
+    }
+    .wpjb-listing-type-x {
+      display: flex;
+    }
+    .wpjb-listing-type.wpjb-listing-radio {
+      margin-right: 10px;
+    }
+  }
+}

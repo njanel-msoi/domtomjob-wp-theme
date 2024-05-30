@@ -34,3 +34,4 @@
     <?php include dirname(__FILE__) . '/menu.cmpt.php'; ?>
 
     <main class="main">
+        <div class="container">
