@@ -1,0 +1,198 @@
+.wpjb-none {
+  display: none;
+}
+
+/*********************/
+/*** WPJB DEFAULTS ***/
+/*********************/
+
+[class*="wpjb-col-"] {
+  float: left;
+}
+
+.wpjb .wpjb-grid {
+  margin: 0% 0% 0% 0%;
+}
+
+.wpjb .wpjb-grid.wpjb-grid-closed-top {
+  border-top: 1px solid whitesmoke;
+}
+
+.wpjb .wpjb-grid.wpjb-grid-compact .wpjb-grid-row > div {
+  padding: 0;
+}
+
+.wpjb .wpjb-grid .wpjb-grid-row.wpjb-click-area:hover {
+  background-color: rgba(245, 245, 245, 0.01);
+}
+
+.wpjb .wpjb-grid:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wpjb-grid .wpjb-grid-row {
+  clear: both;
+  overflow: hidden;
+  padding: 1em 0 1em 0;
+  margin: 0 0 0 0;
+  border-bottom: 1px solid #e5e6ea;
+}
+
+.wpjb-grid .wpjb-grid-row > div {
+  padding: 0 1% 0 1%;
+}
+
+.wpjb-grid .wpjb-grid-col-right {
+  text-align: right;
+}
+
+.wpjb-grid .wpjb-grid-col-last {
+  float: right;
+}
+
+.wpjb-grid .wpjb-grid-col-center {
+  text-align: center;
+}
+
+.wpjb .wpjb-grid .wpjb-sub {
+  display: block;
+  margin: 0 0 0 0;
+  padding: 2px 0 0 0;
+  line-height: 1.3em;
+  font-size: 0.95em;
+}
+
+.wpjb .wpjb-grid .wpjb-grid-head > div {
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: bold;
+  line-height: 0.8em;
+}
+
+.wpjb .wpjb-grid .wpjb-col-5 {
+  width: 5%;
+}
+.wpjb .wpjb-grid .wpjb-col-10 {
+  width: 10%;
+}
+.wpjb .wpjb-grid .wpjb-col-15 {
+  width: 15%;
+}
+.wpjb .wpjb-grid .wpjb-col-20 {
+  width: 20%;
+}
+.wpjb .wpjb-grid .wpjb-col-25 {
+  width: 25%;
+}
+.wpjb .wpjb-grid .wpjb-col-30 {
+  width: 30%;
+}
+.wpjb .wpjb-grid .wpjb-col-35 {
+  width: 35%;
+}
+.wpjb .wpjb-grid .wpjb-col-40 {
+  width: 40%;
+}
+.wpjb .wpjb-grid .wpjb-col-50 {
+  width: 50%;
+}
+.wpjb .wpjb-grid .wpjb-col-65 {
+  width: 65%;
+}
+.wpjb .wpjb-grid .wpjb-col-70 {
+  width: 70%;
+}
+.wpjb .wpjb-grid .wpjb-col-80 {
+  width: 80%;
+}
+
+.wpjb .wpjb-grid .wpjb-col-logo img {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  vertical-align: middle;
+}
+
+.wpjb .wpjb-grid .wpjb-col-logo > div {
+  padding: 1px 2px 1px 2px;
+  border-radius: 2px;
+  border: 1px solid whitesmoke;
+  background-color: transparent;
+  text-align: center;
+  box-sizing: initial;
+}
+
+/* CHECKOUT */
+
+.wpjb .wpjb-payment-tax-label {
+  display: block;
+  color: gray;
+  font-size: small;
+}
+
+.wpjb .wpjb-page-default-form.wpjb-payment-form .wpjb-form fieldset legend {
+  font-size: 1.2em;
+  margin: 0 0 10px 0;
+}
+
+#wpjb-main .wpjb-checkout-form fieldset:after {
+  display: none;
+}
+
+/* STRIPE */
+
+.wpjb .wpjb-form .wpjb-stripe-expiration input[type="text"] {
+  width: 33.5%;
+  display: inline-block;
+}
+
+.wpjb .wpjb-stripe-expiration strong {
+  width: 3%;
+  display: inline-block;
+  text-align: center;
+}
+
+/** Tabs foor checkout */
+
+#content ul.wpjb-tabs {
+  margin-bottom: 0;
+}
+
+.wpjb ul.wpjb-tabs {
+  margin: 0px;
+  padding: 0 10px 0;
+  list-style: none;
+  border-bottom: 3px solid #eff0f2;
+}
+
+.wpjb ul.wpjb-tabs li.current {
+  color: #222;
+  border: 3px solid #eff0f2;
+  border-bottom: 3px solid #f8f9f9;
+  top: 0px;
+}
+.wpjb ul.wpjb-tabs li {
+  background: none;
+  border: 3px solid transparent;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin: 0 0 -3px 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.wpjb ul.wpjb-tabs li a {
+  color: black;
+  text-decoration: none;
+}
+
+.wpjb ul.wpjb-tabs li.current {
+  font-weight: bold;
+}

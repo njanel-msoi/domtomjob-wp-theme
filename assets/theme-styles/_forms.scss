@@ -1,9 +1,13 @@
+@import "../jobbox-styles/abstracts/variables";
+@import "../jobbox-styles/abstracts/mixins";
+
 .wpjb-errors,
 .wpjb-flash-error {
   color: red;
 }
 .wpjb-flash-info {
   width: 500px;
+  max-width: 100%;
   color: #3c65f5;
   font-weight: bold;
   text-align: center;
@@ -15,6 +19,9 @@
 .wpjb-hint {
   color: #999;
   font-size: 13px;
+}
+.wpjb-upload-media {
+  display: none;
 }
 
 form {
@@ -35,30 +42,92 @@ form {
       content: "*";
     }
   }
+
+  .wpjb-options-list {
+    label {
+    }
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+  }
 }
 
 .group-coupon {
   .field-container > label + div {
-    border: solid 1px #3c65f5;
-    padding: 5px;
-
-    > * {
+    > .wpjb-listing-group,
+    > .wpjb-listing-type-x {
       padding-left: 10px;
+      border-color: #3c65f5;
+      border-style: solid;
+      border-width: 0 1px 0 1px;
+      margin: 0;
     }
 
     .wpjb-listing-group {
       font-weight: bold;
       padding-top: 4px;
       color: #3c65f5;
-      &:not(:first-child) {
-        border-top: solid 1px #3c65f5;
-      }
+
+      border-top: solid 1px #3c65f5;
     }
     .wpjb-listing-type-x {
       display: flex;
+
+      &:last-of-type {
+        border-bottom: solid 1px #3c65f5;
+      }
     }
     .wpjb-listing-type.wpjb-listing-radio {
       margin-right: 10px;
+    }
+  }
+}
+
+// hde country field but keep it in code for WPJB behavior
+.wpjb-element-name-job_country {
+  display: none;
+}
+
+/* CHECKOUT PAGE */
+input.wpjb-enter-discount-value {
+  width: 150px;
+  height: 36px;
+  margin-right: 15px;
+}
+.wpjb-enter-discount-apply {
+  color: #3c65f5;
+}
+#wpjb-checkout-gateway {
+  .wpjb-tab-link.current {
+    border-bottom-color: #fff;
+  }
+}
+.wpjb-checkout-form {
+  border: solid 3px #eff0f2;
+  border-top: none;
+}
+.wpjb-payment-form {
+  fieldset {
+    > legend {
+      font-weight: bold;
+      margin-top: 30px !important;
+    }
+    a {
+      color: #3c65f5;
+    }
+    input[type="text"] {
+      margin-bottom: 10px;
+      width: 250px;
+    }
+    label {
+      width: 250px;
+    }
+    > div {
+      display: flex;
+
+      @include media-breakpoint-down(md) {
+        flex-direction: column;
+      }
     }
   }
 }

@@ -14,6 +14,16 @@
       display: none;
     }
   }
+
+  &.submit-btn {
+    width: 220px;
+  }
+}
+.submit-box {
+  text-align: center;
+  .btn {
+    margin: 0 10px;
+  }
 }
 
 .stepper {
@@ -25,6 +35,9 @@
     align-items: center;
     margin: 0 15px;
     color: #aaa;
+    width: 80px;
+    position: relative;
+
     .step-nb {
       border-radius: 50%;
       border: solid 2px #aaa;
@@ -40,6 +53,13 @@
       font-size: 12px;
       font-weight: bold;
     }
+    .step-bar {
+      position: absolute;
+      width: 90px;
+      border-bottom: solid 2px #aaa;
+      top: 10px;
+      left: calc(50% + 10px);
+    }
 
     &.current {
       .step-nb {
@@ -50,8 +70,27 @@
       .step-txt {
         color: #3c65f5;
       }
+      .step-bar {
+        border-style: dashed;
+      }
     }
     &.done {
+      .step-nb {
+        border-color: #3c65f5;
+        color: #3c65f5;
+      }
+      .step-bar {
+        border-color: #3c65f5;
+      }
+    }
+    &:last-child {
+      .step-bar {
+        display: none;
+      }
     }
   }
+}
+
+footer.entry-meta {
+  display: none;
 }

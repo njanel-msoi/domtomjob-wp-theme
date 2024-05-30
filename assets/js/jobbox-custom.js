@@ -62,5 +62,9 @@
             // if a link exists in children, clic on it
             $(event.target).children("a").click();
         })
+
+        /*==== Add css to payment btn */
+        $("a.wpjb-button.wpjb-place-order")
+        .addClass("btn btn-default hover-up submit-btn mb-50").parent().addClass("text-center");
     
 })(jQuery);

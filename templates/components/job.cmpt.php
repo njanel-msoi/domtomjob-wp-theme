@@ -36,7 +36,7 @@
                 <!-- Top bloc with job infos -->
                 <div class="row mt-10">
                     <div class="col-lg-8 col-md-12">
-                        <h3><?= esc_attr(the_title()) ?></h3>
+                        <h3><?= esc_attr($job->job_title) ?></h3>
                         <div class="mt-0 mb-15"><span class="card-briefcase"><?= get_job_type($job) ?></span>
                             <span class="card-time"><?= wpjb_date_display("d M Y", $job->job_created_at, false) ?></span>
                         </div>

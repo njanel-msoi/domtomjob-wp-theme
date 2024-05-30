@@ -17,22 +17,9 @@
 
 <?php if ($can_post) : ?>
 
-    <section class="section-box">
-        <div class="pb-20 banner-hero banner-single banner-single-bg">
-            <div class="block-banner text-center">
-                <h3>
-                    <span class="color-brand-2">Publier</span> une offre
-                </h3>
-                <div class="font-sm color-text-paragraph-2 mt-10">
-                    Ajouter une offre d'emploi sur DomTomJob pour être visible par 100 000 candidats par mois.
-                </div>
 
-                <div class="mt-40">
-                    <?php include $this->getTemplate("job-board", "step") ?>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php $bannerTitle = '<span class="color-brand-2">Rédigez</span> votre offre';
+    include 'add-job-steps-header.cmpt.php'; ?>
 
     <?php wpjb_flash() ?>
 
@@ -44,7 +31,7 @@
             if (in_array($group->getName(), $groupsToHide)) continue; ?>
 
             <?php /* @var $group stdClass */ ?>
-            <div class="box-border-single mt-30 group-<?= esc_attr($group->getName()) ?>">
+            <div class="box-border-single mb-30 group-<?= esc_attr($group->getName()) ?>">
                 <!-- One bloc per group -->
                 <h6 class="pb-10 mb-10 border-bottom"><?= esc_attr($group->title) ?></h5>
                     <div class="row g-3">
@@ -59,7 +46,7 @@
                                     <?php endif; ?>
 
                                     <div>
-                                        <?php $field->addClass('form-control'); ?>
+                                        <?php if ($field->getType() != 'radio') $field->addClass('form-control'); ?>
 
                                         <?php wpjb_form_render_input($form, $field) ?>
                                         <?php wpjb_form_input_hint($field) ?>
@@ -73,12 +60,10 @@
             </div>
         <?php endforeach; ?>
 
-        <div class="mt-30">
-            <input type=" submit" class="btn btn-default hover-up" name="wpjb_preview" id="wpjb_submit" value="Prévisualiser l'annonce" />
-            <!-- <span class="wpjb-submit-info">
-                <?php _e("or", "jobeleon") ?>
-                <a href="<?php esc_attr_e($urls->reset) ?>"><?php _e("Reset add job form", "jobeleon") ?></a>
-            </span> -->
+        <div class="submit-box">
+            <button type="submit" class="btn btn-default hover-up submit-btn">
+                Prévisualiser l'offre
+            </button>
         </div>
 
     </form>
