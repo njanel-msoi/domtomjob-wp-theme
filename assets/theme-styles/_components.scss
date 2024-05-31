@@ -1,3 +1,7 @@
+:root {
+  overflow-y: visible !important;
+  overflow-x: hidden !important;
+}
 .btn {
   &.btn-default {
     &.btn-default-small {
@@ -19,6 +23,16 @@
     width: 220px;
   }
 }
+.btn-border {
+  &.active {
+    color: #ffffff;
+    background-color: #05264e;
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
 .submit-box {
   text-align: center;
   .btn {

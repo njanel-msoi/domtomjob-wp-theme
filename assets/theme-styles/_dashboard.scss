@@ -6,15 +6,17 @@
       padding-right: 113px;
 
       .box-nav-tabs {
-        max-width: 765px;
+        // max-width: 765px;
         a {
           position: relative;
-          padding-left: 45px !important;
+          padding: 5px 10px 5px 35px;
+          font-size: 14px;
+
           img {
-            width: 28px;
+            width: 21px;
             position: absolute;
             left: 10px;
-            top: 8px;
+            top: 7px;
           }
         }
       }

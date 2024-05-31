@@ -17,10 +17,12 @@
 
 ?>
 
-<div class="wpjb wpjb-page-company-products">
+<?php $headerCode = "SUBS"; ?>
+<?php include  dirname(__FILE__) . '/company-dashboard-header.cmpt.php' ?>
+
+<div class="wpjb wpjb-page-company-products box-border-single">
 
     <?php wpjb_flash(); ?>
-    <?php wpjb_breadcrumbs($breadcrumbs) ?>
 
     <h2><?php _e("Active Memberships", "jobeleon"); ?></h2>
 

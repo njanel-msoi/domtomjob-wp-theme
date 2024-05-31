@@ -2,28 +2,33 @@
 
 <?php
 $menuLinks = [
-
-    (object)['label' => "Accueil", "url" => wpjb_link_to("employer_home"), 'icon' => 'finance'],
-    (object)['label' => "Ajouter une offre", "url" => wpjb_link_to("step_add"), 'icon' => 'marketing'],
-    (object)['label' => "Offres d'emploi", "url" => wpjb_link_to("employer_panel"), 'icon' => 'content'],
-    (object)['label' => "Candidatures", "url" => wpjb_link_to("job_applications"), 'icon' => 'research'],
-    (object)['label' => "CVthèque", "url" => PAGES_URLS->CVtheque, 'icon' => 'human'],
-    (object)['label' => "Adhésions", "url" => wpjb_link_to("membership"), 'icon' => 'lightning'],
-    (object)['label' => "Paiements", "url" => wpjb_link_to("payment_history"), 'icon' => 'retail']
+    'HOME' => (object)['label' => "Accueil", "url" => wpjb_link_to("employer_home"), 'icon' => 'finance'],
+    'ADD' => (object)['label' => "Ajouter une offre", "url" => wpjb_link_to("step_add"), 'icon' => 'marketing'],
+    'JOBS' => (object)['label' => "Offres d'emploi", "url" => wpjb_link_to("employer_panel"), 'icon' => 'content'],
+    'APPLICANTS' => (object)['label' => "Candidatures", "url" => wpjb_link_to("job_applications"), 'icon' => 'research'],
+    'CV' => (object)['label' => "CVthèque", "url" => PAGES_URLS->CVtheque, 'icon' => 'human'],
+    'SUBS' => (object)['label' => "Adhésions", "url" => wpjb_link_to("membership"), 'icon' => 'lightning'],
+    'PAYMENTS' => (object)['label' => "Paiements", "url" => wpjb_link_to("payment_history"), 'icon' => 'retail']
 ];
 if (!isset($hideCompanyBox)) $hideCompanyBox = false;
+if (!isset($headerCode)) $headerCode = null;
+if ($headerCode) {
+    $headerTitle =  $menuLinks[$headerCode]->label;
+}
 ?>
 
-<section class="section-box company-dashboard dashboard-section">
+<section class="section-box company-dashboard dashboard-section mb-20">
     <div class="breacrumb-cover pt-15 pb-10">
         <div class="container">
             <div class="header-panel">
-                <h2><?= $headerTitle ?></h2>
+                <h2>
+                    <?= $headerTitle ?>
+                </h2>
                 <!-- menu -->
                 <div class="box-nav-tabs mt-20 mb-5">
                     <ul class="nav" role="tablist">
-                        <?php foreach ($menuLinks as $link) : ?>
-                            <li><a class="btn btn-border mr-5 mb-5" href="<?= $link->url ?>">
+                        <?php foreach ($menuLinks as $code => $link) : ?>
+                            <li><a class="btn btn-border mr-5 mb-5 <?= $headerCode == $code ? 'active' : '' ?>" href="<?= $link->url ?>">
                                     <img src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/page/homepage1/<?= $link->icon ?>.svg">
                                     <?= $link->label ?>
                                 </a></li>

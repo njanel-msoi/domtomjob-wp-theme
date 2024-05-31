@@ -24,58 +24,60 @@ foreach (array("query", "category", "type", "fullname") as $p) {
 }
 ?>
 
-<div class="index-where-am-i where-am-i">
-    <div id="search">
-        <form method="get" action="<?php echo wpjr_link_to("search") ?>">
-            <?php if (!get_option('permalink_structure')) : ?>
-                <input type="hidden" name="page_id" value="<?php echo $page_id ?>" />
-                <input type="hidden" name="job_resumes" value="find" />
-            <?php endif; ?>
+<div class="box-border-single">
 
-            <div class="wpjb-btn-with-input wpjb-search-query">
-                <input type="text" id="search-field" name="query" class="text wpjb-ls-query" placeholder="<?php _e("Search Resumes with keyword", 'jobeleon') ?>" value="<?php esc_attr_e($param["query"]) ?>" />
-                <input type="submit" class="btn" value="Search" />
-            </div>
-            <div class="wpjb-btn-with-input wpjb-search-query">
-                <input type="text" id="search-fullname" name="fullname" class="text wpjb-ls-query" placeholder="<?php _e("Search Resumes with full name", 'jobeleon') ?>" value="<?php esc_attr_e($param["fullname"]) ?>" />
-                <input type="submit" class="btn" value="Search" />
-            </div>
-        </form>
-    </div><!-- /search -->
+    <div class="index-where-am-i where-am-i">
+        <div id="search">
+            <form method="get" action="<?php echo wpjr_link_to("search") ?>">
+                <?php if (!get_option('permalink_structure')) : ?>
+                    <input type="hidden" name="page_id" value="<?php echo $page_id ?>" />
+                    <input type="hidden" name="job_resumes" value="find" />
+                <?php endif; ?>
 
-</div><!-- .where-am-i -->
+                <div class="wpjb-btn-with-input wpjb-search-query">
+                    <input type="text" id="search-field" name="query" class="text wpjb-ls-query" placeholder="<?php _e("Search Resumes with keyword", 'jobeleon') ?>" value="<?php esc_attr_e($param["query"]) ?>" />
+                    <input type="submit" class="btn" value="Search" />
+                </div>
+                <div class="wpjb-btn-with-input wpjb-search-query">
+                    <input type="text" id="search-fullname" name="fullname" class="text wpjb-ls-query" placeholder="<?php _e("Search Resumes with full name", 'jobeleon') ?>" value="<?php esc_attr_e($param["fullname"]) ?>" />
+                    <input type="submit" class="btn" value="Search" />
+                </div>
+            </form>
+        </div><!-- /search -->
 
-<div id="wpjb-main" class="wpjr-page-resumes">
+    </div><!-- .where-am-i -->
 
-    <?php wpjb_flash(); ?>
+    <div id="wpjb-main" class="wpjr-page-resumes">
 
-    <table id="wpjb-resume-list" class="wpjb-table">
-        <tbody>
-            <?php $result = wpjb_find_resumes($param); ?>
-            <?php if ($result->count > 0) : foreach ($result->resume as $resume) : ?>
-                    <?php /* @var $resume Wpjb_Model_Resume */ ?>
-                    <?php $this->resume = $resume; ?>
-                    <?php $this->render("index-item.php") ?>
-                <?php
-                endforeach;
-            else :
-                ?>
-                <tr>
-                    <td colspan="3" align="center">
-                        <?php _e("No resumes found.", "jobeleon"); ?>
-                    </td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
+        <?php wpjb_flash(); ?>
 
-    <div id="wpjb-paginate-links">
-        <?php wpjb_paginate_links($url, $result->pages, $result->page, $query, $format) ?>
+        <table id="wpjb-resume-list" class="wpjb-table">
+            <tbody>
+                <?php $result = wpjb_find_resumes($param); ?>
+                <?php if ($result->count > 0) : foreach ($result->resume as $resume) : ?>
+                        <?php /* @var $resume Wpjb_Model_Resume */ ?>
+                        <?php $this->resume = $resume; ?>
+                        <?php $this->render("index-item.php") ?>
+                    <?php
+                    endforeach;
+                else :
+                    ?>
+                    <tr>
+                        <td colspan="3" align="center">
+                            <?php _e("No resumes found.", "jobeleon"); ?>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
+        <div id="wpjb-paginate-links">
+            <?php wpjb_paginate_links($url, $result->pages, $result->page, $query, $format) ?>
+        </div>
+
+
     </div>
-
-
 </div>
-
 <?php if (get_option("wpjobboard_theme_ls")) : ?>
     <?php wp_enqueue_script('wpjobboard_theme_live_search') ?>
     <script type="text/javascript">

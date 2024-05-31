@@ -70,28 +70,28 @@
         </div>
     </div>
 </footer>
-<footer id="footer" role="contentinfo" style="display: none;>
+<footer id="footer" role="contentinfo" style="display: none;">
     <nav class=" container list-inline">
 
-    <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
+        <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
 
-    <hr>
-    <?php
-    global $REGIONS;
-    foreach ($REGIONS as $region) : ?>
+        <hr>
+        <?php
+        global $REGIONS;
+        foreach ($REGIONS as $region) : ?>
 
-        <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>&nbsp;
+            <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>&nbsp;
 
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 
-    <hr>
-    <?php
-    global $CATEGORIES;
-    foreach ($CATEGORIES as $category) : ?>
+        <hr>
+        <?php
+        global $CATEGORIES;
+        foreach ($CATEGORIES as $category) : ?>
 
-        <a href="/categories/<?= urlencode($category->get('id')) ?>/<?= urlencode($category->get('title')) ?>" title="Offres d'emploi <?= $category->get('title') ?>"><?= $category->get('title') ?></a>&nbsp;
+            <a href="/categories/<?= urlencode($category->get('id')) ?>/<?= urlencode($category->get('title')) ?>" title="Offres d'emploi <?= $category->get('title') ?>"><?= $category->get('title') ?></a>&nbsp;
 
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 
 
     </nav>
@@ -106,7 +106,7 @@
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/waypoints.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/wow.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/magnific-popup.js"></script> -->
-<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script>
+<!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script> -->
 <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/select2.min.js"></script>
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/isotope.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/scrollup.js"></script> -->
