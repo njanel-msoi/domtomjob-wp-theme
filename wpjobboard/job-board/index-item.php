@@ -12,4 +12,4 @@
  */
 /* @var $job Wpjb_Model_Job */
 
-include dirname(__FILE__) . "/../../templates/components/jobs-list-item.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/jobs/jobs-list-item.cmpt.php";

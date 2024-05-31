@@ -4,4 +4,4 @@
  * Company list
  */
 
-include dirname(__FILE__) . "/../../templates/components/employers-list.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/company/employers-list.cmpt.php";

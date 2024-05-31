@@ -3,4 +3,4 @@
 /**
  * Dashboard of registered company
  */
-include dirname(__FILE__) . "/../../templates/components/company-dashboard.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/dashboard/company-dashboard.cmpt.php";

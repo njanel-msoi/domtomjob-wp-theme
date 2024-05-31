@@ -9,4 +9,4 @@
  */
 
 
-include dirname(__FILE__) . "/../../templates/components/job-apply.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/jobs/job-apply.cmpt.php";

@@ -14,4 +14,4 @@
 /* @var $form Wpjb_Form_AddJob */
 /* @var $can_post boolean User has job posting priviledges */
 
-include dirname(__FILE__) . "/../../templates/components/add-job.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/add-job/add-job.cmpt.php";

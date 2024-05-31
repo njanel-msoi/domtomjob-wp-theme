@@ -1,3 +1,3 @@
 <?php
 
-include dirname(__FILE__) . "/../../templates/components/job-add-steps.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/add-job/job-add-steps.cmpt.php";

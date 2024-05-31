@@ -14,4 +14,4 @@
  */
 /* @var $form Wpjb_Form_AdvancedSearch */
 
-include dirname(__FILE__) . "/../../templates/components/search-form.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/jobs/search-form.cmpt.php";

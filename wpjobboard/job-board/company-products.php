@@ -15,4 +15,4 @@
 /* @var $applicantList array List of applications to display */
 /* @var $job string Wpjb_Model_Job */
 
-include dirname(__FILE__) . "/../../templates/components/company-dashboard-memberships.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/dashboard/company-dashboard-memberships.cmpt.php";

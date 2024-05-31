@@ -7,7 +7,7 @@ get_header();
 ?>
 
 <?php $headerTitle = "CVThèque" ?>
-<?php include 'components/company-dashboard-header.cmpt.php' ?>
+<?php include 'components/dashboard/company-dashboard-header.cmpt.php' ?>
 
 <div class="where-am-i">
     <?php wpjb_breadcrumbs([

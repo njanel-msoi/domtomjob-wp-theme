@@ -5,4 +5,4 @@
  */
 
 
-include dirname(__FILE__) . "/../../templates/components/employers-list-item.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/company/employers-list-item.cmpt.php";

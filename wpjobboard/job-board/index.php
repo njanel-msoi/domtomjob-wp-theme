@@ -21,4 +21,4 @@
 
 
 
-include dirname(__FILE__) . "/../../templates/components/jobs-list.cmpt.php";
+include dirname(__FILE__) . "/../../templates/components/jobs/jobs-list.cmpt.php";

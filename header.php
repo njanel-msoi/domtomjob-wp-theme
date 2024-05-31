@@ -9,4 +9,4 @@
  * @since wpjobboard_theme 1.0
  */
 
-include dirname(__FILE__) . "/templates/components/header.cmpt.php";
+include dirname(__FILE__) . "/templates/components/layout/header.cmpt.php";
