@@ -28,7 +28,7 @@
 
 ?>
 
-<section class="section-box">
+<section class="section-box job-details">
     <div class="row">
         <!-- left column -->
         <div class="col-lg-8 col-md-12 col-sm-12 col-12">
@@ -58,16 +58,27 @@
                     <h5 class="border-bottom pb-15 mb-30">Résumé</h5>
                     <div class="row">
                         <?php
+                        $salaries = (object)['min' => get_meta_value($job, 'salary_min'), 'max' => get_meta_value($job, 'salary_max')];
+                        $salary = $salaries->min && $salaries->max ? 'de ' . $salaries->min . 'k€ à ' . $salaries->max . 'k€' : ($salaries->min ? $salaries->min . 'k€' : ($salaries->max ? $salaries->max . 'k€' : ''));
+
                         // icones : industry job-level salary experience job-type deadline updated location
                         $job_infos = [
-                            ['label' => 'Catégorie', 'icon' => 'industry', 'value' => get_job_category($job)],
-                            ['label' => "Type d'emploi", 'icon' => 'job-type', 'value' => get_job_type($job)],
                             ['label' => 'Région', 'icon' => 'location', 'value' => get_meta_region($job)],
-                            ['label' => 'Ville', 'icon' => 'experience', 'value' => $job->job_city],
-                            ['label' => 'Publiée le', 'icon' => 'updated', 'value' => wpjb_date_display("d M Y", $job->job_created_at, false)],
+                            ['label' => 'Localisation', 'icon' => 'location', 'value' => _or($job->job_city)],
+                            ['label' => "Contrat", 'icon' => 'industry', 'value' => _or(get_job_type($job))],
+                            ['label' => "Durée", 'icon' => 'industry', 'value' => _or(get_meta_value($job, 'type_fulltime'))],
+
+                            ['label' => "Fonction", 'icon' => 'industry', 'value' => _or(get_meta_value($job, 'job_function'))],
+                            ['label' => "Salaire", 'icon' => 'salary', 'value' => _or($salary)],
+                            ['label' => "Expérience", 'icon' => 'experience', 'value' => _or(get_meta_value($job, 'job_experience'))],
+                            ['label' => "Etudes", 'icon' => 'experience', 'value' => _or(get_meta_value($job, 'job_study_level'))],
+
+
+                            ['label' => 'Publiée le', 'icon' => 'deadline', 'value' => wpjb_date_display("d M Y", $job->job_created_at, false)],
                             ['label' => 'Expire le', 'icon' => 'deadline', 'value' =>  wpjb_date_display("d M Y", $job->job_expires_at, false)],
-                            ['label' => 'Entreprise', 'icon' => 'experience', 'value' => $job->company_name],
-                            ['label' => 'Salaire', 'icon' => 'salary', 'value' => ''],
+
+                            // ['label' => 'Entreprise', 'icon' => 'experience', 'value' => $job->company_name],
+                            // icons : updated job-type industry
                         ];
                         ?>
                         <?php foreach ($job_infos as $info) : ?>
@@ -90,14 +101,10 @@
                 <!-- job description -->
                 <div class="content-single">
                     <h4>Présentation du poste</h4>
-                    <p><?php wpjb_rich_text($job->job_description, $job->meta->job_description_format->value())  ?></p>
+                    <p><?php wpjb_rich_text($job->job_description, 'html')  ?></p>
 
                     <h4>Profil attendu</h4>
-                    <p>
-                        <?php
-                        // textarea with wysiwyg
-                        // wpjb_rich_text($value->value(), $value->conf("textarea_wysiwyg") ? "html" : "text")
-                        ?>
+                    <p><?php wpjb_rich_text(get_meta_value($job, 'job_profile'), 'html')  ?></p>
                 </div>
 
                 <?php if ($can_apply) : ?>
@@ -147,14 +154,22 @@
                 </div>
                 <div class="sidebar-list-job">
                     <ul class="ul-disc">
-                        <?php $company_fields = ['company_url']; ?>
+                        <?php $company_fields = [get_job_category($job), $job->company_url]; ?>
                         <?php foreach ($company_fields as $field) : ?>
-                            <?php if ($job->$field) : ?>
-                                <li><?= $job->$field ?></li>
+                            <?php if ($field) : ?>
+                                <li><?= $field ?></li>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
                 </div>
+
+                <?php
+                $company_description = get_meta_value($job, 'company_description'); ?>
+                <?php if ($company_description) : ?>
+                    <div class="sidebar-list-job">
+                        <p><?= $company_description ?></p>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

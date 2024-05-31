@@ -1,3 +1,6 @@
+@import "../jobbox-styles/abstracts/variables";
+@import "../jobbox-styles/abstracts/mixins";
+
 .box-view-type {
   > .btn {
     margin-top: -13px;
@@ -45,6 +48,18 @@
       text-align: center;
       color: #000;
       margin-top: 9px;
+    }
+  }
+}
+
+/* Job detail page */
+@include media-breakpoint-between(lg, xl) {
+  .job-details {
+    .text-description {
+      width: auto;
+      min-width: auto;
+      max-width: none;
+      margin-right: 10px;
     }
   }
 }

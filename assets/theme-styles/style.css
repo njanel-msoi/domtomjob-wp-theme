@@ -3,6 +3,7 @@ Theme override and custom styles for current theme
 */
 @import url(https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800);
 @import url(https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800);
+@import url(https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800);
 .wpjb-none {
   display: none;
 }
@@ -929,6 +930,15 @@ footer.footer .footer-logo {
   margin-top: 9px;
 }
 
+/* Job detail page */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .job-details .text-description {
+    width: auto;
+    min-width: auto;
+    max-width: none;
+    margin-right: 10px;
+  }
+}
 .bar-search-form input {
   border: none !important;
   border-radius: 0px;

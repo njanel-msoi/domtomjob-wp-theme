@@ -6,7 +6,9 @@
 get_header();
 ?>
 
-<div class="dtj-page home">
+<h1>Bienvenue sur ce site incroyable</h1>
+
+<div class="dtj-page home" style="display: none">
 
     <!-- bloc top search -->
     <div class="search-form">

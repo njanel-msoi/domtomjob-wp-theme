@@ -21,7 +21,8 @@
                 <div class="box-filters-job">
                     <div class="row">
                         <div class="col-xl-6 col-lg-5">
-                            <!-- <span class="text-small text-showing">Showing <strong>41-60 </strong>of <strong>944 </strong>jobs</span> -->
+                            <span class="text-small text-showing">Page <strong><?= $result->page ?> </strong>sur <strong><?= $result->pages ?></strong></span>
+
                         </div>
 
                         <div class="col-xl-6 col-lg-7 text-lg-end mt-sm-15">

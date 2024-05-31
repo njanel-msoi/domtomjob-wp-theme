@@ -76,8 +76,8 @@ function get_meta_value($object, $field)
     $meta = $object->getMeta()->$field;
     if ($meta) {
         $metaValues = $meta->getValues();
-        if (isset($metaValue[0]))
-            return esc_html($metaValue[0]->value);
+        if (isset($metaValues[0]))
+            return esc_html($metaValues[0]->value);
     }
     return '';
 }
@@ -139,4 +139,9 @@ function my_wpjb_job_already_applied_to(Wpjb_Model_Job $job)
     $result = $query->execute();
 
     return !empty($result);
+}
+
+function _or($value, $or = '-')
+{
+    return $value ? $value : $or;
 }
