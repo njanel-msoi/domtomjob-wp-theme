@@ -9,11 +9,9 @@
  */
 ?>
 
-
 <?php wpjb_flash(); ?>
 <?php $result = apply_filters("wpjb_filter_jobs", wpjb_find_jobs($param), $atts, "list") ?>
 <?php $isNotHomePage = $param["is_featured"] != "1" ?>
-
 
 <section class="section-box mt-30">
     <div class="row flex-row-reverse">
@@ -34,34 +32,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="row">
-                            <div class="col-xl-6 col-lg-5"><span class="text-small text-showing">Showing <strong>41-60 </strong>of <strong>944 </strong>jobs</span></div>
-                            <div class="col-xl-6 col-lg-7 text-lg-end mt-sm-15">
-                                <div class="display-flex2">
-                                    <div class="box-border mr-10"><span class="text-sortby">Show:</span>
-                                        <div class="dropdown dropdown-sort">
-                                            <button class="btn dropdown-toggle" id="dropdownSort" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"><span>12</span><i class="fi-rr-angle-small-down"></i></button>
-                                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownSort">
-                                                <li><a class="dropdown-item active" href="#">10</a></li>
-                                                <li><a class="dropdown-item" href="#">12</a></li>
-                                                <li><a class="dropdown-item" href="#">20</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="box-border"><span class="text-sortby">Sort by:</span>
-                                        <div class="dropdown dropdown-sort">
-                                            <button class="btn dropdown-toggle" id="dropdownSort2" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"><span>Newest Post</span><i class="fi-rr-angle-small-down"></i></button>
-                                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownSort2">
-                                                <li><a class="dropdown-item active" href="#">Newest Post</a></li>
-                                                <li><a class="dropdown-item" href="#">Oldest Post</a></li>
-                                                <li><a class="dropdown-item" href="#">Rating Post</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="box-view-type"><a class="view-type" href="jobs-list.html"><img src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/template/icons/icon-list.svg" alt="jobBox"></a><a class="view-type" href="jobs-grid.html"><img src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/template/icons/icon-grid-hover.svg" alt="jobBox"></a></div>
-                                </div>
-                            </div>
-                        </div> -->
                 </div>
                 <div class="row">
                     <?php if ($result->count) : foreach ($result->job as $job) : ?>
@@ -111,7 +81,9 @@
                             <div class="filter-block mb-20 <?= esc_html("search-group-" . $group->getName()) ?>">
 
                                 <?php foreach ($group->getReordered() as $name => $field) :  ?>
-                                    <h5 class="medium-heading mb-15"><?= esc_html($field->getLabel()) ?></h5>
+                                    <?php if ($field->getType() != 'text') : ?>
+                                        <h5 class="medium-heading mb-15"><?= esc_html($field->getLabel()) ?></h5>
+                                    <?php endif; ?>
                                     <div class="form-group <?= esc_attr($field->getMeta("classes")) ?>">
                                         <?php wpjb_form_render_input($form, $field) ?>
                                     </div>

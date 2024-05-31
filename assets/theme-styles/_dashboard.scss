@@ -1,0 +1,50 @@
+.dashboard-section {
+  .breacrumb-cover {
+    position: relative;
+
+    .header-panel {
+      padding-right: 113px;
+
+      .box-nav-tabs {
+        max-width: 765px;
+        a {
+          position: relative;
+          padding-left: 45px !important;
+          img {
+            width: 28px;
+            position: absolute;
+            left: 10px;
+            top: 8px;
+          }
+        }
+      }
+    }
+
+    .company-box {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
+  }
+}
+
+.company-box.righted {
+  padding: 15px;
+
+  .sidebar-heading {
+    display: block;
+    .avatar-sidebar {
+      figure {
+        float: right;
+        .logo-placeholder {
+          margin-bottom: 0;
+        }
+      }
+      .sidebar-info {
+        padding-left: 0;
+        padding-right: 100px;
+        text-align: right;
+      }
+    }
+  }
+}

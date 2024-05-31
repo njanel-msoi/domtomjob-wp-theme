@@ -319,22 +319,39 @@ footer.entry-meta {
   display: none;
 }
 
-form input[type=text],
-form input[type=email],
-form input[type=date],
-form input[type=time],
-form input[type=tel],
-form .form-control {
+form.form input[type=text],
+form.form input[type=email],
+form.form input[type=date],
+form.form input[type=time],
+form.form input[type=tel],
+form.form .form-control {
   height: 38px;
   color: #000;
   font-size: 14px;
   padding: 0.375rem 0.75rem;
 }
-form label.required:after {
+form.form label.required:after {
   content: "*";
 }
-form .wpjb-options-list input[type=radio] {
+form.form .wpjb-options-list input[type=radio] {
   margin-right: 10px;
+}
+
+.job-list-filters-form input[type=text] {
+  background: url(../imgs/page/homepage1/key-numbers.svg) no-repeat left 10px center;
+  padding-left: 35px;
+  height: 45px;
+}
+.job-list-filters-form select {
+  border: solid 1px #e0e6f6;
+  border-radius: 4px;
+  padding: 11px 8px;
+  height: 45px;
+}
+.job-list-filters-form .filter-block h5 {
+  line-height: 7px;
+  margin-top: 25px;
+  font-size: 16px;
 }
 
 .group-coupon .field-container > label + div > .wpjb-listing-group,
@@ -606,6 +623,49 @@ footer.footer .footer-logo {
 }
 .bar-search-form .select2:first-of-type::before {
   background: url(../imgs/template/icons/industry.svg) no-repeat !important;
+}
+
+.dashboard-section .breacrumb-cover {
+  position: relative;
+}
+.dashboard-section .breacrumb-cover .header-panel {
+  padding-right: 113px;
+}
+.dashboard-section .breacrumb-cover .header-panel .box-nav-tabs {
+  max-width: 765px;
+}
+.dashboard-section .breacrumb-cover .header-panel .box-nav-tabs a {
+  position: relative;
+  padding-left: 45px !important;
+}
+.dashboard-section .breacrumb-cover .header-panel .box-nav-tabs a img {
+  width: 28px;
+  position: absolute;
+  left: 10px;
+  top: 8px;
+}
+.dashboard-section .breacrumb-cover .company-box {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.company-box.righted {
+  padding: 15px;
+}
+.company-box.righted .sidebar-heading {
+  display: block;
+}
+.company-box.righted .sidebar-heading .avatar-sidebar figure {
+  float: right;
+}
+.company-box.righted .sidebar-heading .avatar-sidebar figure .logo-placeholder {
+  margin-bottom: 0;
+}
+.company-box.righted .sidebar-heading .avatar-sidebar .sidebar-info {
+  padding-left: 0;
+  padding-right: 100px;
+  text-align: right;
 }
 
 @media (min-width: 992px) {

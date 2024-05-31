@@ -24,7 +24,7 @@
   display: none;
 }
 
-form {
+form.form {
   input[type="text"],
   input[type="email"],
   input[type="date"],
@@ -48,6 +48,30 @@ form {
     }
     input[type="radio"] {
       margin-right: 10px;
+    }
+  }
+}
+
+// job search filters sidebar
+.job-list-filters-form {
+  input[type="text"] {
+    background: url(../imgs/page/homepage1/key-numbers.svg) no-repeat left 10px
+      center;
+    padding-left: 35px;
+    height: 45px;
+  }
+  select {
+    border: solid 1px #e0e6f6;
+    border-radius: 4px;
+    padding: 11px 8px;
+    height: 45px;
+  }
+
+  .filter-block {
+    h5 {
+      line-height: 7px;
+      margin-top: 25px;
+      font-size: 16px;
     }
   }
 }

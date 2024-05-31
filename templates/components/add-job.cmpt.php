@@ -23,7 +23,7 @@
 
     <?php wpjb_flash() ?>
 
-    <form action="<?php esc_attr_e($urls->preview) ?>" method="post" enctype="multipart/form-data">
+    <form action="<?php esc_attr_e($urls->preview) ?>" method="post" enctype="multipart/form-data" class="form">
 
         <?php echo $form->renderHidden() ?>
         <?php foreach ($form->getReordered() as $group) : ?>

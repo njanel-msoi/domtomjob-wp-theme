@@ -5,33 +5,62 @@
  */
 ?>
 
+<?php $headerTitle = "Espace recruteur";
+$hideCompanyBox = true; ?>
+<?php include 'company-dashboard-header.cmpt.php' ?>
+
+<?php $company = Wpjb_Model_Company::current(); ?>
+
+<?php
+$menuLinks = [
+    (object)['label' => "Comptes collaborateurs", "url" => wpjb_link_to("employer_home") . '?panel=coworkers', 'icon' => 'human'],
+    (object)['label' => "Modification du mot de passe", "url" => wpjb_link_to("employer_password"), 'icon' => 'security'],
+    (object)['label' => "Supprimer le compte", "url" => wpjb_link_to("employer_delete"), 'icon' => 'aboutus-icon'],
+    (object)['label' => "Déconnexion", "url" => wpjb_link_to("employer_logout"), 'icon' => 'aboutus-icon']
+];
+?>
 <?php wpjb_flash() ?>
 
 <?php do_action("wpjb_employer_panel_heading", "top") ?>
-<?php
-$dashboard['manage']['links']['membership']['icon'] = 'wpjb-icon-star';
-$dashboard['manage']['links']['cvtheque'] = array('title' => "CVThèque", "icon" => "wpjb-icon-users", "capability" => NULL, "url" => get_page_link(10))
-?>
+
+<div class="company-box mt-20 sidebar-border d-inline-block float-start mb-0">
+    <div class="sidebar-heading">
+        <div class="avatar-sidebar">
+            <figure>
+                <?php company_img($company, false) ?>
+            </figure>
+            <div class="sidebar-info">
+                <span class="sidebar-company"><?= $company->company_name ?></span>
+                <span class="card-location"><?= get_company_location($company) ?></span>
+                <a class="link-underline mt-15" href="<?= wpjb_link_to("company", $company) ?>">
+                    Voir le profil public
+                </a>
+            </div>
+        </div>
+
+        <div class="sidebar-list-job">
+            <a class="btn btn-default hover-up" href="<?= wpjb_link_to("employer_edit") ?>">
+                Editer le profil entreprise
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- other links -->
+<div class="float-start mt-30">
+    <div class="box-nav-tabs mb-5 d-inline-block">
+        <nav class="nav flex-column">
+            <?php foreach ($menuLinks as $link) : ?>
+                <a class="nav-link mr-15 btn-link" href="<?= $link->url ?>">
+                    <?= $link->label ?>
+                </a>
+            <?php endforeach ?>
+        </nav>
+    </div>
+</div>
+
+</div>
+
+<div class="clearfix"></div>
 
 <?php do_action("wpjb_employer_panel_heading", "bottom") ?>
-
-<?php $headerTitle = "Espace recruteur" ?>
-<?php include 'company-dashboard-header.cmpt.php' ?>
-
-<?php foreach ($dashboard as $gname => $group) : ?>
-    <div class="border-bottom mb-20 mt-20"></div>
-    <!-- <h2 class="section-title mb-10"><?= esc_html($group["title"]) ?></h2> -->
-    <ul class="nav nav-tabs">
-        <?php foreach ($group["links"] as $lname => $link) : ?>
-            <li>
-                <a class="<?= $gname == 'manage' ? 'active' : '' ?>" href="<?= esc_attr($link["url"]) ?>">
-                    <span class="wpjb-box-icon wpjb-glyphs <?php echo esc_attr($link["icon"]) ?>"></span>
-                    <span class="name">
-                        <?= esc_html($link["title"]) ?>
-                        <?php do_action("wpjb_employer_panel_after_title", $lname, $link) ?>
-                    </span>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-<?php endforeach; ?>

@@ -66,5 +66,14 @@
         /*==== Add css to payment btn */
         $("a.wpjb-button.wpjb-place-order")
         .addClass("btn btn-default hover-up submit-btn mb-50").parent().addClass("text-center");
+
+    /*====== Dashbaord profile on hover ======*/
+    $(".to-be-revealed").hide();
+    $(".reveal-child-on-hover").mouseenter(function(){
+        $(this).find(".to-be-revealed").show();
+    })
+    $(".reveal-child-on-hover").mouseleave(function(){
+        $(this).find(".to-be-revealed").hide();
+    })
     
 })(jQuery);

@@ -9,4 +9,5 @@ define('PAGES_URLS', (object)[
     'EspaceRecruteur' => get_permalink(12),
     'NosOffres' => get_permalink(16),
     'PublierAnnonce' => get_permalink(8),
+    'CVtheque' => get_permalink(10),
 ]);

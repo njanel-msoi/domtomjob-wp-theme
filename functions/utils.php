@@ -105,8 +105,16 @@ function job_company_img($job, $forList = true)
 
     if ($job->getLogoUrl()) : ?>
         <img src="<?php echo $job->getLogoUrl($image) ?>" />
-    <?php elseif ($job->getCompany(true)->getLogoUrl()) : ?>
-        <img src="<?php echo $job->getCompany(true)->getLogoUrl($image) ?>" />
+    <?php else : ?>
+        <?php company_img($job->getCompany(true), $forList) ?>
+    <?php endif;
+}
+
+function company_img($company, $forList = true)
+{
+    $image = $forList ? "50x50" : "85x85";
+    if ($company->getLogoUrl()) : ?>
+        <img src="<?php echo $company->getLogoUrl($image) ?>" />
     <?php else : ?>
         <div class="logo-placeholder <?= $forList ? 'for-list' : 'for-detail' ?>"></div>
 <?php endif;
