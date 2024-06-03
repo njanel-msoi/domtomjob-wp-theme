@@ -4,3 +4,19 @@
     content: "LOCAL SERVER";
   }
 }
+
+// hide deployer for git to avoid update
+.dfg_package_box {
+  > div {
+    > h3::after {
+      content: "Contenu caché pour éviter les mises à jour de theme qui écraserait le repository local";
+      position: absolute;
+      left: 24px;
+      top: 200px;
+      width: 150px;
+    }
+    > ul {
+      visibility: hidden;
+    }
+  }
+}

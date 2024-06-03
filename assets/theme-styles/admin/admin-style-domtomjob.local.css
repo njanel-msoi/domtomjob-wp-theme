@@ -1,6 +1,18 @@
+@charset "UTF-8";
 #wpadminbar {
   background: #d17000;
 }
 #wpadminbar::after {
   content: "LOCAL SERVER";
+}
+
+.dfg_package_box > div > h3::after {
+  content: "Contenu caché pour éviter les mises à jour de theme qui écraserait le repository local";
+  position: absolute;
+  left: 24px;
+  top: 200px;
+  width: 150px;
+}
+.dfg_package_box > div > ul {
+  visibility: hidden;
 }/*# sourceMappingURL=admin-style-domtomjob.local.css.map */
