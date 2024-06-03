@@ -24,30 +24,33 @@
                 <div class="footer-social"><a class="icon-socials icon-facebook" href="#"></a><a class="icon-socials icon-twitter" href="#"></a><a class="icon-socials icon-linkedin" href="#"></a></div>
             </div>
             <div class="footer-col-2 col-md-2 col-xs-6">
-                <h6 class="mb-20">Resources</h6>
+                <h6 class="mb-20">Arborescence</h6>
                 <ul class="menu-footer">
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Our Team</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
                 </ul>
             </div>
             <div class="footer-col-3 col-md-2 col-xs-6">
-                <h6 class="mb-20">Community</h6>
+                <h6 class="mb-20">Régions</h6>
                 <ul class="menu-footer">
-                    <li><a href="#">Feature</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Credit</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <?php
+                    global $REGIONS;
+                    foreach ($REGIONS as $region) : ?>
+                        <li>
+                            <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>&nbsp;
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
             <div class="footer-col-4 col-md-2 col-xs-6">
-                <h6 class="mb-20">Quick links</h6>
+                <h6 class="mb-20">Domaines</h6>
                 <ul class="menu-footer">
-                    <li><a href="#">iOS</a></li>
-                    <li><a href="#">Android</a></li>
-                    <li><a href="#">Microsoft</a></li>
-                    <li><a href="#">Desktop</a></li>
+                    <?php
+                    global $CATEGORIES;
+                    foreach ($CATEGORIES as $category) : ?>
+                        <li>
+                            <a href="/categories/<?= urlencode($category->get('id')) ?>/<?= urlencode($category->get('title')) ?>" title="Offres d'emploi <?= $category->get('title') ?>"><?= $category->get('title') ?></a>&nbsp;
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
             <div class="footer-col-5 col-md-2 col-xs-6">
@@ -70,7 +73,7 @@
         </div>
     </div>
 </footer>
-<footer id="footer" role="contentinfo" style="display: none;">
+<footer id="footer" role="contentinfo">
     <nav class=" container list-inline">
 
         <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
