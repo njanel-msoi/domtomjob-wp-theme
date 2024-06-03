@@ -32,18 +32,19 @@
 
             <?php /* @var $group stdClass */ ?>
             <div class="box-border-single mb-30 group-<?= esc_attr($group->getName()) ?>">
+                <?php /* Check groups on half or full width */
+                $fullSizeGroups = ['coupon', 'captcha'];
+                $colClass = in_array($group->getName(), $fullSizeGroups) ? 'col' : 'col-md-6' ?>
                 <!-- One bloc per group -->
                 <h6 class="pb-10 mb-10 border-bottom"><?= esc_attr($group->title) ?></h5>
                     <div class="row g-3">
                         <?php foreach ($group->getReordered() as $name => $field) : ?>
                             <?php /* @var $field Daq_Form_Element Daq_Form_Element_Select */ ?>
-                            <div class="col-md-6 field-container <?php wpjb_form_input_features($field) ?>">
+                            <div class="<?= $colClass ?> field-container <?php wpjb_form_input_features($field) ?>">
 
                                 <?php if ($field->getType() != 'label') : ?>
 
-                                    <?php if ($field->getLabel() != 'Captcha') : ?>
-                                        <label for="inputEmail4" class="form-label <?= $field->isRequired() ? 'required' : '' ?>"><?= esc_html($field->getLabel()) ?></label>
-                                    <?php endif; ?>
+                                    <label for="inputEmail4" class="form-label <?= $field->isRequired() ? 'required' : '' ?>"><?= esc_html($field->getLabel()) ?></label>
 
                                     <div>
                                         <?php if ($field->getType() != 'radio') $field->addClass('form-control'); ?>

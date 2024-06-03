@@ -532,6 +532,187 @@ div.wpjb-page-company-products div.wpjb-company-product-additional div.wpjb-comp
   font-weight: bold;
 }
 
+/*** Liste des offres sur la page add offre */
+.wpjb-motif-bg {
+  background-color: #5cace2;
+}
+
+.wpjb-listing-type-x {
+  display: block;
+  clear: both;
+  overflow: hidden;
+  background-color: #fcfcfc;
+  margin-bottom: 10px;
+}
+
+.wpjb-listing-type {
+  width: 90%;
+  box-sizing: border-box;
+  float: left;
+  border-right: 1px solid whitesmoke;
+  padding: 10px 5px 10px 5px;
+}
+
+.wpjb-listing-radio {
+  width: 10%;
+  box-sizing: border-box;
+  padding-left: 10px;
+  border-right: 1px solid transparent;
+}
+
+.wpjb-listing-type-title {
+  padding: 2px 0px;
+  display: inline-block;
+  float: left;
+}
+
+.wpjb-listing-type-name {
+  font-size: 18px;
+  clear: both;
+  overflow: hidden;
+}
+
+.wpjb-listing-type-cost {
+  padding: 2px 8px;
+  float: right;
+  color: white;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.wpjb-listing-type-features {
+  width: 100%;
+  font-size: 13px;
+}
+
+.wpjb-listing-type-features .wpjb-listing-border {
+  border-left: 1px solid #e6e6e6;
+  margin-left: 0.4em;
+  padding-left: 0.4em;
+}
+
+.wpjb-listing-type-features .wpjb-listing-type-feature-duration .wpjb-glyphs:before {
+  margin-left: 0;
+}
+
+.wpjb-listing-type-all .wpjb-listing-type-value {
+  font-size: 18px;
+}
+
+/* CUTE INPUT FIELDS */
+.wpjb-cute-input {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.wpjb-cute-input input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.wpjb-cute-input-indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: #e6e6e6;
+}
+
+.wpjb-cute-input.wpjb-cute-radio .wpjb-cute-input-indicator {
+  border-radius: 50%;
+}
+
+/* Hover and focus states */
+.wpjb-cute-input:hover input ~ .wpjb-cute-input-indicator,
+.wpjb-cute-input input:focus ~ .wpjb-cute-input-indicator {
+  background: #ccc;
+}
+
+/* Checked state */
+.wpjb-cute-input input:checked ~ .wpjb-cute-input-indicator {
+  background: #2aa1c0;
+}
+
+/* Hover state whilst checked */
+.wpjb-cute-input:hover input:not([disabled]):checked ~ .wpjb-cute-input-indicator,
+.wpjb-cute-input input:checked:focus ~ .wpjb-cute-input-indicator {
+  background: #0e647d;
+}
+
+/* Disabled state */
+.wpjb-cute-input input:disabled ~ .wpjb-cute-input-indicator {
+  pointer-events: none;
+  opacity: 0.6;
+  background: #e6e6e6;
+}
+
+/* Check mark */
+.wpjb-cute-input-indicator:after {
+  position: absolute;
+  display: none;
+  content: "";
+}
+
+/* Show check mark */
+.wpjb-cute-input input:checked ~ .wpjb-cute-input-indicator:after {
+  display: block;
+}
+
+/* Checkbox tick */
+.wpjb-cute-input.wpjb-cute-checkbox .wpjb-cute-input-indicator:after {
+  top: 4px;
+  left: 8px;
+  width: 3px;
+  height: 8px;
+  transform: rotate(45deg);
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+}
+
+/* Disabled tick colour */
+.wpjb-cute-input.wpjb-cute-checkbox input:disabled ~ .wpjb-cute-input-indicator:after {
+  border-color: #7b7b7b;
+}
+
+/* Radio button inner circle */
+.wpjb-cute-input.wpjb-cute-radio .wpjb-cute-input-indicator:after {
+  top: 7px;
+  left: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* Disabled circle colour */
+.wpjb-cute-input.wpjb-cute-radio input:disabled ~ .wpjb-cute-input-indicator:after {
+  background: #7b7b7b;
+}
+
+.wpjb-x-label {
+  margin: 0 25px 0 5px;
+  height: 20px;
+  display: inline-block;
+}
+
+/* Listing Types (Jobeleon Only) */
+.wpjb .wpjb-cute-input.wpjb-cute-radio {
+  margin-left: 12px;
+  margin-top: 14px;
+}
+
+.wpjb .wpjb-listing-type-cost {
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-weight: normal;
+  border-radius: 5px;
+}
+
 :root {
   overflow-y: visible !important;
   overflow-x: hidden !important;
@@ -687,30 +868,6 @@ form.form .wpjb-options-list input[type=radio] {
   line-height: 7px;
   margin-top: 25px;
   font-size: 16px;
-}
-
-.group-coupon .field-container > label + div > .wpjb-listing-group,
-.group-coupon .field-container > label + div > .wpjb-listing-type-x {
-  padding-left: 10px;
-  border-color: #3c65f5;
-  border-style: solid;
-  border-width: 0 1px 0 1px;
-  margin: 0;
-}
-.group-coupon .field-container > label + div .wpjb-listing-group {
-  font-weight: bold;
-  padding-top: 4px;
-  color: #3c65f5;
-  border-top: solid 1px #3c65f5;
-}
-.group-coupon .field-container > label + div .wpjb-listing-type-x {
-  display: flex;
-}
-.group-coupon .field-container > label + div .wpjb-listing-type-x:last-of-type {
-  border-bottom: solid 1px #3c65f5;
-}
-.group-coupon .field-container > label + div .wpjb-listing-type.wpjb-listing-radio {
-  margin-right: 10px;
 }
 
 .wpjb-element-name-job_country {

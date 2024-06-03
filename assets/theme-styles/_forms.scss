@@ -76,36 +76,36 @@ form.form {
   }
 }
 
-.group-coupon {
-  .field-container > label + div {
-    > .wpjb-listing-group,
-    > .wpjb-listing-type-x {
-      padding-left: 10px;
-      border-color: #3c65f5;
-      border-style: solid;
-      border-width: 0 1px 0 1px;
-      margin: 0;
-    }
+// .group-coupon {
+//   .field-container > label + div {
+//     > .wpjb-listing-group,
+//     > .wpjb-listing-type-x {
+//       padding-left: 10px;
+//       border-color: #3c65f5;
+//       border-style: solid;
+//       border-width: 0 1px 0 1px;
+//       margin: 0;
+//     }
 
-    .wpjb-listing-group {
-      font-weight: bold;
-      padding-top: 4px;
-      color: #3c65f5;
+//     .wpjb-listing-group {
+//       font-weight: bold;
+//       padding-top: 4px;
+//       color: #3c65f5;
 
-      border-top: solid 1px #3c65f5;
-    }
-    .wpjb-listing-type-x {
-      display: flex;
+//       border-top: solid 1px #3c65f5;
+//     }
+//     .wpjb-listing-type-x {
+//       display: flex;
 
-      &:last-of-type {
-        border-bottom: solid 1px #3c65f5;
-      }
-    }
-    .wpjb-listing-type.wpjb-listing-radio {
-      margin-right: 10px;
-    }
-  }
-}
+//       &:last-of-type {
+//         border-bottom: solid 1px #3c65f5;
+//       }
+//     }
+//     .wpjb-listing-type.wpjb-listing-radio {
+//       margin-right: 10px;
+//     }
+//   }
+// }
 
 // hde country field but keep it in code for WPJB behavior
 .wpjb-element-name-job_country {
