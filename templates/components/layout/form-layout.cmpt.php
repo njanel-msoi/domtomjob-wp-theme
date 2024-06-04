@@ -10,8 +10,11 @@
  *     $groupsWithFullSizeInput = ['coupon', 'captcha', 'billing', 'company'];
  *     $submitBtn = 'Prévisualiser l'offre';
  */
-?>
 
+if (!isset($defaultValues)) {
+    $defaultValues = [];
+}
+?>
 
 <form action="<?= $formAction ?>" method="post" enctype="multipart/form-data" class="form <?= $formClass ?>">
 
@@ -40,7 +43,7 @@
 
                                     <div>
                                         <?php if (!in_array($field->getType(), ['radio', 'checkbox'])) $field->addClass('form-control'); ?>
-
+                                        <?php if (isset($defaultValues[$field->getName()])) $field->setValue($defaultValues[$field->getName()]); ?>
                                         <?php wpjb_form_render_input($form, $field) ?>
                                         <?php wpjb_form_input_hint($field) ?>
                                         <?php wpjb_form_input_errors($field) ?>

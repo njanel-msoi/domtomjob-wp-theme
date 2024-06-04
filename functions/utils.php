@@ -53,6 +53,7 @@ function set_field_value_from_resume($field, $supported_fields_arr)
     $field->setValue($value);
 }
 
+
 function is_from_rewrite_rule($queryPath)
 {
     return get_query_var($queryPath) == true && get_query_var($queryPath) != '';
