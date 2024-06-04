@@ -107,11 +107,6 @@ form.form {
 //   }
 // }
 
-// hde country field but keep it in code for WPJB behavior
-.wpjb-element-name-job_country {
-  display: none;
-}
-
 /* CHECKOUT PAGE */
 input.wpjb-enter-discount-value {
   width: 150px;
@@ -154,4 +149,9 @@ input.wpjb-enter-discount-value {
       }
     }
   }
+}
+
+.btn-copy-contact-billing {
+  margin-top: -10px;
+  margin-left: 10px;
 }

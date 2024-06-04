@@ -108,3 +108,7 @@
 footer.entry-meta {
   display: none;
 }
+// hide ok icon in all flash wpjb message
+.wpjb-icon-ok:before {
+  display: none !important;
+}

@@ -61,3 +61,9 @@ add_filter("wpjr_form_init_register", function ($form) {
 
     return $form;
 });
+
+
+// prepare sliced user infos
+add_filter("apply_filters", function () {
+    return apply_filters('sliced_get_client_address', $client_address, $client, $id);
+});

@@ -809,6 +809,10 @@ footer.entry-meta {
   display: none;
 }
 
+.wpjb-icon-ok:before {
+  display: none !important;
+}
+
 .wpjb-errors,
 .wpjb-flash-error {
   color: red;
@@ -870,10 +874,6 @@ form.form .wpjb-options-list input[type=radio] {
   font-size: 16px;
 }
 
-.wpjb-element-name-job_country {
-  display: none;
-}
-
 /* CHECKOUT PAGE */
 input.wpjb-enter-discount-value {
   width: 150px;
@@ -915,6 +915,11 @@ input.wpjb-enter-discount-value {
   .wpjb-payment-form fieldset > div {
     flex-direction: column;
   }
+}
+
+.btn-copy-contact-billing {
+  margin-top: -10px;
+  margin-left: 10px;
 }
 
 header.header {

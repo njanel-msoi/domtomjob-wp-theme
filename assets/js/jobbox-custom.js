@@ -75,5 +75,22 @@
     $(".reveal-child-on-hover").mouseleave(function(){
         $(this).find(".to-be-revealed").hide();
     })
-    
+
+    /*======== Copy from contact to billing button */
+    $(".btn-copy-contact-billing").click(function(){
+        // mapping
+        var fieldMapping = {
+            company_contact:"billing_contact",
+            company_email:"billing_email",
+            company_phone:"billing_phone",
+            job_address:"billing_address",
+            job_zip_code:"billing_zipcode",
+            company_city:"billing_city",
+            job_country:"billing_country"
+        };
+        for (const fromField in fieldMapping) {
+            const toField = fieldMapping[fromField];
+            $("[name="+toField+"]").val($("[name="+fromField+"]").val())
+        }
+    })
 })(jQuery);
