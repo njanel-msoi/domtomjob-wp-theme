@@ -17,6 +17,14 @@
 /* @var $action string Form action URL */
 /* @var $submit string Text on the submit button */
 
+// redirection for some specifics forms
+if (isset($page_class)) {
+    if ($page_class == 'wpjb-company-edit-form') {
+        include  dirname(__FILE__) . '/../../templates/components/dashboard/company-dashboard-profile-edit.cmpt.php';
+        return;
+    }
+}
+
 $standalone = true; // !( (defined("DOING_AJAX") && DOING_AJAX) || ($page_class == "wpjb-form-nested") );
 
 ?>

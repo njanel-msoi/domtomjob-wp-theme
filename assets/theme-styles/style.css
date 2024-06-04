@@ -1162,6 +1162,7 @@ footer.footer .footer-logo {
 }
 .company-box.righted .sidebar-heading .avatar-sidebar figure {
   float: right;
+  line-height: 0;
 }
 .company-box.righted .sidebar-heading .avatar-sidebar figure .logo-placeholder {
   margin-bottom: 0;

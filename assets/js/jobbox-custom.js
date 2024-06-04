@@ -77,19 +77,39 @@
     })
 
     /*======== Copy from contact to billing button */
-    $(".btn-copy-contact-billing").click(function(){
+    // ADD BUTTON IN FORM Job-add & Company edit
+    var formWithCopyBtn = [".company-edit-form .group-group_2 h6",".job-add-form .group-billing h6"];
+    
+    $(formWithCopyBtn.join(', '))
+        .append('<button type="button" class="btn btn-tags-sm btn-copy-contact-billing">Copier depuis le contact</button>');
+    
+    $(".btn-copy-contact-billing").click(function() {
+
         // mapping
         var fieldMapping = {
-            company_contact:"billing_contact",
-            company_email:"billing_email",
-            company_phone:"billing_phone",
-            job_address:"billing_address",
-            job_zip_code:"billing_zipcode",
-            company_city:"billing_city",
-            job_country:"billing_country"
+                "add-job":{
+                company_contact:"billing_contact",
+                company_email:"billing_email",
+                company_phone:"billing_phone",
+                job_address:"billing_address",
+                job_zip_code:"billing_zipcode",
+                company_city:"billing_city",
+                job_country:"billing_country"
+            },
+            "company-edit":{
+                company_contact_name:"billing_contact_name",
+                user_email:"billing_email",
+                company_phone:"billing_phone",
+                company_address:"billing_address",
+                company_zip_code:"billing_zipcode",
+                company_location:"billing_city",
+                company_country:"billing_country"
+            }
         };
-        for (const fromField in fieldMapping) {
-            const toField = fieldMapping[fromField];
+        var isJobAddForm = $(this).parents(".form").hasClass("job-add-form");
+        var fields = isJobAddForm ? fieldMapping["add-job"] : fieldMapping["company-edit"];
+        for (const fromField in fields) {
+            const toField = fields[fromField];
             $("[name="+toField+"]").val($("[name="+fromField+"]").val())
         }
     })
