@@ -15,7 +15,7 @@
 <footer class="footer mt-50">
     <div class="container">
         <div class="row">
-            <div class="footer-col-1 col-md-3 col-sm-12"><a href="<?= PAGES_URLS->Accueil ?>">
+            <div class="col-md-3 col-sm-12"><a href="<?= PAGES_URLS->Accueil ?>">
                     <img class="footer-logo" alt="<?= esc_attr(get_bloginfo('name', 'display')) ?>" src="<?= get_stylesheet_directory_uri() . '/images/logo_dtj.png' ?>">
                 </a>
                 <div class="mt-20 mb-20 font-xs color-text-paragraph-2">
@@ -23,45 +23,24 @@
                 </div>
                 <div class="footer-social"><a class="icon-socials icon-facebook" href="#"></a><a class="icon-socials icon-twitter" href="#"></a><a class="icon-socials icon-linkedin" href="#"></a></div>
             </div>
-            <div class="footer-col-2 col-md-2 col-xs-6">
+            <div class="col-md-3 col-xs-12">
                 <h6 class="mb-20">Arborescence</h6>
-                <ul class="menu-footer">
+                <div class="menu-footer">
                     <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
-                </ul>
+                </div>
             </div>
-            <div class="footer-col-3 col-md-2 col-xs-6">
+            <div class="col-md-4 col-xs-12">
                 <h6 class="mb-20">Régions</h6>
-                <ul class="menu-footer">
+                <div class="row">
                     <?php
                     global $REGIONS;
                     foreach ($REGIONS as $region) : ?>
-                        <li>
+                        <div class="col-6">
                             <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>&nbsp;
-                        </li>
+                        </div>
                     <?php endforeach; ?>
-                </ul>
+                </div>
             </div>
-            <!-- <div class="footer-col-4 col-md-2 col-xs-6">
-                <h6 class="mb-20">Domaines</h6>
-                <ul class="menu-footer">
-                    <?php
-                    global $CATEGORIES;
-                    foreach ($CATEGORIES as $category) : ?>
-                        <li>
-                            <a href="/categories/<?= urlencode($category->get('id')) ?>/<?= urlencode($category->get('title')) ?>" title="Offres d'emploi <?= $category->get('title') ?>"><?= $category->get('title') ?></a>&nbsp;
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div> -->
-            <!-- <div class="footer-col-5 col-md-2 col-xs-6">
-                <h6 class="mb-20">More</h6>
-                <ul class="menu-footer">
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div> -->
         </div>
         <div class="footer-bottom mt-50">
             <div class="row">
