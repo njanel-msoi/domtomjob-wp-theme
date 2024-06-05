@@ -146,3 +146,12 @@ function _or($value, $or = '-')
 {
     return $value ? $value : $or;
 }
+
+function formVal($form, $field)
+{
+    $val = $form->getElement($field)->getValue();
+    if (is_array($val)) {
+        return !empty($val) ? $val[0] : '';
+    }
+    return $val;
+}

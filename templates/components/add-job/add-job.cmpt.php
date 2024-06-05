@@ -24,6 +24,8 @@
 
     <?php
     $company = Wpjb_Model_Company::current();
+    $isCompanyConnected = !!$company;
+
     if ($company) {
         $defaultValues = [
             'region' => get_meta_region($company),
@@ -58,6 +60,11 @@
     $groupsWithFullSizeInput = ['coupon', 'captcha', 'billing', 'company'];
     $submitBtn = "Prévisualiser l'offre";
 
+    // hide company billing & contact info if already connected
+    if ($isCompanyConnected) {
+        $groupsToHide[] = 'company';
+        $groupsToHide[] = 'billing';
+    }
 
     include dirname(__FILE__) .  '/../layout/form-layout.cmpt.php';
     ?>

@@ -113,4 +113,7 @@
             $("[name="+toField+"]").val($("[name="+fromField+"]").val())
         }
     })
+
+    /*==== ADD JOB FORM PRE SELECTION ===*/
+    $("#job_apply_type-0").prop("checked", true).change();
 })(jQuery);

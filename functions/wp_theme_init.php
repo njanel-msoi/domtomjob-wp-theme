@@ -63,7 +63,42 @@ add_filter("wpjr_form_init_register", function ($form) {
 });
 
 
-// prepare sliced user infos
-add_filter("apply_filters", function () {
-    return apply_filters('sliced_get_client_address', $client_address, $client, $id);
-});
+/* Get infos from Job or from Company if exists to fill Invoice form fields */
+function initDefaultPaymentFormBillFields($form)
+{
+    $client     = "";
+    $address    = "";
+    $additional = "";
+    $job_form = null;
+
+    $company = Wpjb_Model_Company::current();
+    // if job form exists, we get all from it
+    $id = "wpjb_session_" . str_replace("-", "_", wpjb_transient_id());
+    $transient = wpjb_session()->get($id);
+    $jobId = $transient['job_id'];
+    if ($jobId) {
+        $job_form = new Wpjb_Form_AddJob($jobId);
+        $client = $job_form->getElement('company_name')->getValue();
+        $address = formVal($job_form, 'billing_address') . "\n" .
+            formVal($job_form, 'billing_zipcode') . "\n" .
+            formVal($job_form, 'billing_city') . "\n" .
+            dtj_get_country_from_key(formVal($job_form, 'billing_country')) . "\n";
+        $additional = 'Contact : ' . formVal($job_form, 'billing_contact') . "\n" .
+            'Email : ' . formVal($job_form, 'billing_email') . "\n" .
+            'Téléphone : ' . formVal($job_form, 'billing_phone') . "\n" .
+            'SIRET : ' . formVal($job_form, 'company_siret');
+        if ($company) {
+            $tva = get_meta_value($company, 'billing_tax');
+            if ($tva) $additional .= "\nTVA : " . $tva;
+        }
+    } else {
+        // TODO: must be sure that we are on company subscription job if not job form
+        // else we are in "direct plan buy" and we use current company
+    }
+    $form->getElement("wpjb_si_client")->setValue($client);
+    $form->getElement("wpjb_si_address")->setValue($address);
+    $form->getElement("wpjb_si_additional")->setValue($additional);
+    return $form;
+}
+add_filter("wpjb_form_init_payment_default", "initDefaultPaymentFormBillFields", 20);
+add_filter("wpjb_form_init_payment_stripe", "initDefaultPaymentFormBillFields", 20);

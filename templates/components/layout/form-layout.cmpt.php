@@ -11,19 +11,19 @@
  *     $submitBtn = 'Prévisualiser l'offre';
  */
 
+$hasBeenSubmited = isset($_POST['submitted']);
 if (!isset($defaultValues)) {
     $defaultValues = [];
 }
 ?>
 
 <form action="<?= $formAction ?>" method="post" enctype="multipart/form-data" class="form <?= $formClass ?>">
+    <input type="hidden" name="submitted" value="1">
 
     <?php echo $form->renderHidden() ?>
     <div class="row">
         <?php foreach ($form->getReordered() as $group) : ?>
-            <?php
-            if (in_array($group->getName(), $groupsToHide)) continue; ?>
-            <div class="col-12 <?= in_array($group->getName(), $groupsHalfSize) ? 'col-md-6' : '' ?>">
+            <div class="col-12 <?= in_array($group->getName(), $groupsHalfSize) ? 'col-md-6' : '' ?> <?= in_array($group->getName(), $groupsToHide) ? 'd-none' : '' ?>">
                 <div class="box-border-single mb-30 group-<?= esc_attr($group->getName()) ?>">
                     <?php /* Check groups on half or full width */
                     $colClass = in_array($group->getName(), $groupsWithFullSizeInput) ? 'col-12' : 'col-md-6' ?>
@@ -43,7 +43,7 @@ if (!isset($defaultValues)) {
 
                                     <div>
                                         <?php if (!in_array($field->getType(), ['radio', 'checkbox'])) $field->addClass('form-control'); ?>
-                                        <?php if (isset($defaultValues[$field->getName()])) $field->setValue($defaultValues[$field->getName()]); ?>
+                                        <?php if (!$hasBeenSubmited && isset($defaultValues[$field->getName()])) $field->setValue($defaultValues[$field->getName()]); ?>
                                         <?php wpjb_form_render_input($form, $field) ?>
                                         <?php wpjb_form_input_hint($field) ?>
                                         <?php wpjb_form_input_errors($field) ?>
