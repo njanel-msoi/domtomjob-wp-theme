@@ -41,7 +41,7 @@
                     <?php endforeach; ?>
                 </ul>
             </div>
-            <div class="footer-col-4 col-md-2 col-xs-6">
+            <!-- <div class="footer-col-4 col-md-2 col-xs-6">
                 <h6 class="mb-20">Domaines</h6>
                 <ul class="menu-footer">
                     <?php
@@ -52,8 +52,8 @@
                         </li>
                     <?php endforeach; ?>
                 </ul>
-            </div>
-            <div class="footer-col-5 col-md-2 col-xs-6">
+            </div> -->
+            <!-- <div class="footer-col-5 col-md-2 col-xs-6">
                 <h6 class="mb-20">More</h6>
                 <ul class="menu-footer">
                     <li><a href="#">Privacy</a></li>
@@ -61,7 +61,7 @@
                     <li><a href="#">Terms</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <div class="footer-bottom mt-50">
             <div class="row">
@@ -73,32 +73,6 @@
         </div>
     </div>
 </footer>
-<footer id="footer" role="contentinfo">
-    <nav class=" container list-inline">
-
-        <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
-
-        <hr>
-        <?php
-        global $REGIONS;
-        foreach ($REGIONS as $region) : ?>
-
-            <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>&nbsp;
-
-        <?php endforeach; ?>
-
-        <hr>
-        <?php
-        global $CATEGORIES;
-        foreach ($CATEGORIES as $category) : ?>
-
-            <a href="/categories/<?= urlencode($category->get('id')) ?>/<?= urlencode($category->get('title')) ?>" title="Offres d'emploi <?= $category->get('title') ?>"><?= $category->get('title') ?></a>&nbsp;
-
-        <?php endforeach; ?>
-
-
-    </nav>
-</footer><!-- #colophon .site-footer -->
 
 <?php wp_footer(); ?>
 
