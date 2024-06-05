@@ -47,7 +47,7 @@ add_action('wp_enqueue_scripts', function () {
 
 
     // wp_enqueue_script('scrollup', get_stylesheet_directory_uri() . '/assets/js/plugins/scrollup.js', array('jquery', 'jquery-migrate'));
-    wp_enqueue_script('jobbox', get_stylesheet_directory_uri() . '/assets/js/jobbox.js', array('jquery', 'jquery-migrate', 'scrollup'));
+    // wp_enqueue_script('jobbox', get_stylesheet_directory_uri() . '/assets/js/jobbox.js', array('jquery', 'jquery-migrate', 'scrollup'));
 
     // <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
     // <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>

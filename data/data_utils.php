@@ -12,7 +12,7 @@ function str_arr_to_data_map($strArr, $useArrayKeys = false)
         // Création de l'objet
         $objet = array(
             "key" => $key,
-            "value" => $value,
+            "value" => $key,
             "description" => $value
         );
         // Ajout de l'objet au tableau
@@ -28,7 +28,7 @@ function object_arr_to_data_map($objArr, $titleKey)
         // Création de l'objet
         $objet = array(
             "key" => $value->id,
-            "value" => $value->get($titleKey),
+            "value" => $value->id,
             "description" => $value->get($titleKey)
         );
         // Ajout de l'objet au tableau
