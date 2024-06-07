@@ -63,3 +63,15 @@
     }
   }
 }
+
+.box-related-job {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar-list-job {
+  .text-description {
+    width: auto;
+    max-width: none;
+  }
+}

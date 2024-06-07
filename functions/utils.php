@@ -67,7 +67,12 @@ function get_meta_region($object)
 
 function get_company_location($company)
 {
-    return get_meta_region($company);
+    $parts = [];
+    $parts[] = get_meta_region($company);
+    if ($company->company_location) {
+        $parts[] = $company->company_location;
+    }
+    return implode(', ', $parts);
 }
 
 function get_meta_value($object, $field)
@@ -152,4 +157,15 @@ function formVal($form, $field)
         return !empty($val) ? $val[0] : '';
     }
     return $val;
+}
+
+function data_value_from_key($key, $data)
+{
+    if (!$key) return '';
+    foreach ($data as $value) {
+        if ($value['key'] == $key) {
+            return $value['description'];
+        }
+    }
+    return '';
 }

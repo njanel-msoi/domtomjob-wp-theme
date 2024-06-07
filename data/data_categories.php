@@ -11,3 +11,9 @@ function dtj_get_categories()
     global $CATEGORIES_MAP;
     return $CATEGORIES_MAP;
 }
+
+function dtj_get_category_from_key($key)
+{
+    global $CATEGORIES_MAP;
+    return data_value_from_key($key, $CATEGORIES_MAP);
+}
