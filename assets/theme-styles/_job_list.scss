@@ -75,3 +75,12 @@
     max-width: none;
   }
 }
+
+/* Job apply */
+.apply-job-form {
+  form {
+    textarea {
+      min-height: 100px;
+    }
+  }
+}

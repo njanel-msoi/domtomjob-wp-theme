@@ -8,60 +8,69 @@
  * 
  */
 ?>
+
 <div id="wpjb-form-job-apply-popup" class="popup-container <?php if ($show->apply) : ?>visible<?php endif; ?>">
 
-    <div class="popup">
-        <div class="content">
-            <!-- close btn -->
-            <div class="text-end">
-                <button class="btn btn-sm btn-outline-primary close-popup">X</button>
-            </div>
-            <!-- start of form -->
+    <div class="modal-content popup apply-job-form">
+        <button class="btn-close close-popup" type="button" aria-label="Close"></button>
 
+        <div class="content pl-30 pr-30 pt-50">
+            <div class="text-center">
+                <p class="font-sm text-brand-2">Candidature</p>
+                <h2 class="mt-10 mb-5 text-brand-1 text-capitalize"><?= $job->job_title ?></h2>
+                <p class="font-sm text-muted mb-30">Entrez vos informations pour les transmettre au recruteur.</p>
+            </div>
+
+            <!-- start of form -->
             <?php if (isset($form_error)) : ?>
                 <div class="wpjb-flash-error" style="margin:5px">
                     <span><?php esc_html_e($form_error) ?></span>
                 </div>
             <?php endif; ?>
 
-            <form id="wpjb-apply-form" action="<?php esc_attr_e(wpjb_link_to("job", $job, array("form" => "apply"))) ?>#wpjb-scroll" method="post" enctype="multipart/form-data" class="wpjb-form wpjb-form-nolines">
-                <?php echo $form->renderHidden() ?>
-                <?php foreach ($form->getReordered() as $group) : ?>
-                    <?php /* @var $group stdClass */ ?>
-                    <fieldset class="wpjb-fieldset-<?php esc_attr_e($group->getName()) ?>">
 
-                        <?php if ($group->title) : ?>
-                            <?php // <legend><?php esc_html_e($group->title) </legend>  
-                            ?>
-                        <?php endif; ?>
+            <?php
+            // $company = Wpjb_Model_Company::current();
+            // $isCompanyConnected = !!$company;
 
-                        <?php foreach ($group->getReordered() as $name => $field) : ?>
-                            <?php /* @var $field Daq_Form_Element */ ?>
-                            <div class="<?php wpjb_form_input_features($field) ?>">
+            // if ($company) {
+            //     $defaultValues = [
+            //         'region' => get_meta_region($company),
+            //         'company_siret' => get_meta_value($company, 'company_siret'),
+            //         // TODO: pourquoi l'import default ne marche pas pour category ? Pas meme format default & data categories ?
+            //         'category' => get_meta_value($company, 'category'),
+            //         'company_description' => $company->get('company_info'),
 
-                                <label class="wpjb-label">
-                                    <?php esc_html_e($field->getLabel()) ?>
-                                    <?php if ($field->isRequired()) : ?><span class="wpjb-required">*</span><?php endif; ?>
-                                </label>
+            //         'company_contact' => get_meta_value($company, 'company_contact_name'),
+            //         // 'company_email' => get_meta_value($company, 'company_email'),
+            //         'company_phone' => get_meta_value($company, 'company_phone'),
+            //         'job_address' => get_meta_value($company, 'company_address'),
+            //         // 'job_zip_code' => get_meta_value($company, 'company_zip_code'),
+            //         'company_city' => $company->get('company_location'),
+            //         // 'company_country' => get_meta_value($company, 'company_country'),
 
-                                <div class="wpjb-field">
-                                    <?php
-                                    set_field_value_from_resume($field, ['first_name', 'last_name']);
-                                    ?>
-                                    <?php wpjb_form_render_input($form, $field) ?>
-                                    <?php wpjb_form_input_hint($field) ?>
-                                    <?php wpjb_form_input_errors($field) ?>
-                                </div>
+            //         'billing_contact' => get_meta_value($company, 'billing_contact_name'),
+            //         'billing_email' => get_meta_value($company, 'billing_email'),
+            //         'billing_phone' => get_meta_value($company, 'billing_phone'),
+            //         'billing_address' => get_meta_value($company, 'billing_address'),
+            //         'billing_zipcode' => get_meta_value($company, 'billing_zipcode'),
+            //         'billing_city' => get_meta_value($company, 'billing_city'),
+            //         'billing_country' => get_meta_value($company, 'billing_country'),
+            //     ];
+            // }
 
-                            </div>
-                        <?php endforeach; ?>
-                    </fieldset>
-                <?php endforeach; ?>
-                <fieldset>
-                    <legend class="wpjb-empty"></legend>
-                    <input type="submit" class="wpjb-submit" id="wpjb_submit" value="<?php _e("Send Application", "jobeleon") ?>" />
-                </fieldset>
-            </form>
+            $formClass = 'job-apply-form';
+            $formAction = esc_attr(wpjb_link_to("job", $job, array("form" => "apply")));
+            $groupsToHide = ['important_infos'];
+            $fieldsToHide = [];
+            $groupsHalfSize = [];
+            $groupsWithFullSizeInput = [];
+            $submitBtn = "Envoyer votre candidature";
+            $noGroups = true;
+
+            include dirname(__FILE__) .  '/../layout/form-layout.cmpt.php';
+            ?>
+
         </div>
     </div>
     <div class="backdrop"></div>

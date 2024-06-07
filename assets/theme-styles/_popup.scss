@@ -15,7 +15,6 @@
 
     width: 650px;
     max-width: 100%;
-    padding: 25px;
     position: absolute;
     top: 25px;
     left: 50%;
@@ -29,21 +28,13 @@
     }
   }
 
-  .close-popup {
-    position: absolute;
-    right: 25px;
-    top: 25px;
-    padding: 5px;
-    width: 27px;
-    border-radius: 50%;
-  }
-
   .backdrop {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #9995;
+    background-color: #000;
+    opacity: 0.5;
   }
 }

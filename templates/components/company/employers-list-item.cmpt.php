@@ -28,4 +28,3 @@
     </div>
 </div>
 <?php //  wpjb_date_display("M, d", $company->getUser(true)->user_registered, false) 
-?>

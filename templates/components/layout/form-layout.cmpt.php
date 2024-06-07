@@ -15,6 +15,7 @@ $hasBeenSubmited = isset($_POST['submitted']);
 if (!isset($defaultValues)) {
     $defaultValues = [];
 }
+if (!isset($noGroups)) $noGroups = false;
 ?>
 
 <form action="<?= $formAction ?>" method="post" enctype="multipart/form-data" class="form <?= $formClass ?>">
@@ -24,13 +25,15 @@ if (!isset($defaultValues)) {
     <div class="row">
         <?php foreach ($form->getReordered() as $group) : ?>
             <div class="col-12 <?= in_array($group->getName(), $groupsHalfSize) ? 'col-md-6' : '' ?> <?= in_array($group->getName(), $groupsToHide) ? 'd-none' : '' ?>">
-                <div class="box-border-single mb-30 group-<?= esc_attr($group->getName()) ?>">
+                <div class="<?= $noGroups ? '' : 'box-border-single mb-30' ?> group-<?= esc_attr($group->getName()) ?>">
                     <?php /* Check groups on half or full width */
-                    $colClass = in_array($group->getName(), $groupsWithFullSizeInput) ? 'col-12' : 'col-md-6' ?>
+                    $colClass =  $noGroups || in_array($group->getName(), $groupsWithFullSizeInput) ? 'col-12' : 'col-md-6' ?>
                     <!-- One bloc per group -->
-                    <h6 class="pb-10 mb-10 border-bottom">
-                        <?= esc_attr($group->title) ?>
-                    </h6>
+                    <?php if (!$noGroups) : ?>
+                        <h6 class="pb-10 mb-10 border-bottom">
+                            <?= esc_attr($group->title) ?>
+                        </h6>
+                    <?php endif ?>
                     <div class="row g-3">
                         <?php foreach ($group->getReordered() as $field) : ?>
                             <?php if (in_array($field->getName(), $fieldsToHide)) continue; ?>
