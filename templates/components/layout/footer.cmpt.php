@@ -55,20 +55,22 @@
 
 <?php wp_footer(); ?>
 
-<!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/modernizr-3.6.0.min.js"></script> -->
 <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/select2.min.js"></script>
+
+<!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/modernizr-3.6.0.min.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/bootstrap.bundle.min.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/waypoints.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/wow.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/magnific-popup.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script> -->
-<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/select2.min.js"></script>
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/isotope.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/scrollup.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/swiper-bundle.min.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/noUISlider.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/slider.js"></script> -->
+
 <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/jobbox-custom.js?v=4.1"></script>
 
 </body>

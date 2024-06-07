@@ -2,7 +2,7 @@
 ?>
 
 <!-- Desktop Menu -->
-<header class="header sticky-bar">
+<header class="header sticky-bar stickable">
     <div class="container">
         <div class="main-header">
             <div class="header-left">

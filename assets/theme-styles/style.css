@@ -937,6 +937,7 @@ input.wpjb-enter-discount-value {
 
 header.header {
   position: relative;
+  padding: 16px 0;
 }
 header.header.stickable {
   position: sticky;
