@@ -6,96 +6,44 @@
 
 ?>
 
-<?php
-$all_null = true;
+<?php $result = Wpjb_Model_Company::search($param) ?>
 
-foreach (array("query", "category", "type") as $p) {
-    $ls_default[$p] = "";
-    if (!isset($param[$p])) {
-        $param[$p] = null;
-    } else {
-        $all_null = false;
-    }
-}
+<?php wpjb_flash(); ?>
 
-if (get_option('permalink_structure')) {
-    $spoiler = "?";
-} else {
-    $spoiler = "&";
-}
 
-if ($all_null) {
-    $spoiler2 = "";
-} else {
-    $spoiler2 = $spoiler;
-}
+<section class="section-box mt-30">
+    <!-- Start Job list -->
+    <div class="content-page">
+        <div class="box-filters-job">
+            <div class="row">
+                <div class="col-xl-6 col-lg-5">
+                    <span class="text-small text-showing">Page <strong><?= $result->page ?> </strong>sur <strong><?= $result->pages ?></strong></span>
 
-$search_url = wpjb_link_to("search");
-
-$current_category = null;
-$current_type = null;
-
-if ($param["type"] > 0) {
-    $current_type = new Wpjb_Model_Tag($param["type"]);
-    if (!$current_type->exists() || $current_type->type != "type") {
-        $current_type = null;
-    }
-}
-
-if ($param["category"] > 0) {
-    $current_category = new Wpjb_Model_Tag($param["category"]);
-    if (!$current_category->exists() || $current_category->type != "category") {
-        $current_category = null;
-    }
-}
-?>
-
-<?php if ($param['filter'] != 'active') : ?>
-    <div class="index-where-am-i where-am-i">
-        <div id="search">
-            <form action="" method="get">
-                <?php if (!get_option('permalink_structure')) : ?>
-                    <input type="hidden" name="page_id" value="<?php echo $page_id ?>" />
-                <?php endif; ?>
-                <div class="wpjb-btn-with-input wpjb-search-query" style="width:100%">
-                    <input type="text" name="query" class="wpjb-ls-query" placeholder="<?php _e('Search with keyword, location, company', 'jobeleon'); ?>" value="<?php esc_attr_e($param["query"]) ?>" />
-                    <input type="submit" class="btn" value="<?php _e("Search", "jobeleon") ?>" />
                 </div>
+            </div>
+        </div>
+        <div class="row">
 
-            </form>
-        </div><!-- /search -->
-    </div><!-- .where-am-i -->
-<?php endif; ?>
-
-<div id="wpjb-main" class="wpjb-page-employers">
-
-    <?php wpjb_flash(); ?>
-
-    <table id="wpjb-job-list" class="wpjb-table">
-        <tbody>
-            <?php $result = Wpjb_Model_Company::search($param) ?>
             <?php if ($result->count) : foreach ($result->company as $company) : ?>
                     <?php /* @var $job Wpjb_Model_Company */ ?>
                     <?php $this->company = $company; ?>
-                    <?php $this->render("employers-item.php") ?>
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+                        <?php $this->render("employers-item.php") ?>
+                    </div>
                 <?php
                 endforeach;
-            else :
-                ?>
-                <tr>
-                    <td colspan="3" class="wpjb-table-empty">
-                        <?php _e("No employers found.", "jobeleon"); ?>
-                    </td>
-                </tr>
+            else : ?>
+                <h6>
+                    <?php _e("No employers found.", "jobeleon"); ?>
+                </h6>
             <?php endif; ?>
-        </tbody>
-    </table>
-
-    <?php if ($pagination) : ?>
-        <div id="wpjb-paginate-links">
-            <?php wpjb_paginate_links($url, $result->pages, $result->page, $query, $format) ?>
         </div>
-    <?php endif; ?>
 
-
-</div>
+        <?php if ($pagination) : ?>
+            <div id="wpjb-paginate-links">
+                <?php wpjb_paginate_links($url, $result->pages, $result->page, $query, $format) ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>

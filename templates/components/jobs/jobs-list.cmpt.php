@@ -39,14 +39,16 @@
                             <?php /* @var $job Wpjb_Model_Job */ ?>
                             <?php $this->job = $job; ?>
 
-                            <?php $this->render("index-item.php") ?>
+                            <div class="col-xl-6 col-md-12 col-sm-12 col-12">
+                                <?php $this->render("index-item.php") ?>
+                            </div>
                         <?php
                         endforeach;
                     else :
                         ?>
-                        <h3>
+                        <h6>
                             <?php _e("No job listings found.", "jobeleon"); ?>
-                        </h3>
+                        </h6>
                     <?php endif; ?>
                 </div>
             </div>

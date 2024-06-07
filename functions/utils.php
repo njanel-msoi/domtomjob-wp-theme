@@ -61,10 +61,8 @@ function is_from_rewrite_rule($queryPath)
 
 function get_meta_region($object)
 {
-    $metaValue = $object->getMeta()->region->getValues();
-    if (isset($metaValue[0]))
-        return esc_html($metaValue[0]->value);
-    return 'Région non définie';
+    $metaValue = get_meta_value($object, 'region');
+    return $metaValue ? $metaValue : 'Région non définie';
 }
 
 function get_company_location($company)
