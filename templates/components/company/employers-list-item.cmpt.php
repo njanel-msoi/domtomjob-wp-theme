@@ -7,9 +7,9 @@
 /* @var $company Wpjb_Model_Company */
 ?>
 
-<div class="card-grid-1 hover-up">
+<div class="card-grid-1 hover-up company-item-box">
     <div class="image-box">
-        <a href="<?= wpjb_link_to("company", $company) ?>">
+        <a href="<?= wpjb_link_to("company", $company) ?>" class="company-link">
             <?= company_img($company) ?>
         </a>
     </div>

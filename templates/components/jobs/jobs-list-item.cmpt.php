@@ -14,7 +14,7 @@
 
 ?>
 
-<div class="card-grid-2 hover-up <?= $job->is_featured ? 'job-featured' : '' ?>">
+<div class="card-grid-2 job-item-box hover-up <?= $job->is_featured ? 'job-featured' : '' ?>">
 
     <span class="flash"></span>
     <div class="card-grid-2-image-left">
@@ -30,7 +30,7 @@
     </div>
     <div class="card-block-info">
         <h4>
-            <a href="<?= wpjb_link_to("job", $job) ?>"><?php esc_html_e($job->job_title) ?></a>
+            <a href="<?= wpjb_link_to("job", $job) ?>" class="job-link"><?php esc_html_e($job->job_title) ?></a>
         </h4>
         <div class="mt-5">
             <span class="card-time">

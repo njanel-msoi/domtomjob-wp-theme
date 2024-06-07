@@ -116,4 +116,12 @@
 
     /*==== ADD JOB FORM PRE SELECTION ===*/
     $("#job_apply_type-0").prop("checked", true).change();
+
+    /*===== SELECT JOB ITEM ON BOX CLIC */
+    $(".job-item-box").click(function(event) {
+        window.location.href = $(this).find('.job-link').attr('href')
+    });
+    $(".company-item-box").click(function(event) {
+        window.location.href = $(this).find('.company-link').attr('href')
+    });
 })(jQuery);
