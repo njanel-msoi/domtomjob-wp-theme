@@ -1,0 +1,79 @@
+@import "../jobbox-styles/abstracts/variables";
+@import "../jobbox-styles/abstracts/mixins";
+
+.banner-homepage5.banner-hero {
+  .banner-inner {
+    padding: 0;
+    position: relative;
+
+    .block-banner {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @include media-breakpoint-down(xl) {
+      .block-banner {
+        h1 {
+          display: inline;
+          background-color: #fff;
+        }
+      }
+      .color-brand-2::after {
+        bottom: 13px;
+        z-index: 0;
+      }
+      .banner-description {
+        padding-top: 100px;
+        max-width: 385px;
+      }
+
+      .banner-imgs {
+        display: block !important;
+
+        position: absolute;
+        top: 0;
+        opacity: 1;
+        height: 310px;
+        min-height: 0;
+
+        > div {
+          &.banner-2 {
+            top: 6px;
+          }
+          &.banner-4 {
+            right: 10px;
+          }
+          &.banner-5 {
+            top: 225px;
+          }
+          &.banner-6 {
+            right: 149px;
+          }
+        }
+
+        img {
+          transition: none !important;
+        }
+      }
+    }
+    @include media-breakpoint-down(lg) {
+      .banner-imgs {
+        > div {
+          animation: none;
+          &.banner-1 {
+            display: none;
+          }
+        }
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      .block-banner {
+        h1 {
+          > span.hide-xs {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

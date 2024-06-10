@@ -16,7 +16,7 @@
 <section class="section-box mt-30">
     <div class="row flex-row-reverse">
         <!-- Start Job list -->
-        <div class="col-lg-9 col-md-12 col-sm-12 col-12 float-right">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-12 ">
             <div class="content-page">
                 <div class="box-filters-job">
                     <div class="row">

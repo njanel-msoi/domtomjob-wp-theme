@@ -6,73 +6,46 @@
 get_header();
 ?>
 
-<h1>Bienvenue sur ce site incroyable</h1>
 
-<div class="dtj-page home" style="display: none">
+<section class="section-box mb-70">
+    <div class="banner-hero hero-1 banner-homepage5">
+        <div class="banner-inner">
+            <div class="row">
+                <div class="col-xl-7 col-lg-12">
+                    <div class="block-banner">
+                        <h1 class="heading-banner wow animate__animated animate__fadeInUp">
+                            La référence <span class="hide-xs">de</span><br><span class="hide-xs">l'</span>emploi <span class="color-brand-2">outre-mer</span>
+                        </h1>
+                        <div class="banner-description mt-20 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">Utilisez la plateforme leader du marché de l'emploi à la Réunion et dans les DROM-COM.</div>
+                        <div class="mt-30">
+                            <a class="btn btn-default mr-15" href="<?= PAGES_URLS->ListeOffres ?>">Parcourir les annonces</a>
+                            <a class="btn btn-border-brand-2" href="<?= PAGES_URLS->PublierAnnonce ?>">Publier une offre</a>
+                        </div>
 
-    <!-- bloc top search -->
-    <div class="search-form">
-        <h2>Trouvez un emploi ou une formation</h2>
-        <p>dans les DROM-COM et l'Océan Indien</p>
+                        <div class="list-tags-banner mt-60 wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
+                            <strong>Emploi par région :</strong>
+                            <?php
+                            global $REGIONS;
+                            foreach ($REGIONS as $region) : ?>
+                                <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>,
+                            <?php endforeach; ?>
+                        </div>
 
-        <?php echo do_shortcode('[wpjb_jobs_search form_code="search_home"]'); ?>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-12">
+                    <div class="banner-imgs">
+                        <div class="banner-1 shape-1"><img class="img-responsive" alt="jobBox" src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/page/homepage5/banner1.png"></div>
+                        <div class="banner-2 shape-2"><img class="img-responsive" alt="jobBox" src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/page/homepage5/banner2.png"></div>
+                        <div class="banner-3 shape-3"><img class="img-responsive" alt="jobBox" src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/page/homepage5/banner3.png"></div>
+                        <div class="banner-4 shape-3"><img class="img-responsive" alt="jobBox" src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/page/homepage5/banner4.png"></div>
+                        <div class="banner-5 shape-2"><img class="img-responsive" alt="jobBox" src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/page/homepage5/banner5.png"></div>
+                        <div class="banner-6 shape-1"><img class="img-responsive" alt="jobBox" src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/page/homepage5/banner6.png"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- bloc "annonces à la une" -->
-    <div class="featured-jobs">
-
-        <h2>Annonces à la une</h2>
-        <?php echo do_shortcode('[wpjb_jobs_list is_featured="1"]'); ?>
-
-    </div>
-
-    <!-- bloc "banniere partenaires" -->
-    <div class="partners-banner">
-
-        <a href="https://bit.ly/3TNduQN" target="_blank">
-            <img alt="ags partenaire cnarm" title="cnarm partenaire" src="https://domtomjob.com/images/partenaires/bandeau-cnarm-avril-2024.jpg">
-        </a>
-
-    </div>
-
-    <!-- bloc "inscrivez vous" -->
-    <div class="resume-subscribe">
-        <h2>Soyez visible auprès de nos recruteurs</h2>
-
-        <a href="/candidate-registration" class="btn btn-primary">Créer un compte</a>
-    </div>
-
-    <!-- Bloc "company featured" -->
-    <div class="company-featured">
-
-        <h2>Ils recrutent</h2>
-
-        <?php echo do_shortcode('[wpjb_employers_list filter="active"]'); ?>
-    </div>
-
-    <div class="top-msg">
-        <h2>Nous vous aidons à trouver des candidats</h2>
-        <p>dans les DROM-COM et l'océan indien</p>
-
-    </div>
-
-    <div class="services">
-        <h2>Des services complets adaptés à vos besoins</h2>
-
-        <ul>
-            <li>Mes annonces</li>
-            <li>CVThèque</li>
-            <li>Fiche entreprise</li>
-            <li>Statistiques</li>
-        </ul>
-    </div>
-
-    <div class="pricing">
-
-        <?php echo do_shortcode('[wpjb_membership_pricing]'); ?>
-
-    </div>
-
-</div>
+</section>
 
 <?php get_footer(); ?>
