@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="text-center mt-20"><a href="<?= PAGES_URLS->Accueil ?>">Retour à la page d'accueil</a></div>
-                <div class="text-center mt-20"><a href="<?= PAGES_URLS->Accueil ?>">Parcourir les offres d'emploi</a></div>
+                <div class="text-center mt-20"><a href="<?= PAGES_URLS->ListeOffres ?>">Parcourir les offres d'emploi</a></div>
             </div>
         </div>
     </div>
