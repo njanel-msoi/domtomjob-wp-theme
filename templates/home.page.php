@@ -73,8 +73,14 @@ get_header();
     <p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp mb-30">
         Découvrez nos partenaires de l'emploi.
     </p> -->
-    <a href="https://bit.ly/3TNduQN" target="_blank">
-        <img alt="ags partenaire cnarm" title="cnarm partenaire" src="https://domtomjob.com/images/partenaires/bandeau-cnarm-avril-2024.jpg">
+    <?php
+    $bannerUrl = get_field('lien_externe_banniere_partenaire');
+    $bannerImg = get_field('banniere_partenaire');
+    $bannerTitle = get_field('banniere_title');
+    ?>
+
+    <a href="<?= $bannerUrl ?>" target="_blank">
+        <img alt="<?= $bannerTitle ?>" title="<?= $bannerTitle ?>" src="<?= $bannerImg ?>">
     </a>
 </section>
 
