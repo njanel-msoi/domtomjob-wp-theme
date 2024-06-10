@@ -102,3 +102,12 @@ function initDefaultPaymentFormBillFields($form)
 }
 add_filter("wpjb_form_init_payment_default", "initDefaultPaymentFormBillFields", 20);
 add_filter("wpjb_form_init_payment_stripe", "initDefaultPaymentFormBillFields", 20);
+
+// configuration of tinymce
+add_filter("wpjb_editor_params", function ($params) {
+    $params['tinymce'] = [
+        'toolbar1' => 'bold,italic,underline,strikethrough,bullist,numlist,link,unlink',
+        'toolbar2' => ''
+    ];
+    return $params;
+});
