@@ -13,6 +13,8 @@ get_header();
             <div class="row">
                 <div class="col-xl-7 col-lg-12">
                     <div class="block-banner">
+                        <h5 class="mb-15 color-brand-2">DomTomJob</h5>
+                        <div></div>
                         <h1 class="heading-banner wow animate__animated animate__fadeInUp">
                             La référence <span class="hide-xs">de</span><br><span class="hide-xs">l'</span>emploi <span class="color-brand-2">outre-mer</span>
                         </h1>
