@@ -1068,6 +1068,13 @@ footer.footer a {
 .banner-homepage5.banner-hero .banner-inner .block-banner {
   padding-left: 0;
   padding-right: 0;
+  padding-bottom: 0;
+}
+.banner-homepage5.banner-hero .banner-inner .block-banner .form-find {
+  box-shadow: 0px 0px 40px rgba(60, 101, 245, 0.3);
+}
+.banner-homepage5.banner-hero .banner-inner .bloc-search-jobs {
+  padding-top: 0;
 }
 @media (max-width: 1199.98px) {
   .banner-homepage5.banner-hero .banner-inner .block-banner h1 {
@@ -1112,6 +1119,12 @@ footer.footer a {
   }
   .banner-homepage5.banner-hero .banner-inner .banner-imgs > div.banner-1 {
     display: none;
+  }
+  .banner-homepage5.banner-hero .banner-inner .bloc-search-jobs {
+    padding: 15px;
+  }
+  .banner-homepage5.banner-hero .banner-inner .bloc-search-jobs .form-find {
+    box-shadow: 0px 0px 15px rgba(60, 101, 245, 0.3);
   }
 }
 @media (max-width: 575.98px) {

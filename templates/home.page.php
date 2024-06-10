@@ -44,8 +44,97 @@ get_header();
                     </div>
                 </div>
             </div>
+
+            <div class="block-banner bloc-search-jobs">
+                <div class="form-find mt-40 wow animate__animated animate__fadeIn" data-wow-delay=".2s">
+
+                    <?php echo do_shortcode('[wpjb_jobs_search]'); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+<h2 class="section-title mb-10 wow animate__ animate__fadeInUp">Annonces à la une</h2>
+<p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp mb-30">
+    Découvrez les annonces mises en avant par les recruteurs.
+</p>
+<?php echo do_shortcode('[wpjb_jobs_list is_featured="1"]'); ?>
+
+
+<section class="box-border-single bg-border-3 text-center">
+    <!-- <h2 class="section-title mb-10 wow animate__ animate__fadeInUp">Nos partenaires</h2>
+    <p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp mb-30">
+        Découvrez nos partenaires de l'emploi.
+    </p> -->
+    <a href="https://bit.ly/3TNduQN" target="_blank">
+        <img alt="ags partenaire cnarm" title="cnarm partenaire" src="https://domtomjob.com/images/partenaires/bandeau-cnarm-avril-2024.jpg">
+    </a>
+</section>
+
+
+<div class="border-bottom mb-40"></div>
+
+<h2 class="section-title mb-10 wow animate__ animate__fadeInUp">Les entreprises qui recrutent</h2>
+<p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp">
+    Découvrez les entreprises qui recrutent activement.
+</p>
+<?php echo do_shortcode('[wpjb_employers_list sort_order="jobs_posted DESC" count="9" filter="active"]'); ?>
+
+<div class="border-bottom mt-10"></div>
+
+<!-- start numbers blocs -->
+<section class="section-box overflow-visible mt-50 mb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="text-center">
+                    <h1 class="color-brand-2"><span class="count">25</span><span> K+</span></h1>
+                    <h5>Completed Cases</h5>
+                    <p class="font-sm color-text-paragraph mt-10">We always provide people a <br class="d-none d-lg-block">complete solution upon focused of<br class="d-none d-lg-block"> any business</p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="text-center">
+                    <h1 class="color-brand-2"><span class="count">17</span><span> +</span></h1>
+                    <h5>Our Office</h5>
+                    <p class="font-sm color-text-paragraph mt-10">We always provide people a <br class="d-none d-lg-block">complete solution upon focused of <br class="d-none d-lg-block">any business</p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="text-center">
+                    <h1 class="color-brand-2"><span class="count">86</span><span> +</span></h1>
+                    <h5>Skilled People</h5>
+                    <p class="font-sm color-text-paragraph mt-10">We always provide people a <br class="d-none d-lg-block">complete solution upon focused of <br class="d-none d-lg-block">any business</p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="text-center">
+                    <h1 class="color-brand-2"><span class="count">28</span><span> +</span></h1>
+                    <h5>CHappy Clients</h5>
+                    <p class="font-sm color-text-paragraph mt-10">We always provide people a <br class="d-none d-lg-block">complete solution upon focused of <br class="d-none d-lg-block">any business</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+<!-- end numbers blocs -->
+
+<div class="border-bottom mb-30"></div>
+
+<section class="box-border-single bg-border-3 text-center">
+    <h2 class="section-title mb-10 wow animate__ animate__fadeInUp">Nos tarifs recruteurs</h2>
+    <p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp mb-30">
+        Découvrez nos tarifs adaptés au besoin de votre entreprise.
+    </p>
+    <!-- <h1>Nos tarifs</h1>
+<?php // echo do_shortcode('[wpjb_membership_pricing]'); 
+?> -->
+</section>
+
 
 <?php get_footer(); ?>

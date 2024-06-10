@@ -13,8 +13,9 @@
 /* @var $job Wpjb_Model_Job */
 
 ?>
+<?php $isFeaturedList = $param["is_featured"] == "1" ?>
 
-<div class="card-grid-2 job-item-box hover-up <?= $job->is_featured ? 'job-featured' : '' ?>">
+<div class="card-grid-2 job-item-box hover-up <?= $job->is_featured && !$isFeaturedList ? 'job-featured' : '' ?>">
 
     <span class="flash"></span>
     <div class="card-grid-2-image-left">

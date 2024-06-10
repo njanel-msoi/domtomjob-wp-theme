@@ -10,18 +10,20 @@
 
 <?php wpjb_flash(); ?>
 
+<?php $isFeaturedList = str_starts_with($param['sort_order'], 'jobs_posted') ?>
 
 <section class="section-box mt-30">
     <!-- Start Job list -->
     <div class="content-page">
-        <div class="box-filters-job">
-            <div class="row">
-                <div class="col-xl-6 col-lg-5">
-                    <span class="text-small text-showing">Page <strong><?= $result->page ?> </strong>sur <strong><?= $result->pages ?></strong></span>
-
+        <?php if (!$isFeaturedList) : ?>
+            <div class="box-filters-job">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-5">
+                        <span class="text-small text-showing">Page <strong><?= $result->page ?> </strong>sur <strong><?= $result->pages ?></strong></span>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif ?>
         <div class="row">
 
             <?php if ($result->count) : foreach ($result->company as $company) : ?>
