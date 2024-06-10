@@ -1185,6 +1185,16 @@ footer.footer a {
   font-size: 50px;
 }
 
+.large-register-layout .submit-btn,
+.large-register-layout .social-login {
+  width: 350px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.large-register-layout .divider-text-center {
+  margin-top: 40px;
+}
+
 .box-view-type > .btn {
   margin-top: -13px;
 }

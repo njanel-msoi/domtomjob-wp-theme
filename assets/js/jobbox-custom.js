@@ -5,10 +5,14 @@
     var headerElt = document.querySelector("header.header.stickable");
     if (headerElt) {
         var rootElt = document.querySelector(':root');
-        addEventListener("scroll", (event) => {
+        function checkScrollStick(){
             var stucked = rootElt.scrollTop != 0;
             headerElt.classList.toggle('stuck', stucked);
+        }
+        addEventListener("scroll", () => {
+            checkScrollStick();
         });
+        checkScrollStick();
     }
     /*====== Sidebar menu Active ======*/
     function mobileHeaderActive() {
@@ -58,14 +62,14 @@
         });    
 
     /*====== Clic on container trigger link ======*/
-        $(".click-on-link").click(function(event){
-            // if a link exists in children, clic on it
-            $(event.target).children("a").click();
-        })
+    $(".click-on-link").click(function(event){
+        // if a link exists in children, clic on it
+        $(event.target).children("a").click();
+    })
 
-        /*==== Add css to payment btn */
-        $("a.wpjb-button.wpjb-place-order")
-        .addClass("btn btn-default hover-up submit-btn mb-50").parent().addClass("text-center");
+    /*==== Add css to payment btn */
+    $("a.wpjb-button.wpjb-place-order")
+    .addClass("btn btn-default hover-up submit-btn mb-50").parent().addClass("text-center");
 
     /*====== Dashbaord profile on hover ======*/
     $(".to-be-revealed").hide();
@@ -78,7 +82,7 @@
 
     /*======== Copy from contact to billing button */
     // ADD BUTTON IN FORM Job-add & Company edit
-    var formWithCopyBtn = [".company-edit-form .group-group_2 h6",".job-add-form .group-billing h6"];
+    var formWithCopyBtn = [".company-edit-form .group-group_2 h6",".job-add-form .group-billing h6",".form_register_company .group-group_2 h6"];
     
     $(formWithCopyBtn.join(', '))
         .append('<button type="button" class="btn btn-tags-sm btn-copy-contact-billing">Copier depuis le contact</button>');

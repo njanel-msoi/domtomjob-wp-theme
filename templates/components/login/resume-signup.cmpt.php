@@ -1,1 +1,4 @@
-<h1>Candidat signup</h1>
+<?php
+$isLogin = false;
+$isCompany = false;
+include 'generic-login-form.cmpt.php';

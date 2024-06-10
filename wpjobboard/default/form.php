@@ -23,6 +23,7 @@ if (isset($page_class)) {
         include  dirname(__FILE__) . '/../../templates/components/dashboard/company-dashboard-profile-edit.cmpt.php';
         return;
     }
+
     if ($page_class == 'wpjb-page-company-login') {
         include  dirname(__FILE__) . '/../../templates/components/login/company-login.cmpt.php';
         return;
@@ -31,11 +32,16 @@ if (isset($page_class)) {
         include  dirname(__FILE__) . '/../../templates/components/login/resume-login.cmpt.php';
         return;
     }
+    if ($page_class == 'wpjb-page-company-new') {
+        include  dirname(__FILE__) . '/../../templates/components/login/company-signup.cmpt.php';
+        return;
+    }
 }
 
 $standalone = true; // !( (defined("DOING_AJAX") && DOING_AJAX) || ($page_class == "wpjb-form-nested") );
 
 ?>
+<h1>BONJOUR</h1>
 
 <div <?php if ($standalone) : ?>id="wpjb-main" <?php endif; ?> class="wpjb-page-default-form <?php if (isset($page_class)) echo $page_class ?>">
 
