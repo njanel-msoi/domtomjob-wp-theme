@@ -733,6 +733,9 @@ div.wpjb-page-company-products div.wpjb-company-product-additional div.wpjb-comp
 .btn.submit-btn {
   width: 220px;
 }
+.btn.social-login {
+  border: solid 1px;
+}
 
 .btn-border.active {
   color: #ffffff;
@@ -740,6 +743,16 @@ div.wpjb-page-company-products div.wpjb-company-product-additional div.wpjb-comp
 }
 .btn-border.active:hover {
   transform: none;
+}
+
+.btn-grey-small {
+  background-position: 13px 5px;
+  padding-left: 39px;
+  border: solid 2px transparent;
+}
+.btn-grey-small.selected {
+  font-weight: bold;
+  border-color: #000;
 }
 
 .submit-box {
@@ -841,6 +854,22 @@ footer.entry-meta {
   display: none;
 }
 
+form label.required:after {
+  content: "*";
+}
+
+.login-register .wpjb-element-input-checkbox .text-small {
+  position: absolute;
+  top: 0px;
+  left: 22px;
+}
+.login-register input[type=checkbox] {
+  height: auto;
+}
+.login-register .no-errors-display .wpjb-flash-error {
+  display: none;
+}
+
 form.form input[type=text],
 form.form input[type=email],
 form.form input[type=date],
@@ -851,9 +880,6 @@ form.form .form-control {
   color: #000;
   font-size: 14px;
   padding: 0.375rem 0.75rem;
-}
-form.form label.required:after {
-  content: "*";
 }
 form.form .wpjb-options-list input[type=radio] {
   margin-right: 10px;
@@ -1061,6 +1087,9 @@ footer.footer a {
   border-radius: 10px;
 }
 
+.banner-homepage5.banner-hero {
+  padding: 0;
+}
 .banner-homepage5.banner-hero .banner-inner {
   padding: 0;
   position: relative;
@@ -1144,6 +1173,16 @@ footer.footer a {
   .banner-homepage5.banner-hero .banner-inner .block-banner h5 {
     line-height: 47px;
   }
+}
+
+.block-pricing .list-package-feature {
+  padding: 15px 0 15px 0;
+}
+.block-pricing .list-package-feature b {
+  font-weight: bold;
+}
+.block-pricing .box-info-price .text-price {
+  font-size: 50px;
 }
 
 .box-view-type > .btn {

@@ -11,70 +11,75 @@
     </div>
 </section>
 
-<?php
-$query = new Daq_Db_Query();
-$activeListings = $query->select("t.*")
-    ->from("Wpjb_Model_Pricing t")
-    ->order("title")
-    ->where("is_active = 1")
-    ->where("price_for IN(?)", Wpjb_Model_Pricing::PRICE_SINGLE_JOB)
-    ->execute();
+<section class="section-box block-pricing mt-30">
 
-// first display single offer prices
-$activeListings = array_map(function ($price) {
-    return (object)[
-        'title' => $price->title,
-        'price' => $price->price,
-        'link' => PAGES_URLS->PublierAnnonce,
-        'featured' => $price->meta->is_featured->value() == 1
-    ];
-}, $activeListings);
-$singleListing = array_filter($activeListings, function ($p) {
-    return !$p->featured;
-});
-$optionsListing = array_filter($activeListings, function ($p) {
-    return $p->featured;
-});
+    <div class="row justify-content-center">
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="box-pricing-item text-center">
+                <h3>Annonce unitaire</h3>
+                <div class="box-info-price">
+                    <span class="text-price color-brand-2">149€</span>
+                    <span class="text-month">/ offre</span>
+                </div>
+                <a href="<?= PAGES_URLS->PublierAnnonce ?>" class="btn btn-border">
+                    Publier une offre
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="box-pricing-item">
+                <ul class="list-package-feature">
+                    <li>Mise en avant <b>+99€</b></li>
+                    <li>Annonce anonyme <b>+69€</b></li>
+                    <li>Statut urgent <b>+59€</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-$pricesArr = $singleListing;
-// $title = "Offres unitaires";
-// $subtitle = "Publiez une offre d'emploi en la réglant à l'unité.";
-$buyBtnTxt = 'Publier une offre';
+    <h2 class="text-center mb-15 mt-15">
+        Packs d'offres
+    </h2>
+    <div class="font-lg color-text-paragraph-2 text-center mb-30">
+        Un nombre d'offres d'emploi au meilleur prix, utilisable pendant 1 an</b>
+    </div>
 
-include dirname(__FILE__) . '/pricing-loop.cmpt.php';
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="box-pricing-item text-center">
+                <h3>5 offres</h3>
+                <div class="box-info-price">
+                    <span class="text-price color-brand-2">799€</span>
+                </div>
+                <a href="<?= get_the_permalink() . "?membership_id=15" ?>" class="btn btn-border">
+                    Acheter
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="box-pricing-item text-center">
+                <h3>10 offres</h3>
+                <div class="box-info-price">
+                    <span class="text-price color-brand-2">1490€</span>
+                </div>
+                <a href="<?= get_the_permalink() . "?membership_id=16" ?>" class="btn btn-border">
+                    Acheter
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="box-pricing-item text-center">
+                <h3>Illimité</h3>
+                <div class="box-info-price">
+                    <span class="text-price color-brand-2">2950€</span>
+                    <span class="text-month">/ an</span>
+                </div>
+                <a href="<?= get_the_permalink() . "?membership_id=18" ?>" class="btn btn-border">
+                    Acheter
+                </a>
+            </div>
+        </div>
+    </div>
 
-// packs are membership not featured
-$packs = [];
-// subscriptoins are membership with featured flag
-$subscriptions = [];
-foreach ($memberships as $pricing) {
-    // filter active memberships
-    if (!$pricing->is_active) continue;
-    $price = (object)[
-        'title' => $pricing->title,
-        'price' => $pricing->price,
-        'link' => get_the_permalink() . "?membership_id=" . esc_html(intval($pricing->id)),
-        'featured' => $pricing->meta->is_featured->value() == 1
-    ];
-    if (!$price->featured) $packs[] = $price;
-    else $subscriptions[] = $price;
-}
 
-$pricesArr = $packs;
-$title = "Packs d'offres";
-$subtitle = "Un nombre d'offres d'emploi au meilleur prix, utilisable pendant 365 jours";
-$buyBtnTxt = 'Acheter';
-include dirname(__FILE__) . '/pricing-loop.cmpt.php';
-
-$pricesArr = $subscriptions;
-$title = "Abonnement illimité";
-$subtitle = "Postez un nombre illimité d'offres pendant 365 jours";
-$buyBtnTxt = 'Acheter';
-include dirname(__FILE__) . '/pricing-loop.cmpt.php';
-
-$pricesArr = $optionsListing;
-$title = "Ajout d'options";
-$subtitle = "Mettez en avant une offre ou publiez sans mentionner le recruteur";
-$buyBtnTxt = 'Publier une offre';
-
-include dirname(__FILE__) . '/pricing-loop.cmpt.php';
+</section>

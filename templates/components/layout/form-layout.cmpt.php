@@ -42,7 +42,7 @@ if (!isset($noGroups)) $noGroups = false;
 
                                 <?php if ($field->getType() != 'label') : ?>
 
-                                    <label for="inputEmail4" class="form-label <?= $field->isRequired() ? 'required' : '' ?>"><?= esc_html($field->getLabel()) ?></label>
+                                    <label class="form-label <?= $field->isRequired() ? 'required' : '' ?>"><?= esc_html($field->getLabel()) ?></label>
 
                                     <div>
                                         <?php if (!in_array($field->getType(), ['radio', 'checkbox'])) $field->addClass('form-control'); ?>

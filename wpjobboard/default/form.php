@@ -23,6 +23,14 @@ if (isset($page_class)) {
         include  dirname(__FILE__) . '/../../templates/components/dashboard/company-dashboard-profile-edit.cmpt.php';
         return;
     }
+    if ($page_class == 'wpjb-page-company-login') {
+        include  dirname(__FILE__) . '/../../templates/components/login/company-login.cmpt.php';
+        return;
+    }
+    if ($page_class == 'wpjb-page-resume-login') {
+        include  dirname(__FILE__) . '/../../templates/components/login/resume-login.cmpt.php';
+        return;
+    }
 }
 
 $standalone = true; // !( (defined("DOING_AJAX") && DOING_AJAX) || ($page_class == "wpjb-form-nested") );
