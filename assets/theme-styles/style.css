@@ -1000,6 +1000,11 @@ header.header .main-menu > li:last-child {
 footer.footer .footer-logo {
   width: 150px;
 }
+footer.footer a {
+  color: #4f5e64;
+  font-size: 14px;
+  text-decoration: none;
+}
 
 .popup-container {
   position: fixed;

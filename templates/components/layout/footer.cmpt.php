@@ -19,28 +19,39 @@
                     <img class="footer-logo" alt="<?= esc_attr(get_bloginfo('name', 'display')) ?>" src="<?= get_stylesheet_directory_uri() . '/images/logo_dtj.png' ?>">
                 </a>
                 <div class="mt-20 mb-20 font-xs color-text-paragraph-2">
-                    JobBox is the heart of the design community and the best resource to discover and connect with designers and jobs worldwide.
+                    DomTomJob est la plateforme leader des offres d'emploi à la Réunion et dans les DROM-COM
                 </div>
                 <div class="footer-social"><a class="icon-socials icon-facebook" href="#"></a><a class="icon-socials icon-twitter" href="#"></a><a class="icon-socials icon-linkedin" href="#"></a></div>
             </div>
-            <div class="col-md-3 col-xs-12">
-                <h6 class="mb-20">Arborescence</h6>
-                <div class="menu-footer">
-                    <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
-                </div>
-            </div>
-            <div class="col-md-4 col-xs-12">
-                <h6 class="mb-20">Régions</h6>
+            <div class="col-md-9 col-sm-12">
                 <div class="row">
-                    <?php
-                    global $REGIONS;
-                    foreach ($REGIONS as $region) : ?>
-                        <div class="col-6">
-                            <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>&nbsp;
+                    <div class="col-md-3 col-xs-12">
+                        <h6 class="mb-20">Arborescence</h6>
+                        <div class="menu-footer">
+                            <?php wp_nav_menu(array('menu' => 'menu-footer')); ?>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                        <h6 class="mb-20">&nbsp;</h6>
+                        <div class="menu-footer">
+                            <?php wp_nav_menu(array('menu' => 'footer-2')); ?>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <h6 class="mb-20">Régions</h6>
+                        <div class="row">
+                            <?php
+                            global $REGIONS;
+                            foreach ($REGIONS as $region) : ?>
+                                <div class="col-6">
+                                    <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>&nbsp;
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
         <div class="footer-bottom mt-50">
             <div class="row">
