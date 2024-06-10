@@ -1185,14 +1185,24 @@ footer.footer a {
   font-size: 50px;
 }
 
-.large-register-layout .submit-btn,
-.large-register-layout .social-login {
+.login-register {
+  position: relative;
+}
+.login-register .large-register-layout .submit-btn,
+.login-register .large-register-layout .social-login {
   width: 350px;
+  max-width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
-.large-register-layout .divider-text-center {
+.login-register .large-register-layout .divider-text-center {
   margin-top: 40px;
+}
+.login-register .img-decorative {
+  position: absolute;
+  right: 9%;
+  top: 23%;
+  width: unset;
 }
 
 .box-view-type > .btn {

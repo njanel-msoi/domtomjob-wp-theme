@@ -22,7 +22,7 @@ if (!isset($noGroups)) $noGroups = false;
     <input type="hidden" name="submitted" value="1">
 
     <?php echo $form->renderHidden() ?>
-    <div class="row">
+    <div class="row justify-content-center">
         <?php foreach ($form->getReordered() as $group) : ?>
             <div class="col-12 <?= in_array($group->getName(), $groupsHalfSize) ? 'col-md-6' : '' ?> <?= in_array($group->getName(), $groupsToHide) ? 'd-none' : '' ?>">
                 <div class="<?= $noGroups ? '' : 'box-border-single mb-30' ?> group-<?= esc_attr($group->getName()) ?>">

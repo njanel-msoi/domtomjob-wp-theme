@@ -27,7 +27,7 @@ $useLargeFormLayout = $isSignup;
     </ul>
 </div>
 <section class="login-register pt-40">
-    <div class="row login-register-cover">
+    <div class="row">
         <div class="<?= $useLargeFormLayout ? 'col-12 large-register-layout' : 'col-lg-4 col-md-6 col-sm-12 mx-auto' ?>">
             <div class="text-center">
                 <p class="font-sm text-brand-2"><?= $title ?></p>
@@ -55,8 +55,8 @@ $useLargeFormLayout = $isSignup;
 
                 $groupsToHide = ['important_infos'];
                 $fieldsToHide = ['is_public'];
-                $groupsHalfSize = ['contact', 'group_2'];
-                $groupsWithFullSizeInput = ['contact', 'group_2'];
+                $groupsHalfSize = ['auth', 'contact', 'group_2'];
+                $groupsWithFullSizeInput = ['auth', 'contact', 'group_2'];
 
                 $submitBtn = $submitTxt;
                 include dirname(__FILE__) . '/../layout/form-layout.cmpt.php';
@@ -101,7 +101,7 @@ $useLargeFormLayout = $isSignup;
             <a class="btn social-login mb-20" href="<?= $footerLinkUrl ?>"><strong><?= $footerLinkTxt ?></strong></a>
         </div>
         <?php if (!$useLargeFormLayout) : ?>
-            <div class="img-1 d-none d-lg-block"><img class="shape-1" src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/page/login-register/img-<?= $isCompany ? '4' : '1' ?>.svg" alt="JobBox"></div>
+            <div class="img-1 img-decorative d-none d-lg-block"><img class="shape-1" src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/page/login-register/img-<?= $isCompany ? '4' : '1' ?>.svg" alt="JobBox"></div>
         <?php endif ?>
         <div class="img-2"><img src="<?= get_stylesheet_directory_uri() ?>/assets/imgs/page/login-register/img-<?= $isLogin ? '3' : '2' ?>.svg" alt="JobBox"></div>
     </div>

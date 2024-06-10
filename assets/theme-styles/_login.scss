@@ -1,12 +1,24 @@
-.large-register-layout {
-  .submit-btn,
-  .social-login {
-    width: 350px;
+.login-register {
+  position: relative;
 
-    margin-right: auto;
-    margin-left: auto;
+  .large-register-layout {
+    .submit-btn,
+    .social-login {
+      width: 350px;
+      max-width: 100%;
+
+      margin-right: auto;
+      margin-left: auto;
+    }
+    .divider-text-center {
+      margin-top: 40px;
+    }
   }
-  .divider-text-center {
-    margin-top: 40px;
+
+  .img-decorative {
+    position: absolute;
+    right: 9%;
+    top: 23%;
+    width: unset;
   }
 }
