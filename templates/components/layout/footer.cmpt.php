@@ -68,7 +68,6 @@
     </div>
 </footer>
 
-<?php wp_footer(); ?>
 
 <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/jquery-3.6.0.min.js"></script>
 <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/select2.min.js"></script>
@@ -88,6 +87,7 @@
 
 <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/jobbox-custom.js?v=4.1"></script>
 
+<?php wp_footer(); ?>
 </body>
 
 </html>
