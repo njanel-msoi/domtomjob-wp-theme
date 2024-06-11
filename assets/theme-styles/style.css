@@ -889,6 +889,10 @@ form.form .wpjb-upload {
   border: solid 1px #e0e6f7;
   padding: 0.375rem 0.75rem;
 }
+form.form input[type=checkbox] + .wpjb-input-description,
+form.form input[type=radio] + .wpjb-input-description {
+  margin-left: 6px;
+}
 
 .job-list-filters-form input[type=text] {
   background: url(../imgs/page/homepage1/key-numbers.svg) no-repeat left 10px center;

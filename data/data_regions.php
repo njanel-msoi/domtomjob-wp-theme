@@ -18,7 +18,8 @@ $REGIONS = array(
     'SaintPierreetMiquelon' => 'Saint-Pierre et Miquelon',
     'Seychelles' => 'Seychelles',
     'TAAF' => 'T.A.A.F.',
-    'WallisetFutuna' => 'Wallis et Futuna'
+    'WallisetFutuna' => 'Wallis et Futuna',
+    'Autre' => 'Autre'
 );
 
 // build a format compatible with wpjb plugin

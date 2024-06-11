@@ -36,6 +36,7 @@ if (!isset($noGroups)) $noGroups = false;
                     <?php endif ?>
                     <div class="row g-3">
                         <?php foreach ($group->getReordered() as $field) : ?>
+                            <?php $isRadioOrCheckbox = in_array($field->getType(), ['radio', 'checkbox']); ?>
                             <?php if (in_array($field->getName(), $fieldsToHide)) continue; ?>
 
                             <?php /* @var $field Daq_Form_Element Daq_Form_Element_Select */ ?>
@@ -43,17 +44,21 @@ if (!isset($noGroups)) $noGroups = false;
 
                                 <?php if ($field->getType() != 'label') : ?>
 
-                                    <label class="form-label <?= $field->isRequired() ? 'required' : '' ?>"><?= esc_html($field->getLabel()) ?></label>
+                                    <?php // for radio/checkbox, label is inside input rendering 
+                                    if (!$isRadioOrCheckbox) : ?>
+                                        <label class="form-label <?= $field->isRequired() ? 'required' : '' ?>"><?= esc_html($field->getLabel()) ?></label>
+                                    <?php endif ?>
 
                                     <div>
-                                        <?php if (!in_array($field->getType(), ['radio', 'checkbox'])) $field->addClass('form-control'); ?>
+                                        <?php if (!$isRadioOrCheckbox) $field->addClass('form-control'); ?>
+
                                         <?php if (!$hasBeenSubmited && isset($defaultValues[$field->getName()])) $field->setValue($defaultValues[$field->getName()]); ?>
 
                                         <?php wpjb_form_render_input($form, $field) ?>
                                         <?php wpjb_form_input_hint($field) ?>
                                         <?php wpjb_form_input_errors($field) ?>
                                     </div>
-                                <?php endif; ?>
+                                <?php endif ?>
 
                             </div>
                         <?php endforeach; ?>
