@@ -64,7 +64,7 @@
             $groupsToHide = ['important_infos'];
             $fieldsToHide = [];
             $groupsHalfSize = [];
-            $groupsWithFullSizeInput = [];
+            $groupsWithFullSizeInput = ['group_job_sub'];
             $submitBtn = "Envoyer votre candidature";
             $noGroups = true;
 

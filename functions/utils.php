@@ -86,6 +86,19 @@ function get_meta_value($object, $field)
     return '';
 }
 
+function get_meta_file($object, $field)
+{
+    $meta = $object->getMeta()->$field;
+    $link = maybe_unserialize($object->meta->company_logo->value());
+
+    if ($meta) {
+        $metaValues = $meta->getValues();
+        if (isset($metaValues[0]))
+            return $metaValues[0]->value;
+    }
+    return null;
+}
+
 function get_job_tag($job, $tag)
 {
     $tag = $job->getTag()->$tag;
