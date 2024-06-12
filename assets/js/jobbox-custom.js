@@ -128,4 +128,35 @@
     $(".company-item-box").click(function(event) {
         window.location.href = $(this).find('.company-link').attr('href')
     });
+
+    console.log("bonjour");
+    /** WAIT FOR ALERT LOAD */
+    setTimeout(function() {
+        /** REMOVE USELESS PARAM FROM USER ALERTS IN APPLICANT DASHBOARD */
+        var alertParamToDisplay = ['Meta','Type','Category'];
+        // loop on each alert
+        $(".wpjb-manage-alert").each(function(idx, dom){
+            var alertElt = $(dom);
+            var paramDisplay = [];
+            // loop on params
+            alertElt.find(".wpjb-alert-params> .wpjb-grid-row> .wpjb-grid-col:first-child").each(function(idx, dom){
+                var elt = $(dom);
+                var category = elt.text().trim();
+                if (alertParamToDisplay.includes(category)) {
+                    var value = elt.find('+.wpjb-grid-col').text().trim().split(', ');
+                    paramDisplay.push(value);
+                }
+            });
+            var title = alertElt.find(".wpjb-manage-title");
+            var paramTxt = paramDisplay.length ? paramDisplay.join(', ') : 'Recevoir toutes les nouvelles offres';
+            title.after('<span class="alert-params-label">'+paramTxt+'</span>');
+        });
+        
+        /** SUBMIT ALERT FORM AFTER REMOVE */
+        $('.wpjb-alert-detail-remove').click(function(){
+            setTimeout(function(){
+                //$('#wpjb-save-alerts-form').submit();
+            });
+        });
+    },1000);
 })(jQuery);

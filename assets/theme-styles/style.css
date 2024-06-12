@@ -714,6 +714,21 @@ div.wpjb-page-company-products div.wpjb-company-product-additional div.wpjb-comp
   border-radius: 5px;
 }
 
+/* APPLICANT DASHBOARD */
+.wpjb-manage-header-right > li {
+  display: inline;
+  margin: 0 0 0 0.75em;
+}
+
+.wpjb-manage-header-right > li .wpjb-manage-header-right-item-text {
+  font-size: 13px;
+}
+
+.wpjb-manage-header-right > li {
+  display: block;
+  margin: 0;
+}
+
 :root {
   overflow-y: visible !important;
   overflow-x: hidden !important;
@@ -738,11 +753,17 @@ div.wpjb-page-company-products div.wpjb-company-product-additional div.wpjb-comp
 }
 
 .btn-border.active {
-  color: #ffffff;
-  background-color: #05264e;
+  font-weight: bold;
+  background-color: #eff3fc;
 }
 .btn-border.active:hover {
   transform: none;
+}
+
+.breacrumb-cover .btn-border.active {
+  font-weight: normal;
+  color: #ffffff;
+  background-color: #05264e;
 }
 
 .btn-grey-small {
@@ -843,6 +864,7 @@ footer.entry-meta {
   border-radius: 3px;
   margin: 17px auto;
   padding: 5px;
+  background-color: #eff3fc;
 }
 
 .wpjb-hint {
@@ -1355,6 +1377,41 @@ footer.footer a {
   padding-left: 0;
   padding-right: 100px;
   text-align: right;
+}
+
+.applicant-alerts-manage #wpjb-add-new-alert {
+  display: none;
+}
+.applicant-alerts-manage .wpjb-alert-detail-edit {
+  display: none;
+}
+.applicant-alerts-manage .wpjb-alert-show-params {
+  display: none;
+}
+.applicant-alerts-manage .wpjb-alert-params {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+.applicant-alerts-manage .wpjb-alert-params > .wpjb-grid-row {
+  padding: 2px 12px;
+  margin-right: 5px;
+}
+.applicant-alerts-manage .wpjb-alert-params > .wpjb-grid-row > .wpjb-grid-col:first-child {
+  display: none;
+}
+.applicant-alerts-manage .wpjb-alert-undo {
+  display: none;
+}
+.applicant-alerts-manage .alert-params-label {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  max-width: calc(100% - 200px);
+  line-break: anywhere;
+}
+.applicant-alerts-manage .wpjb-manage-alert {
+  position: relative;
 }
 
 @media (min-width: 992px) {

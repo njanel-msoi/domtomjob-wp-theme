@@ -29,13 +29,20 @@
 }
 .btn-border {
   &.active {
-    color: #ffffff;
-    background-color: #05264e;
+    font-weight: bold;
+    background-color: #eff3fc;
     &:hover {
       transform: none;
     }
   }
 }
+// for company dashboard menu
+.breacrumb-cover .btn-border.active {
+  font-weight: normal;
+  color: #ffffff;
+  background-color: #05264e;
+}
+
 .btn-grey-small {
   background-position: 13px 5px;
   padding-left: 39px;

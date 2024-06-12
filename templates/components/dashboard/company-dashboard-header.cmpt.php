@@ -12,6 +12,7 @@ $menuLinks = [
 ];
 if (!isset($hideCompanyBox)) $hideCompanyBox = false;
 if (!isset($headerCode)) $headerCode = null;
+if (!isset($headerTitle)) $headerTitle = 'Espace recruteur';
 if ($headerCode) {
     $headerTitle =  $menuLinks[$headerCode]->label;
 }

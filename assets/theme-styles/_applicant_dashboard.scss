@@ -1,0 +1,39 @@
+.applicant-alerts-manage {
+  #wpjb-add-new-alert {
+    display: none;
+  }
+  .wpjb-alert-detail-edit {
+    display: none;
+  }
+  .wpjb-alert-show-params {
+    display: none;
+  }
+
+  .wpjb-alert-params {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    > .wpjb-grid-row {
+      padding: 2px 12px;
+      margin-right: 5px;
+      > .wpjb-grid-col:first-child {
+        display: none;
+      }
+    }
+  }
+
+  .wpjb-alert-undo {
+    display: none;
+  }
+  .alert-params-label {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    max-width: calc(100% - 200px);
+
+    line-break: anywhere;
+  }
+  .wpjb-manage-alert {
+    position: relative;
+  }
+}

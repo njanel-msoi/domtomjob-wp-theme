@@ -6,16 +6,24 @@
  *      $formAction = '';
  *     $groupsToHide = ['important_infos'];
  *     $fieldsToHide = ['is_public'];
+ *     $defaultValues = [];
  *     $groupsHalfSize = ['company', 'billing'];
  *     $groupsWithFullSizeInput = ['coupon', 'captcha', 'billing', 'company'];
  *     $submitBtn = 'Prévisualiser l'offre';
+ *     $noGroups = false;
  */
+if (!isset($formClass)) $formClass = '';
+if (!isset($formAction)) $formAction = '';
+if (!isset($submitBtn)) $submitBtn = 'Enregistrer';
+if (!isset($groupsToHide)) $groupsToHide = [];
+if (!isset($fieldsToHide)) $fieldsToHide = [];
+if (!isset($groupsHalfSize)) $groupsHalfSize = [];
+if (!isset($groupsWithFullSizeInput)) $groupsWithFullSizeInput = [];
+if (!isset($defaultValues)) $defaultValues = [];
+
+if (!isset($noGroups)) $noGroups = false;
 
 $hasBeenSubmited = isset($_POST['submitted']);
-if (!isset($defaultValues)) {
-    $defaultValues = [];
-}
-if (!isset($noGroups)) $noGroups = false;
 ?>
 
 <form action="<?= $formAction ?>" method="post" enctype="multipart/form-data" class="form <?= $formClass ?>">
@@ -24,6 +32,7 @@ if (!isset($noGroups)) $noGroups = false;
     <?php echo $form->renderHidden() ?>
     <div class="row justify-content-center">
         <?php foreach ($form->getReordered() as $group) : ?>
+            <?php if ($group->isTrashed()) continue; ?>
             <div class="col-12 <?= in_array($group->getName(), $groupsHalfSize) ? 'col-md-6' : '' ?> <?= in_array($group->getName(), $groupsToHide) ? 'd-none' : '' ?>">
                 <div class="<?= $noGroups ? '' : 'box-border-single mb-30' ?> group-<?= esc_attr($group->getName()) ?> <?= $noGroups ? 'mb-30' : '' ?>">
                     <?php /* Check groups on half or full width */

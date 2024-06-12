@@ -182,3 +182,8 @@ function data_value_from_key($key, $data)
     }
     return '';
 }
+
+function candidateDashboardUrl($part)
+{
+    return get_site_url() . '/candidate-panel/' . $part;
+}

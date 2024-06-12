@@ -18,32 +18,44 @@
 /* @var $submit string Text on the submit button */
 
 // redirection for some specifics forms
-if (isset($page_class)) {
-    if ($page_class == 'wpjb-company-edit-form') {
-        include  dirname(__FILE__) . '/../../templates/components/dashboard/company-dashboard-profile-edit.cmpt.php';
-        return;
-    }
+$templateToLoad = NULL;
 
-    if ($page_class == 'wpjb-page-company-login') {
-        include  dirname(__FILE__) . '/../../templates/components/login/company-login.cmpt.php';
-        return;
-    }
-    if ($page_class == 'wpjb-page-resume-login') {
-        include  dirname(__FILE__) . '/../../templates/components/login/resume-login.cmpt.php';
-        return;
-    }
-    if ($page_class == 'wpjb-page-company-new') {
-        include  dirname(__FILE__) . '/../../templates/components/login/company-signup.cmpt.php';
-        return;
-    }
+if (isset($page_class)) {
+    if ($page_class == 'wpjb-company-edit-form')
+        $templateToLoad = 'dashboard/company-dashboard-profile-edit.cmpt.php';
+    else if ($page_class == 'wpjb-page-company-login')
+        $templateToLoad = 'login/company-login.cmpt.php';
+    else if ($page_class == 'wpjb-page-resume-login')
+        $templateToLoad = 'login/resume-login.cmpt.php';
+    else if ($page_class == 'wpjb-page-company-new')
+        $templateToLoad = 'login/company-signup.cmpt.php';
+}
+global $wp;
+$currentPath = $wp->request;
+if ($currentPath == 'candidate-panel/password')
+    $templateToLoad = 'dashboard/applicant-change-password.cmpt.php';
+if ($currentPath == 'candidate-panel/delete')
+    $templateToLoad = 'dashboard/applicant-delete.cmpt.php';
+if ($currentPath == 'employer-panel/password')
+    $templateToLoad = 'dashboard/company-change-password.cmpt.php';
+if ($currentPath == 'employer-panel/delete')
+    $templateToLoad = 'dashboard/company-delete.cmpt.php';
+
+if ($templateToLoad) {
+    include  dirname(__FILE__) . '/../../templates/components/' . $templateToLoad;
+    return;
 }
 
-$standalone = true; // !( (defined("DOING_AJAX") && DOING_AJAX) || ($page_class == "wpjb-form-nested") );
-
 ?>
-<h1>BONJOUR</h1>
 
-<div <?php if ($standalone) : ?>id="wpjb-main" <?php endif; ?> class="wpjb-page-default-form <?php if (isset($page_class)) echo $page_class ?>">
+<?php wpjb_flash() ?>
+<?php include dirname(__FILE__) . "/../../templates/components/layout/form-layout.cmpt.php";
+
+/*
+<?php
+$standalone = true; // !( (defined("DOING_AJAX") && DOING_AJAX) || ($page_class == "wpjb-form-nested") ); ?>
+
+<div <?php if ($action) : ?>id="wpjb-main" <?php endif; ?> class="wpjb-page-default-form <?php if (isset($page_class)) echo $page_class ?>">
 
     <?php wpjb_flash() ?>
 
@@ -52,11 +64,9 @@ $standalone = true; // !( (defined("DOING_AJAX") && DOING_AJAX) || ($page_class 
         <?php echo $form->renderHidden() ?>
         <?php foreach ($form->getReordered() as $group) : ?>
 
-            <?php /* @var $group stdClass */ ?>
             <fieldset class="wpjb-fieldset-<?php esc_attr_e($group->getName()) ?>">
                 <?php if (!empty($group->title)) : ?><legend><?php esc_html_e($group->title) ?></legend><?php endif; ?>
                 <?php foreach ($group->getReordered() as $name => $field) : ?>
-                    <?php /* @var $field Daq_Form_Element */ ?>
                     <div class="<?php wpjb_form_input_features($field) ?>">
 
                         <label class="wpjb-label">
@@ -97,4 +107,4 @@ $standalone = true; // !( (defined("DOING_AJAX") && DOING_AJAX) || ($page_class 
         <?php endif; ?>
     </form>
 
-</div>
+</div>*/
