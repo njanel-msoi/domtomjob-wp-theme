@@ -1,9 +1,7 @@
 <?php
-include_once "access-token.php";
 
 function encrypt_old($key, $plaintext)
 {
-
     //$iv = 'fedcba9876543210';
     //$key = '0123456789abcdef';
 
@@ -33,6 +31,8 @@ function encrypt($key, $plaintext)
 
 function exec_curl_request($apiPath, $postBody = null)
 {
+    include_once "access-token.php";
+
     $url = API_URL . $apiPath;
     $headers = array("X-Authorization: " . encrypt(API_CRYPT, API_ACCESS_TOKEN));
 
@@ -50,6 +50,8 @@ function exec_curl_request($apiPath, $postBody = null)
 
     $result = curl_exec($ch);
     curl_close($ch);
+
+    header("Content-type: text/plain; charset=utf-8");
     print_r($result);
 
     return $result;

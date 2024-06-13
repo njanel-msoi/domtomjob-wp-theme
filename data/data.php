@@ -7,3 +7,4 @@ include 'data_categories.php';
 include 'data_job_functions.php';
 include 'data_study_level.php';
 include 'data_optins.php';
+include 'data_company_type.php';

@@ -1,5 +1,6 @@
 <?php
-header("Content-type: text/plain; charset=utf-8");
+include_once "config.php";
+include_once "functions.php";
 
 // read company id in query
 
@@ -49,13 +50,12 @@ $postJobBody = array(
             ),
         ),
 
-        // "tags" => array(
-        //     array(
-        //         "type"      => "category", // required, allowed values: category, type
-        //         "title"     => "PHP",      // <required (if empty "id")
-        //         "slug"      => "php"
-        //     )
-        // ),
+        "tags" => array(
+            array(
+                "type"      => "category", // required, allowed values: category, type
+                "id" => 15
+            )
+        ),
 
         // "files" => array(
         //     array(

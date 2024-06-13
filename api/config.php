@@ -1,6 +1,4 @@
 <?php
-$debug = str_contains($_SERVER['SERVER_NAME'], '.local') || str_contains($_SERVER['SERVER_NAME'], 'dev.');
-
 $protocol = 'http://';
 if (
     isset($_SERVER['HTTPS']) &&
@@ -18,7 +16,7 @@ define("API_URL",           "$host/wpjobboard");
 define("API_CYPHER",        "aes-128-cbc");
 define("API_CRYPT",         "79b6582ecbbe64cf7b7e52966636293d");
 
-// Login and password of a user
+// Login and password of a user (to be include in post query)
 define("API_USER",          "rest-api");
 define("API_PASS",          "Mv7yp)CWX)7vBV%esWHdUxOW");
 
@@ -28,4 +26,15 @@ define("API_ACCESS_TOKEN",  "50d3c47d440db7cce46093821fe9b794e7a3d799");
 // Enable debugging
 define("API_DEBUG", true);
 
-define("JOB_EXPIRATION", strtotime("today +30 day"));
+define("JOB_EXPIRATION", strtotime("today +60 day"));
+
+function encrypt($key, $plaintext)
+{
+    return bin2hex(openssl_encrypt(
+        $plaintext,
+        API_CYPHER,
+        $key,
+        0,
+        substr(hash('sha256', API_URL_HOME), 0, 16)
+    ));
+}

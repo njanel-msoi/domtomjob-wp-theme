@@ -2,24 +2,24 @@
 
 // Liste des éléments
 $REGIONS = array(
-    'Francemetropolitaine' => 'France métropolitaine',
-    'Guadeloupe' => 'Guadeloupe',
-    'Guyane' => 'Guyane',
-    'IleMaurice' => 'Île Maurice',
-    'LesComores' => 'Les Comores',
-    'Madagascar' => 'Madagascar',
-    'Martinique' => 'Martinique',
-    'Mayotte' => 'Mayotte',
-    'NouvelleCaledonie' => 'Nouvelle Calédonie',
-    'PolynesieFrancaise' => 'Polynésie Française',
-    'Reunion' => 'Réunion',
-    'SaintBarthelemy' => 'Saint Barthélémy',
-    'SaintMartin' => 'Saint-Martin',
-    'SaintPierreetMiquelon' => 'Saint-Pierre et Miquelon',
-    'Seychelles' => 'Seychelles',
-    'TAAF' => 'T.A.A.F.',
-    'WallisetFutuna' => 'Wallis et Futuna',
-    'Autre' => 'Autre'
+    17 => 'France métropolitaine',
+    1 => 'Guadeloupe',
+    3 => 'Guyane',
+    14 => 'Île Maurice',
+    16 => 'Les Comores',
+    15 => 'Madagascar',
+    2 => 'Martinique',
+    5 => 'Mayotte',
+    6 => 'Nouvelle Calédonie',
+    7 => 'Polynésie Française',
+    4 => 'Réunion',
+    18 => 'Saint Barthélémy',
+    10 => 'Saint-Martin',
+    9 => 'Saint-Pierre et Miquelon',
+    20 => 'Seychelles',
+    11 => 'T.A.A.F.',
+    8 => 'Wallis et Futuna',
+    99 => 'Autre'
 );
 
 // build a format compatible with wpjb plugin

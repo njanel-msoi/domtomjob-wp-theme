@@ -75,16 +75,16 @@
 
                             <li class="has-children"><a>Recruteurs</a>
                                 <ul class="sub-menu">
-                                    <li><a href="jobs-list.html">Publier une offre</a></li>
-                                    <li><a href="jobs-grid.html">Tarifs</a></li>
-                                    <li><a href="job-details.html" class="fw-bold">Espace recruteur</a></li>
+                                    <li><a href="<?= PAGES_URLS->PublierAnnonce ?>">Publier une offre</a></li>
+                                    <li><a href="<?= PAGES_URLS->NosOffres ?>">Tarifs</a></li>
+                                    <li><a href="<?= PAGES_URLS->EspaceRecruteur ?>" class="fw-bold">Espace recruteur</a></li>
                                 </ul>
                             </li>
-                            <li class="has-children"><a href="<?= PAGES_URLS->ListeOffres ?>">Candidats</a>
+                            <li class="has-children"><a>Candidats</a>
                                 <ul class="sub-menu">
-                                    <li><a href="candidates-grid.html">Offres d'emploi</a></li>
-                                    <li><a href="candidates-grid.html">Découverte des entreprises</a></li>
-                                    <li><a href="candidate-details.html" class="fw-bold">Espace candidat</a></li>
+                                    <li><a href="<?= PAGES_URLS->ListeOffres ?>">Offres d'emploi</a></li>
+                                    <li><a href="<?= PAGES_URLS->ListeEntreprises ?>">Découverte des entreprises</a></li>
+                                    <li><a href="<?= PAGES_URLS->EspaceCandidat ?>" class="fw-bold">Espace candidat</a></li>
                                 </ul>
                             </li>
 

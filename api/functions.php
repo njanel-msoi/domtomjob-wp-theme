@@ -1,4 +1,5 @@
 <?php
+
 function encrypt($key, $plaintext)
 {
     return bin2hex(openssl_encrypt(
