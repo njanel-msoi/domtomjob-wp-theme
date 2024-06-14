@@ -8,3 +8,5 @@ include 'data_job_functions.php';
 include 'data_study_level.php';
 include 'data_optins.php';
 include 'data_company_type.php';
+include 'data_apply_type.php';
+include 'data_anonymous.php';

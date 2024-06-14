@@ -25,7 +25,7 @@
     $formClass = 'wpjb-company-edit-form company-edit-form';
     $formAction = '';
     $groupsToHide = ['important_infos'];
-    $fieldsToHide = ['is_public'];
+    $fieldsToHide = [];
     $groupsHalfSize = ['contact', 'group_2'];
     $groupsWithFullSizeInput = ['contact', 'group_2'];
     $submitBtn = "Enregistrer les modifications";

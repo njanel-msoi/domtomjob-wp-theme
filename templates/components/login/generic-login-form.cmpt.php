@@ -54,9 +54,18 @@ $useLargeFormLayout = $isSignup;
                 $formAction = esc_attr($action);
 
                 $groupsToHide = ['important_infos'];
-                $fieldsToHide = ['is_public'];
-                $groupsHalfSize = ['auth', 'contact', 'group_2'];
-                $groupsWithFullSizeInput = ['auth', 'contact', 'group_2'];
+
+                if (!isset($fieldsToHide)) $fieldsToHide = [];
+
+                if (!isset($groupsHalfSize)) $groupsHalfSize = [];
+                $groupsHalfSize[] = 'auth';
+                $groupsHalfSize[] = 'contact';
+                $groupsHalfSize[] = 'group_2';
+
+                if (!isset($groupsWithFullSizeInput)) $groupsWithFullSizeInput = [];
+                $groupsWithFullSizeInput[] = 'auth';
+                $groupsWithFullSizeInput[] = 'contact';
+                $groupsWithFullSizeInput[] = 'group_2';
 
                 $submitBtn = $submitTxt;
                 include dirname(__FILE__) . '/../layout/form-layout.cmpt.php';

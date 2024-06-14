@@ -1,19 +1,20 @@
 <?php
 
 $COUNTRIES_MAP = [];
+$COUNTRIES = [];
 
 function dtj_get_countries()
 {
-    global $COUNTRIES_MAP;
+    global $COUNTRIES_MAP, $COUNTRIES;
     if (count($COUNTRIES_MAP) == 0) {
-        $countries = Wpjb_List_Country::getAll();
+        $COUNTRIES = Wpjb_List_Country::getAll();
         $COUNTRIES_MAP = array_map(function ($country) {
             return [
                 "key" => $country["code"],
                 "value" => $country["code"],
                 "description" => $country["name"]
             ];
-        }, $countries);
+        }, $COUNTRIES);
     }
     return $COUNTRIES_MAP;
 }

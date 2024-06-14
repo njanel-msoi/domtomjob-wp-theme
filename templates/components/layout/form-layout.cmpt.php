@@ -21,6 +21,7 @@ if (!isset($groupsHalfSize)) $groupsHalfSize = [];
 if (!isset($groupsWithFullSizeInput)) $groupsWithFullSizeInput = [];
 if (!isset($defaultValues)) $defaultValues = [];
 
+
 if (!isset($noGroups)) $noGroups = false;
 
 $hasBeenSubmited = isset($_POST['submitted']);
@@ -46,7 +47,7 @@ $hasBeenSubmited = isset($_POST['submitted']);
                     <div class="row g-3">
                         <?php foreach ($group->getReordered() as $field) : ?>
                             <?php $isRadioOrCheckbox = in_array($field->getType(), ['radio', 'checkbox']); ?>
-                            <?php if (in_array($field->getName(), $fieldsToHide)) continue; ?>
+                            <?php if (in_array($field->getName(), $fieldsToHide)) $colClass .= ' d-none'; ?>
 
                             <?php /* @var $field Daq_Form_Element Daq_Form_Element_Select */ ?>
                             <div class="<?= $colClass ?> field-container <?php wpjb_form_input_features($field) ?>">
@@ -74,6 +75,7 @@ $hasBeenSubmited = isset($_POST['submitted']);
                     </div>
                 </div>
             </div>
+            <?php if ($noGroups) : ?><div class="w-100"></div><?php endif ?>
         <?php endforeach; ?>
     </div>
 
