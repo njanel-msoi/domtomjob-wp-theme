@@ -1210,6 +1210,25 @@ footer.footer a {
   }
 }
 
+.home-pricing-box {
+  padding-top: 25px;
+}
+.home-pricing-box h2 {
+  margin-top: 0px !important;
+}
+.home-pricing-box h2 + p {
+  margin-bottom: 0 !important;
+}
+.home-pricing-box .banner-hero {
+  display: none;
+}
+.home-pricing-box .block-pricing {
+  margin-top: 0 !important;
+}
+.home-pricing-box .box-pricing-item {
+  background: #fff;
+}
+
 .block-pricing .list-package-feature {
   padding: 15px 0 15px 0;
 }

@@ -107,3 +107,22 @@
     }
   }
 }
+
+.home-pricing-box {
+  padding-top: 25px;
+  h2 {
+    margin-top: 0px !important;
+    & + p {
+      margin-bottom: 0 !important;
+    }
+  }
+  .banner-hero {
+    display: none;
+  }
+  .block-pricing {
+    margin-top: 0 !important;
+  }
+  .box-pricing-item {
+    background: #fff;
+  }
+}

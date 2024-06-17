@@ -68,7 +68,9 @@ get_header();
 <?php echo do_shortcode('[wpjb_jobs_list is_featured="1"]'); ?>
 
 
-<section class="box-border-single bg-border-3 text-center">
+<div class="border-bottom mb-40 mt-20"></div>
+
+<section class="text-center">
     <!-- <h2 class="section-title mb-10 wow animate__ animate__fadeInUp">Nos partenaires</h2>
     <p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp mb-30">
         Découvrez nos partenaires de l'emploi.
@@ -85,7 +87,7 @@ get_header();
 </section>
 
 
-<div class="border-bottom mb-40"></div>
+<div class="border-bottom mb-40 mt-40"></div>
 
 <h2 class="section-title mb-10 wow animate__ animate__fadeInUp">Les entreprises qui recrutent</h2>
 <p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp">
@@ -134,14 +136,12 @@ get_header();
 
 <div class="border-bottom mb-30"></div>
 
-<section class="box-border-single bg-border-3 text-center">
+<section class="text-center home-pricing-box bg-border-3">
     <h2 class="section-title mb-10 wow animate__ animate__fadeInUp">Nos tarifs recruteurs</h2>
     <p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp mb-30">
         Découvrez nos tarifs adaptés au besoin de votre entreprise.
     </p>
-    <!-- <h1>Nos tarifs</h1>
-<?php // echo do_shortcode('[wpjb_membership_pricing]'); 
-?> -->
+    <?php echo do_shortcode('[wpjb_membership_pricing]'); ?>
 </section>
 
 
