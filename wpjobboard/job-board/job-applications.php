@@ -170,21 +170,22 @@
                     <div style="clear: both; overflow: hidden"></div>
 
                     <div class="wpjb-application-change-status wpjb-filter-applications" style="display: none">
-                        <div class="border" style="width: 200px"></div>
-                        <select name="job_id" class="wpjb-application-change-status-dropdown">
-                            <?php foreach ($public_ids as $status_id) : ?>
-                                <?php $status = wpjb_get_application_status($status_id) ?>
-                                <option value="<?php echo esc_html($status_id) ?>" <?php selected($application->status, $status_id) ?> data-can-notify="<?php if (isset($status["notify_applicant_email"]) && !empty($status["notify_applicant_email"])) : ?>1<?php endif; ?>"><?php echo esc_html($status["label"]) ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                        <div class="border p-10" style="width: 200px;">
+                            <select name="job_id" class=" border wpjb-application-change-status-dropdown">
+                                <?php foreach ($public_ids as $status_id) : ?>
+                                    <?php $status = wpjb_get_application_status($status_id) ?>
+                                    <option value="<?php echo esc_html($status_id) ?>" <?php selected($application->status, $status_id) ?> data-can-notify="<?php if (isset($status["notify_applicant_email"]) && !empty($status["notify_applicant_email"])) : ?>1<?php endif; ?>"><?php echo esc_html($status["label"]) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
 
-                        <input type="checkbox" value="1" class="wpjb-application-change-status-checkbox" id="wpjb-application-status-<?php echo $application->id ?>">
-                        <label class="wpjb-application-change-status-label" for="wpjb-application-status-<?php echo $application->id ?>"><?php _e("Notify applicant via email", "wpjobboard") ?></label>
+                            <input type="checkbox" value="1" class="wpjb-application-change-status-checkbox" id="wpjb-application-status-<?php echo $application->id ?>">
+                            <label class="wpjb-application-change-status-label" for="wpjb-application-status-<?php echo $application->id ?>"><?php _e("Notify applicant via email", "wpjobboard") ?></label>
 
-                        <span class="wpjb-glyphs wpjb-icon-spinner wpjb-animate-spin wpjb-none wpjb-application-change-status-loader"></span>
+                            <span class="wpjb-glyphs wpjb-icon-spinner wpjb-animate-spin wpjb-none wpjb-application-change-status-loader"></span>
 
-                        <a href="#" class="btn btn-border wpjb-button wpjb-application-change-status-submit"><?php _e("Change", "wpjobboard") ?></a>
+                            <a href="#" class="wpjb-button wpjb-application-change-status-submit"><?php _e("Change", "wpjobboard") ?></a>
+                        </div>
                     </div>
 
                     <?php do_action("wpjb_sh_manage_applications_after", $job->id, $job->post_id, $application) ?>

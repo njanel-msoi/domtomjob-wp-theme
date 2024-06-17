@@ -70,3 +70,33 @@
     }
   }
 }
+
+.application-detail {
+  .header {
+    display: flex;
+
+    .photo-box {
+      margin-right: 15px;
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 10px;
+        margin-top: 6px;
+      }
+    }
+    .title-box {
+      flex: 1;
+    }
+  }
+
+  .file-btns {
+    display: flex;
+    flex-direction: column;
+    .btn {
+      border-radius: 4px;
+      border: solid 1px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  }
+}
