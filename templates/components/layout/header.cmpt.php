@@ -38,6 +38,8 @@
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <?php wp_head(); ?>
+
+    <link ref="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/jquery-ui/jquery-ui.min.css">
 </head>
 
 <body <?php body_class(); ?>>

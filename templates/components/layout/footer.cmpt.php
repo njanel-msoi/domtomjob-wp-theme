@@ -72,6 +72,9 @@
 <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/jquery-3.6.0.min.js"></script>
 <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/select2.min.js"></script>
 
+<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/jquery-ui/datepicker-fr.js"></script>
+
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/modernizr-3.6.0.min.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script> -->
 <!-- <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/bootstrap.bundle.min.js"></script> -->

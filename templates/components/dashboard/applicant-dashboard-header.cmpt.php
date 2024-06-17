@@ -32,4 +32,4 @@ $menuLinks = [
             </div>
         </div>
         <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
-            <div class="content-single">
+            <div>

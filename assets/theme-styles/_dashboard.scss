@@ -51,3 +51,22 @@
     }
   }
 }
+
+.resume-single {
+  .box-company-profile {
+    max-width: 100%;
+    display: flex;
+    > * {
+      flex: 1;
+    }
+    .image-company {
+      flex: unset;
+      margin-right: 20px;
+      img {
+        border-radius: 15px;
+        width: 85px;
+        height: 85px;
+      }
+    }
+  }
+}

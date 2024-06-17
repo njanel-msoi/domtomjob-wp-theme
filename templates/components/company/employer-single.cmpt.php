@@ -21,9 +21,9 @@ $is_company_visible = $company->isVisible() || (Wpjb_Model_Company::current() &&
 ?>
 
 <?php
-echo '<h4>FIELDS</h4><br>' . implode(' | ', array_keys($company->getFields()));
-echo '<h4>META </h4><br>' . implode(' | ', array_keys((array)$company->getMeta(array())));
-echo '<h4>USER META FIELDS</h4><br>' . implode(' | ', array_keys((array)$company->getMeta(array("meta_type" => 3, "empty" => false))));
+// echo '<h4>FIELDS</h4><br>' . implode(' | ', array_keys($company->getFields()));
+// echo '<h4>META </h4><br>' . implode(' | ', array_keys((array)$company->getMeta(array())));
+// echo '<h4>USER META FIELDS</h4><br>' . implode(' | ', array_keys((array)$company->getMeta(array("meta_type" => 3, "empty" => false))));
 
 ?>
 <?php wpjb_flash() ?>

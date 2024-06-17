@@ -8,6 +8,16 @@ $CONTRACT_TYPES_MAP = object_arr_to_data_map($CONTRACT_TYPES, 'title');
 
 function dtj_get_contract_types()
 {
-    global $CATEGORIES_MAP;
-    return $CATEGORIES_MAP;
+    global $CONTRACT_TYPES_MAP;
+    return $CONTRACT_TYPES_MAP;
+}
+
+function dtj_get_contract_from_key($key)
+{
+    global $CONTRACT_TYPES_MAP;
+
+    foreach ($CONTRACT_TYPES_MAP as $type) {
+        if ($type['key'] == $key) return $type['description'];
+    }
+    return '';
 }

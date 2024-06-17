@@ -36,9 +36,14 @@ add_action('wp_enqueue_scripts', function () {
     global $VERSION;
     $jobbox_theme_version = "1.0.0";
 
+    wp_enqueue_style('dashicons');
+
     // wp_enqueue_style('bootstrap', get_stylesheet_directory_uri() . '/lib/bootstrap/bootstrap.min.css', array(), $VERSION);
     wp_enqueue_style('jobbox-style', get_stylesheet_directory_uri() . '/assets/jobbox-styles/style.css', array(), $jobbox_theme_version);
     wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/assets/theme-styles/style.css', array(), $VERSION);
+
+    // wp_enqueue_script('datepicker', get_stylesheet_directory_uri() . '/assets/js/vendor/date-picker/js/datepicker.js');
+    // wp_enqueue_style('datepicker', get_stylesheet_directory_uri() . '/assets/js/vendor/date-picker/css/datepicker.css');
 
     // wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css', array(), $VERSION);
     // wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/assets/styles/theme.css', array(), $VERSION);

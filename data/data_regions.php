@@ -30,3 +30,9 @@ function dtj_get_regions()
     global $REGIONS_MAP;
     return $REGIONS_MAP;
 }
+
+function dtj_get_region_from_key($key)
+{
+    global $REGIONS;
+    return $REGIONS[$key];
+}

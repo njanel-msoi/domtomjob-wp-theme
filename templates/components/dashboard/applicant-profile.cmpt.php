@@ -1,4 +1,6 @@
-<?php $headerCode = 'PROFILE';
+<?php
+
+$headerCode = 'PROFILE';
 include 'applicant-dashboard-header.cmpt.php'; ?>
 
 <h3 class="mt-0">Mes profil candidat</h3>
@@ -20,6 +22,8 @@ include 'applicant-dashboard-header.cmpt.php'; ?>
     <?php endif; ?>
 </span>
 
-<?php include dirname(__FILE__) . "/../layout/form-layout.cmpt.php"; ?>
+<?php
+$groupsToHide = ['important_infos'];
+include dirname(__FILE__) . "/../layout/form-layout.cmpt.php"; ?>
 
 <?php include 'applicant-dashboard-footer.cmpt.php';

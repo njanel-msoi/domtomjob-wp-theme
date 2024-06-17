@@ -988,6 +988,15 @@ input.wpjb-enter-discount-value {
   margin-bottom: 30px;
 }
 
+.wpjb-element-name-candidate_country {
+  display: none;
+}
+
+ul.wpjb-options-list {
+  padding-left: 0;
+  list-style: none;
+}
+
 header.header {
   position: relative;
   padding: 16px 0;
@@ -1254,10 +1263,10 @@ footer.footer a {
   width: 85px;
 }
 
-.card-grid-2:not(.job-featured) {
+.card-grid-2.job-item-box:not(.job-featured) {
   background-color: #fff;
 }
-.card-grid-2:not(.job-featured) .flash {
+.card-grid-2.job-item-box:not(.job-featured) .flash {
   display: none;
 }
 
@@ -1377,6 +1386,23 @@ footer.footer a {
   padding-left: 0;
   padding-right: 100px;
   text-align: right;
+}
+
+.resume-single .box-company-profile {
+  max-width: 100%;
+  display: flex;
+}
+.resume-single .box-company-profile > * {
+  flex: 1;
+}
+.resume-single .box-company-profile .image-company {
+  flex: unset;
+  margin-right: 20px;
+}
+.resume-single .box-company-profile .image-company img {
+  border-radius: 15px;
+  width: 85px;
+  height: 85px;
 }
 
 .applicant-alerts-manage #wpjb-add-new-alert {

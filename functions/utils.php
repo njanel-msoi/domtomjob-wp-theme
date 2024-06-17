@@ -62,7 +62,7 @@ function is_from_rewrite_rule($queryPath)
 function get_meta_region($object)
 {
     $metaValue = get_meta_value($object, 'region');
-    return $metaValue ? $metaValue : 'Région non définie';
+    return $metaValue ? dtj_get_region_from_key($metaValue) : 'Région non définie';
 }
 
 function get_company_location($company)
@@ -186,4 +186,14 @@ function data_value_from_key($key, $data)
 function candidateDashboardUrl($part)
 {
     return get_site_url() . '/candidate-panel/' . $part;
+}
+
+function get_age($date)
+{
+    if (!$date) return '';
+
+    $date = new DateTime($date);
+    $now = new DateTime();
+    $interval = $now->diff($date);
+    return $interval->y . ' ans';
 }
