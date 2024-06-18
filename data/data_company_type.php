@@ -8,6 +8,7 @@ $COMPANY_TYPE = array(
     5 => "Association",
     2 => "Cabinet de recrutement métropolitain",
     1 => "Cabinet de recrutement Outre-Mer",
+    9 => "Centre de formation",
     6 => "Autre"
 );
 

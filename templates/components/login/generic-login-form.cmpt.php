@@ -53,7 +53,7 @@ $useLargeFormLayout = $isSignup;
                 $formClass = 'form_register_' . ($isCompany ? 'company' : 'candidate');
                 $formAction = esc_attr($action);
 
-                $groupsToHide = ['important_infos'];
+                $groupsToHide = [];
 
                 if (!isset($fieldsToHide)) $fieldsToHide = [];
 

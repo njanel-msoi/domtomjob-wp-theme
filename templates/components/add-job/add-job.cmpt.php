@@ -54,7 +54,7 @@
 
     $formClass = 'job-add-form';
     $formAction = esc_attr($urls->preview);
-    $groupsToHide = ['important_infos'];
+    $groupsToHide = [];
     $fieldsToHide = [];
     $groupsHalfSize = ['company', 'billing'];
     $groupsWithFullSizeInput = ['coupon', 'captcha', 'billing', 'company'];
@@ -64,6 +64,7 @@
     if ($isCompanyConnected) {
         $groupsToHide[] = 'company';
         $groupsToHide[] = 'billing';
+        $groupsToHide[] = 'group_optin';
     }
 
     include dirname(__FILE__) .  '/../layout/form-layout.cmpt.php';

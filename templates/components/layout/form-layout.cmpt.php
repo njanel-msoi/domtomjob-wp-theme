@@ -21,6 +21,8 @@ if (!isset($groupsHalfSize)) $groupsHalfSize = [];
 if (!isset($groupsWithFullSizeInput)) $groupsWithFullSizeInput = [];
 if (!isset($defaultValues)) $defaultValues = [];
 
+$groupsToHide[] = 'important_infos';
+
 
 if (!isset($noGroups)) $noGroups = false;
 

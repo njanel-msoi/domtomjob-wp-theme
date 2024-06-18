@@ -61,7 +61,7 @@
 
             $formClass = 'job-apply-form';
             $formAction = esc_attr(wpjb_link_to("job", $job, array("form" => "apply")));
-            $groupsToHide = ['important_infos'];
+            $groupsToHide = [];
             $fieldsToHide = [];
             $groupsHalfSize = [];
             $groupsWithFullSizeInput = ['group_job_sub'];

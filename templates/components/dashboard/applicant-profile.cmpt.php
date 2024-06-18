@@ -23,7 +23,7 @@ include 'applicant-dashboard-header.cmpt.php'; ?>
 </span>
 
 <?php
-$groupsToHide = ['important_infos'];
+$groupsToHide = [];
 include dirname(__FILE__) . "/../layout/form-layout.cmpt.php"; ?>
 
 <?php include 'applicant-dashboard-footer.cmpt.php';
