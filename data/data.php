@@ -13,3 +13,4 @@ include 'data_apply_type.php';
 include 'data_anonymous.php';
 include 'data_fulltime_type.php';
 include 'data_civility.php';
+include 'data_job_experience.php';

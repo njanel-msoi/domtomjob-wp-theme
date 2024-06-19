@@ -1,11 +1,9 @@
 <?php
-include_once 'api.php';
 
 $JOB_ROOT_FIELDS = [
     "employer_id",
     "old_job_id",
     "job_title",
-    "type",
     "job_city",
     "job_description",
     "job_created_at",
@@ -18,13 +16,10 @@ $JOB_ROOT_FIELDS = [
     "job_is_anonymous",
     "company_name",
     "company_url",
-    "category",
-    "company_contact_company_name",
     "company_email",
     "job_address",
     "job_zip_code",
-    "job_country",
-    "billing_company_name"
+    "job_country"
 ];
 $JOB_META_FIELDS = [
     "region",
@@ -37,16 +32,17 @@ $JOB_META_FIELDS = [
     "job_study_level",
     "job_salary_txt",
     "job_duration",
-    "company_logo",
     "company_siret",
     "company_description",
     "job_phone",
     "job_apply_type",
     "job_apply_url",
+    "company_contact_company_name",
     "company_contact",
     "company_contact_function",
     "company_phone",
     "company_city",
+    "billing_company_name",
     "billing_contact",
     "billing_contact_function",
     "billing_email",
@@ -59,6 +55,8 @@ $JOB_META_FIELDS = [
 ];
 $JOB_TAG_FIELDS = ['category', 'type'];
 $JOB_FILE_FIELDS = ['company-logo'];
+
+define('API_JOB_FIELDS', array_merge($JOB_ROOT_FIELDS, $JOB_META_FIELDS, $JOB_TAG_FIELDS, $JOB_FILE_FIELDS));
 
 /* This values are used for job imported from external source in order to keep job engine and rules correct 
 For exemple, external source cannot choose to be approved or featured and cannot choose the creation date
@@ -85,45 +83,64 @@ $JOB_DEFAULT_VALUES = array_merge($JOB_PROTECTED_VALUES, [
  * $plainJob : the job where all fields are at root level
  * $protected : if true, protected fields cannot be set and have a mandatory default value
  */
-function post_job($plainJob, $protected = true)
+function dtj_import_job($plainJob)
 {
-    global $JOB_ROOT_FIELDS, $JOB_META_FIELDS, $JOB_TAG_FIELDS, $JOB_FILE_FIELDS;
+    global $JOB_ROOT_FIELDS, $JOB_META_FIELDS, $JOB_TAG_FIELDS, $JOB_FILE_FIELDS, $JOB_PROTECTED_VALUES;
     $apiJob = ["id" => null, "meta" => [], "tags" => [], "files" => []];
 
     // convert job plain data to api format
 
     // field at root level
     foreach ($JOB_ROOT_FIELDS as $field) {
-        $value = get_field_value($plainJob, $field, $protected);
+        $value = __get_field_value($plainJob, $field);
         $apiJob[$field] = $value;
     }
     // field at meta level
     foreach ($JOB_META_FIELDS as $field) {
-        $value = get_field_value($plainJob, $field, $protected);
-        $meta = ["name" => $field, $value => [$value]];
-        $apiJob['metas'][] = $meta;
+        $value = __get_field_value($plainJob, $field);
+        $meta = ["name" => $field, "values" => [$value]];
+        $apiJob['meta'][] = $meta;
     }
     // field at tag level
-    foreach ($JOB_META_FIELDS as $field) {
-        $value = get_field_value($plainJob, $field, $protected);
+    foreach ($JOB_TAG_FIELDS as $field) {
+        $value = __get_field_value($plainJob, $field);
         $tag = ["type" => $field, "id" => $value];
         $apiJob['tags'][] = $tag;
     }
+    // files
+    foreach ($JOB_FILE_FIELDS as $field) {
+        $fileContent = __get_field_value($plainJob, $field);
+        if (!$fileContent) continue;
 
+        $fileName = __get_field_value($plainJob, $field . '_filename');
+
+        $apiJob['files'][] = [
+            "path" => $field . '/' . $fileName,
+            "content" => $fileContent
+        ];
+    }
+
+    if ($GLOBALS['FAKE_IMPORT']) {
+        var_dump($apiJob);
+        return $apiJob;
+    }
     return post('/jobs/', ["wpjb-job" => $apiJob]);
 }
 
-function get_field_value($plainJob, $field, $protected)
+function __get_field_value($plainJob, $field)
 {
     global $JOB_DEFAULT_VALUES, $JOB_PROTECTED_VALUES;
+    $protected = $GLOBALS['PROTECT_JOB_FIELDS'];
 
     if ($protected && isset($JOB_PROTECTED_VALUES[$field]))
         return $JOB_PROTECTED_VALUES[$field];
 
-    $value = "";
-    if (isset($plainJob[$field]))
+    $value = null;
+    if (isset($plainJob[$field]) && $plainJob[$field] && $plainJob[$field] != 'NULL')
         $value = $plainJob[$field];
     else if (!$value && isset($JOB_DEFAULT_VALUES[$field])) {
         $value = $JOB_DEFAULT_VALUES[$field];
     }
+
+    return $value;
 }
