@@ -86,11 +86,25 @@ return [
     "company_siret" => "",
     "job_phone" => "",
     "job_apply_type" => function ($source) {
-        return $source['off_reponsepar_web'] == "1" ? "URL" : "FORM";
+        if ($source['off_reponsepar_web'] == "1") return "URL";
+        if ($source['off_reponsepar_courrier'] == "1" || $source['off_reponsepar_tel'] == "1") return "TEXT";
+
+        return "FORM";
     },
     "job_apply_url" => function ($source) {
         if ($source['off_reponsepar_url']) return $source['off_reponsepar_url'];
         else return $source['url_repondre'];
+    },
+    "job_apply_free_text" => function ($source) {
+        $parts = [
+            $source['off_rep_adresse'],
+            $source['off_rep_cp'],
+            $source['off_rep_ville'],
+            $source['off_rep_tel']
+        ];
+        return implode('<br>', array_filter($parts, function ($c) {
+            return !empty($c);
+        }));
     },
 
     "optin_group" => ""

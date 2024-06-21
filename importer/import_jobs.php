@@ -37,6 +37,7 @@ $JOB_META_FIELDS = [
     "job_phone",
     "job_apply_type",
     "job_apply_url",
+    "job_apply_free_text",
     "company_contact_company_name",
     "company_contact",
     "company_contact_function",
@@ -54,9 +55,7 @@ $JOB_META_FIELDS = [
     "optin_group"
 ];
 $JOB_TAG_FIELDS = ['category', 'type'];
-$JOB_FILE_FIELDS = ['company-logo'];
-
-define('API_JOB_FIELDS', array_merge($JOB_ROOT_FIELDS, $JOB_META_FIELDS, $JOB_TAG_FIELDS, $JOB_FILE_FIELDS));
+$JOB_FILE_FIELDS = ['company_logo'];
 
 /* This values are used for job imported from external source in order to keep job engine and rules correct 
 For exemple, external source cannot choose to be approved or featured and cannot choose the creation date
@@ -86,7 +85,7 @@ $JOB_DEFAULT_VALUES = array_merge($JOB_PROTECTED_VALUES, [
 function dtj_import_job($plainJob)
 {
     global $JOB_ROOT_FIELDS, $JOB_META_FIELDS, $JOB_TAG_FIELDS, $JOB_FILE_FIELDS, $JOB_PROTECTED_VALUES;
-    $apiJob = ["id" => null, "meta" => [], "tags" => [], "files" => []];
+    $apiJob = ["meta" => [], "tags" => [], "files" => []];
 
     // convert job plain data to api format
 
@@ -121,12 +120,15 @@ function dtj_import_job($plainJob)
     }
 
     if ($GLOBALS['FAKE_IMPORT']) {
-        var_dump($apiJob);
+        preDump($apiJob);
         return $apiJob;
     }
     return post('/jobs/', ["wpjb-job" => $apiJob]);
 }
 
+/**
+ * Used to get the proper field value
+ */
 function __get_field_value($plainJob, $field)
 {
     global $JOB_DEFAULT_VALUES, $JOB_PROTECTED_VALUES;

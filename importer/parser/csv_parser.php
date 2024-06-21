@@ -3,24 +3,74 @@ include_once dirname(__FILE__) . '/../importer.php';
 
 function importJobFromCSV($csvFile, $company, $mappingFields)
 {
-    $handle = fopen($csvFile, "r");
-    if ($handle === FALSE) exit("problem with file opening");
-
-    $headers = fgetcsv($handle, 10000, ";");
-    if ($headers === FALSE) exit("headers are missing");
-
-    while (($data = fgetcsv($handle, 10000, ";")) !== FALSE) {
-        $sourceJob = [];
-        foreach ($headers as $id => $field) {
-            $sourceJob[$field] = $data[$id];
-        }
-        // here we got an associative array with source fields & value
-
+    readCSVAndHandleEachLine($csvFile, function ($sourceJob) use ($company, $mappingFields) {
         // the parser common method
         map_and_import_job($sourceJob, $mappingFields, $company);
+    });
+}
 
-        // import only 1 for test
-        break;
-    }
-    fclose($handle);
+function importCompanyFromCSV($csvFile, $mappingFields)
+{
+    echo '<?xml version="1.0" encoding="UTF-8"?>
+<wpjb>
+    <companies>';
+
+    readCSVAndHandleEachLine($csvFile, function ($sourceCompany) use ($mappingFields) {
+        // called for each company to import
+        $destCompany = map_fields($sourceCompany, [], $mappingFields);
+        $company = dtj_import_company($destCompany);
+
+        echo '
+        <company>';
+
+        foreach ($company as $key => $value) {
+            if (!is_array($value)) {
+                // root keys
+                echo "
+            <$key>
+                $value
+            </$key>";
+            }
+        }
+
+        if (isset($company['metas'])) {
+            echo '
+            <metas>';
+            foreach ($company['metas'] as $meta) {
+
+                $name = $meta['name'];
+                $value = $meta['values'][0];
+                echo "
+                <meta>
+                    <name>$name</name>
+                    <value>$value</value>
+                </meta>";
+            }
+            echo '
+            </metas>';
+        }
+
+        if (isset($company['files'])) {
+            echo '
+            <files>';
+            foreach ($company['files'] as $file) {
+                extract($file);
+                echo "
+                <file>
+                    <path>$path</path>
+                    <content>$content</content>
+                </file>";
+            }
+            echo '
+            </files>';
+        }
+
+        echo "
+        </company>
+";
+    });
+
+    echo '
+    </companies>
+</wpjb>';
 }

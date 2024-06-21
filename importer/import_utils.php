@@ -7,28 +7,34 @@ function map_job($sourceJob, $fieldsMapping, $company)
     // initialize with company field as most are missing
     $destJob = fillJobCompanyFromCompany([], $company);
 
-    // for each field of the group, we map the linked field
-    foreach ($fieldsMapping as $destField => $fieldMapping) {
-        $value = null;
-        if (is_callable($fieldMapping)) {
-            $value = $fieldMapping($sourceJob, $company);
-        } else {
-            $value = $fieldMapping ? $sourceJob[$fieldMapping] : "";
-        }
-        $destJob[$destField] = $value;
-    }
+    $destJob = map_fields($sourceJob, $destJob, $fieldsMapping, $company);
 
     return $destJob;
 }
 
-function map_and_import_job($sourceJob, $mappingFields, $company)
+function map_and_import_job($sourceJob, $fieldsMapping, $company)
 {
     // map jobs fields
-    $job = map_job($sourceJob, $mappingFields, $company);
+    $job = map_job($sourceJob, $fieldsMapping, $company);
     // here we got a job in the correct format for API
     dtj_import_job($job);
 }
 
+function map_fields($source, $dest, $fieldsMapping, $param1 = null)
+{
+    // for each field of the group, we map the linked field
+    foreach ($fieldsMapping as $destField => $fieldMapping) {
+        $value = null;
+        if (is_callable($fieldMapping)) {
+            $value = $fieldMapping($source, $param1);
+        } else {
+            $value = $fieldMapping ? $source[$fieldMapping] : "";
+        }
+        $dest[$destField] = $value;
+    }
+
+    return $dest;
+}
 
 function get_company_from_old_id($oldId)
 {
@@ -104,4 +110,27 @@ function fillJobCompanyFromCompany($job, $company, $copyLogo = false)
 
     // read the enterprise logo in base64
     // company
+}
+
+function readCSVAndHandleEachLine($csvFile, $callback)
+{
+    $handle = fopen($csvFile, "r");
+    if ($handle === FALSE) exit("problem with file opening");
+
+    $headers = fgetcsv($handle, 10000, ";");
+    if ($headers === FALSE) exit("headers are missing");
+
+    while (($data = fgetcsv($handle, 10000, ";")) !== FALSE) {
+        $source = [];
+        foreach ($headers as $id => $field) {
+            $source[$field] = $data[$id];
+        }
+        // here we got an associative array with source fields & value
+
+        $callback($source);
+
+        // TODO: remove to handle all lines
+        break;
+    }
+    fclose($handle);
 }
