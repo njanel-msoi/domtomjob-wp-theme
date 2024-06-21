@@ -1166,13 +1166,12 @@ footer.footer a {
   border-radius: 10px;
 }
 
-.homepage-header {
+.home-page .homepage-header {
   margin-bottom: 30px;
   padding: 20px 0;
   background-color: #e0e6f7;
 }
-
-.homepage-content .card-grid-2 .card-block-info {
+.home-page .card-grid-2 .card-block-info {
   padding-left: 20px;
 }
 

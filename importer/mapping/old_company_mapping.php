@@ -15,7 +15,7 @@ $country_reunion = 638;
  * Mapping for to import old DB company
  */
 return [
-    "user_login" => "ent_email", // TODO: nécessite la liste des utilisateurs liés aux entreprises (requete / table de correspondance ?)
+    "user_login" => "ent_email", // nécessite la liste des utilisateurs liés aux entreprises (requete / table de correspondance ?)
     "user_email" => "ent_email",
     "company_name" => "ent_lb",
     "company_website" => "ent_url",

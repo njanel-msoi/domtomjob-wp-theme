@@ -43,10 +43,15 @@ function get_company_from_old_id($oldId)
 
     global $wpdb;
     $results = $wpdb->get_results("SELECT * FROM wpdtj_wpjb_meta_value WHERE meta_id = 220 AND value = $oldId");
+
+    $results = array_filter($results, function ($c) {
+        return !!$c->object_id;
+    });
+
     if (count($results) == 0) exit("missing reference from old company ID in meta company description");
     if (count($results) > 1) exit("multiple company for same old ID, need correction");
 
-    $id = $results[0]->object_id;
+    $id = array_pop($results)->object_id;
     return get_company($id);
 }
 

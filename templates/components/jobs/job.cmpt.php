@@ -105,8 +105,10 @@
                     <h4>Présentation du poste</h4>
                     <p><?php wpjb_rich_text($job->job_description, 'html')  ?></p>
 
-                    <h4>Profil attendu</h4>
-                    <p><?php wpjb_rich_text(get_meta_value($job, 'job_profile'), 'html')  ?></p>
+                    <?php if (get_meta_value($job, 'job_profile')) : ?>
+                        <h4>Profil attendu</h4>
+                        <p><?php wpjb_rich_text(get_meta_value($job, 'job_profile'), 'html')  ?></p>
+                    <?php endif ?>
                 </div>
 
                 <?php if ($can_apply) : ?>

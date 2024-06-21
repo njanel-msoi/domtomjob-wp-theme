@@ -77,6 +77,8 @@ function get_company_location($company)
 
 function get_meta_value($object, $field)
 {
+    if (!isset($object->getMeta()->$field)) return null;
+
     $meta = $object->getMeta()->$field;
     if ($meta) {
         $metaValues = $meta->getValues();

@@ -34,5 +34,7 @@ function dtj_get_regions()
 function dtj_get_region_from_key($key)
 {
     global $REGIONS;
+    if (!isset($REGIONS[$key])) return null;
+
     return $REGIONS[$key];
 }
