@@ -3,6 +3,7 @@ $logoWidth: 150px;
 header.header {
   position: relative;
   padding: 16px 0;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
 
   &.stickable {
     position: sticky;

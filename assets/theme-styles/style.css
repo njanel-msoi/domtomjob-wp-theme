@@ -729,6 +729,49 @@ div.wpjb-page-company-products div.wpjb-company-product-additional div.wpjb-comp
   margin: 0;
 }
 
+main.main {
+  background-color: #f8faff;
+  padding-bottom: 40px;
+}
+
+.sidebar-shadow.filters-box {
+  background-color: transparent;
+}
+.sidebar-shadow.filters-box .job-list-filters-form select {
+  background-color: #fff;
+}
+.sidebar-shadow.filters-box .job-list-filters-form input[type=text] {
+  background-image: url(../imgs/page/homepage1/key-numbers.svg);
+  background-repeat: no-repeat;
+  background-position: left 10px center;
+  background-color: #fff;
+}
+.sidebar-shadow.filters-box .form-group input {
+  background-color: #fff;
+}
+
+.card-grid-1,
+.card-grid-2 {
+  background-color: #fff;
+}
+
+.job-details {
+  padding-top: 20px;
+}
+
+.banner-hero.banner-single {
+  margin-top: 20px;
+  background: #e0e6f7;
+  padding-bottom: 50px;
+}
+.banner-hero.banner-single::after, .banner-hero.banner-single::before {
+  background: none;
+}
+
+.box-border-single {
+  background-color: #fff;
+}
+
 :root {
   overflow-y: visible !important;
   overflow-x: hidden !important;
@@ -1000,6 +1043,7 @@ ul.wpjb-options-list {
 header.header {
   position: relative;
   padding: 16px 0;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
 }
 header.header.stickable {
   position: sticky;
@@ -1120,6 +1164,16 @@ footer.footer a {
   width: 600px;
   margin-top: 100px;
   border-radius: 10px;
+}
+
+.homepage-header {
+  margin-bottom: 30px;
+  padding: 20px 0;
+  background-color: #e0e6f7;
+}
+
+.homepage-content .card-grid-2 .card-block-info {
+  padding-left: 20px;
 }
 
 .banner-homepage5.banner-hero {

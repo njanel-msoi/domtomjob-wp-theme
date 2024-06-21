@@ -8,6 +8,9 @@
  * 
  */
 
+$old_country_mapping = include dirname(__FILE__) . '/old_country_mapping.php';
+$country_reunion = 638;
+
 /**
  * Mapping for to import old DB company
  */
@@ -20,13 +23,17 @@ return [
     "company_zip_code" => "ent_cp",
     "company_location" => "ent_ville",
     "company_country" => function ($source) {
-        // TODO: "ent_domtom (clé vers T_domtom)", //attention il faut ici le code pays de la table de correspndance "pays"
-        return 638;
+        global $old_country_mapping, $country_reunion;
+        // "ent_domtom (clé vers T_domtom)", //attention il faut ici le code pays de la table de correspndance "pays"
+        $oldCountryId = $source['ent_domtom'];
+        if ($oldCountryId && isset($old_country_mapping[$oldCountryId])) {
+            return $old_country_mapping[$oldCountryId];
+        }
+        return $country_reunion;
     },
     "region" => function ($source) {
-        // "ent_domtom (clé vers T_domtom)", //"ATTENTION, des valeurs doivent être remplacées avant l'import :"19 devient 17 ; 12 devient 99 ; 13 devient 99 "Pour le reste les clés sont les même, copier simplement la valeur initiale"
         $region = $source['ent_domtom'];
-        if (!$region) return 638;
+        if (!$region) return 4;
 
         if ($region == 19) return 17;
         if ($region == 12) return 99;
@@ -34,14 +41,13 @@ return [
 
         return $region;
     },
-    "company_type" => "ent_type", // les clés sont les même, copier simplement la valeur de la clé
+    "company_type" => "ent_type",
     "category" => function ($source) {
         // TODO: "ent_secteur (lien vers T_secteur)", // utiliser la table de correspondance "catégorie"
         return null;
     },
     "company_logo" => function ($source) {
-        // TODO: "ent_logo", //"prefixe pour avoir l'url de l'image : https://www.domtomjob.com/Entreprises/Logo/ "on stocke dans le XML la représentation en base64 de l'image (cf. exemple XML)"
-
+        // "ent_logo", //"prefixe pour avoir l'url de l'image : https://www.domtomjob.com/Entreprises/Logo/ "on stocke dans le XML la représentation en base64 de l'image (cf. exemple XML)"
         $logourl = $source['ent_logo'];
         if (!$logourl) return null;
 
@@ -74,7 +80,7 @@ return [
     "billing_zipcode" => "ent_cp",
     "billing_city" => "ent_ville",
     "billing_country" => function ($source) {
-        // TODO: "ent_domtom (clé vers T_domtom)", //attention il faut ici le code pays de la table de correspndance "pays"
+        // "ent_domtom (clé vers T_domtom)", //attention il faut ici le code pays de la table de correspndance "pays"
         return 638;
     },
     "optin_group" => 0,

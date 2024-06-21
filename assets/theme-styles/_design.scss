@@ -1,0 +1,40 @@
+main.main {
+  background-color: #f8faff;
+  padding-bottom: 40px;
+}
+.sidebar-shadow.filters-box {
+  background-color: transparent;
+
+  .job-list-filters-form select {
+    background-color: #fff;
+  }
+  .job-list-filters-form input[type="text"] {
+    background-image: url(../imgs/page/homepage1/key-numbers.svg);
+
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    background-color: #fff;
+  }
+  .form-group input {
+    background-color: #fff;
+  }
+}
+.card-grid-1,
+.card-grid-2 {
+  background-color: #fff;
+}
+.job-details {
+  padding-top: 20px;
+}
+.banner-hero.banner-single {
+  margin-top: 20px;
+  background: #e0e6f7;
+  padding-bottom: 50px;
+  &::after,
+  &::before {
+    background: none;
+  }
+}
+.box-border-single {
+  background-color: #fff;
+}

@@ -24,15 +24,20 @@ get_header();
                             <a class="btn btn-border-brand-2" href="<?= PAGES_URLS->PublierAnnonce ?>">Publier une offre</a>
                         </div>
 
-                        <div class="list-tags-banner mt-60 wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
-                            <strong>Emploi par région :</strong>
-                            <?php
-                            global $REGIONS;
-                            foreach ($REGIONS as $region) : ?>
-                                <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>,
-                            <?php endforeach; ?>
-                        </div>
+                    </div>
 
+                    <div class="block-banner bloc-search-jobs">
+                        <div class="form-find mt-40 wow animate__animated animate__fadeIn" data-wow-delay=".2s">
+                            <?php echo do_shortcode('[wpjb_jobs_search]'); ?>
+                        </div>
+                    </div>
+                    <div class="list-tags-banner mt-20 wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
+                        <strong>Emploi par région :</strong>
+                        <?php
+                        global $REGIONS;
+                        foreach ($REGIONS as $region) : ?>
+                            <a href="/regions/<?= urlencode($region) ?>" title="Offres d'emploi <?= $region ?>"><?= $region ?></a>,
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-12">
@@ -46,20 +51,11 @@ get_header();
                     </div>
                 </div>
             </div>
-
-            <div class="block-banner bloc-search-jobs">
-                <div class="form-find mt-40 wow animate__animated animate__fadeIn" data-wow-delay=".2s">
-
-                    <?php echo do_shortcode('[wpjb_jobs_search]'); ?>
-                </div>
-            </div>
         </div>
     </div>
 
 
 </section>
-
-
 
 <h2 class="section-title mb-10 wow animate__ animate__fadeInUp">Annonces à la une</h2>
 <p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp mb-30">
@@ -136,7 +132,7 @@ get_header();
 
 <div class="border-bottom mb-30"></div>
 
-<section class="text-center home-pricing-box bg-border-3">
+<section class="text-center home-pricing-box">
     <h2 class="section-title mb-10 wow animate__ animate__fadeInUp">Nos tarifs recruteurs</h2>
     <p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp mb-30">
         Découvrez nos tarifs adaptés au besoin de votre entreprise.

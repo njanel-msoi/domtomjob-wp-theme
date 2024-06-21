@@ -13,10 +13,10 @@
             <div class="header-nav">
                 <nav class="nav-main-menu">
                     <ul class="main-menu large-screen">
-                        <li><a href="<?= PAGES_URLS->ListeOffres ?>">Emploi</a></li>
-                        <li><a href="<?= PAGES_URLS->ListeEntreprises ?>">Entreprises</a></li>
+                        <li><a href="<?= PAGES_URLS->ListeOffres ?>">Offres d'emploi</a></li>
+                        <li><a href="<?= PAGES_URLS->ListeEntreprises ?>">Les recruteurs</a></li>
                         <li><a href="<?= PAGES_URLS->PublierAnnonce ?>">Publier une offre</a></li>
-                        <li><a href="<?= PAGES_URLS->NosOffres ?>">Tarifs</a></li>
+                        <!-- <li><a href="<?= PAGES_URLS->NosOffres ?>">Tarifs</a></li> -->
                     </ul>
                     <ul class="main-menu middle-screen">
                         <li class="has-children"><a href="<?= PAGES_URLS->Accueil ?>">Recruteurs</a>

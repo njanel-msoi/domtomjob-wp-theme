@@ -53,7 +53,7 @@
             </div>
             <!-- Start filter sidebar -->
             <div class="col-lg-3 col-md-12 col-sm-12 col-12">
-                <div class="sidebar-shadow none-shadow mb-30">
+                <div class="sidebar-shadow filters-box none-shadow mb-30">
                     <div class="sidebar-filters">
                         <div class="filter-block head-border mb-30">
                             <h5>Filtres

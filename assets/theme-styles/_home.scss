@@ -1,6 +1,18 @@
 @import "../jobbox-styles/abstracts/variables";
 @import "../jobbox-styles/abstracts/mixins";
 
+.homepage-header {
+  margin-bottom: 30px;
+  padding: 20px 0;
+  background-color: #e0e6f7;
+  // background-color: #3c65f5;
+}
+.homepage-content {
+  .card-grid-2 .card-block-info {
+    padding-left: 20px;
+  }
+}
+
 .banner-homepage5.banner-hero {
   padding: 0;
   .banner-inner {
