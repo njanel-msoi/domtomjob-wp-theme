@@ -10,17 +10,7 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q949FRQNSC"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-Q949FRQNSC');
-    </script>
 
     <meta charset="<?php bloginfo('charset'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -40,6 +30,20 @@
     <?php wp_head(); ?>
 
     <link ref="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/js/plugins/jquery-ui/jquery-ui.min.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?= get_field('id_google_analytics') ?>"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', '<?= get_field('id_google_analytics') ?>');
+    </script>
+    <!-- didomi (consent managment) -->
+    <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/vendor/didomi.min.js"></script>
 </head>
 
 <body <?php body_class(); ?>>
