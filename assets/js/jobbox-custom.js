@@ -197,4 +197,6 @@
     });
     //   $(".daq-date-picker").datepicker();
   });
+
+  // select first package in "add job"
 })(jQuery);

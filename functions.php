@@ -9,6 +9,7 @@ $VERSION = "0.1.3";
 
 include_once 'functions/utils.php';
 include_once 'functions/pages-urls.php';
+include_once 'functions/renderers.php';
 
 include_once 'data/data.php';
 

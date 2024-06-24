@@ -111,3 +111,11 @@ add_filter("wpjb_editor_params", function ($params) {
     ];
     return $params;
 });
+
+// display of tarificaton of job buy
+add_filter('wpjb_form_init_job', function ($jobForm) {
+    if (!$jobForm->hasElement('listing')) return;
+
+    // change renderer to use our own
+    $jobForm->getElement('listing')->setRenderer('dtj_listing_renderer');
+});
