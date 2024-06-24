@@ -129,7 +129,7 @@
   });
 
   /*==== ADD JOB FORM PRE SELECTION ===*/
-  $("#job_apply_type-0").prop("checked", true).change();
+  $("#job_apply_type-FORM").prop("checked", true).change();
 
   /*===== SELECT JOB ITEM ON BOX CLIC */
   $(".job-item-box").click(function (event) {

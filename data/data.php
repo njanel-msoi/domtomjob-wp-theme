@@ -15,3 +15,4 @@ include 'data_fulltime_type.php';
 include 'data_civility.php';
 include 'data_job_experience.php';
 include 'data_listing_prefixes.php';
+include 'data_tax_by_region.php';

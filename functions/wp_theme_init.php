@@ -119,3 +119,18 @@ add_filter('wpjb_form_init_job', function ($jobForm) {
     // change renderer to use our own
     $jobForm->getElement('listing')->setRenderer('dtj_listing_renderer');
 });
+
+add_filter('wpjb_form_save_job', function ($job) {
+
+    // store job region to get it for tax & discount calculation
+    $result = set_user_setting('currentJobRegion', get_meta_value($job, 'region'));
+});
+
+// apply different taxes based on the buyer region
+add_filter('wpjb_taxer_tax_rate', function ($default, $pricing) {
+    $currentCompanyRegion = get_meta_value(Wpjb_Model_Company::current(), 'region');
+    if (!$currentCompanyRegion) {
+        return $default;
+    }
+    return taxFromRegion($currentCompanyRegion);
+}, 20, 2);
