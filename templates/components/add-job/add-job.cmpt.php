@@ -28,7 +28,7 @@
 
     if ($company) {
         $defaultValues = [
-            'region' => get_meta_region($company),
+            'region' => get_meta_value($company, 'region'),
             'company_siret' => get_meta_value($company, 'company_siret'),
             'company_kbis' => get_meta_file($company, 'company_kbis'),
             'category' => get_meta_value($company, 'category'),
@@ -41,6 +41,8 @@
             // 'job_zip_code' => get_meta_value($company, 'company_zip_code'),
             'company_city' => $company->get('company_location'),
             // 'company_country' => get_meta_value($company, 'company_country'),
+            'company_contact_company_name' => get_meta_value($company, 'company_contact_company_name'),
+            'billing_company_name' => get_meta_value($company, 'billing_company_name'),
 
             'billing_contact' => get_meta_value($company, 'billing_contact_name'),
             'billing_email' => get_meta_value($company, 'billing_email'),
