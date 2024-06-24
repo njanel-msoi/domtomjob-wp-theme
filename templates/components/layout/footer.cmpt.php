@@ -58,6 +58,7 @@
                 <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright &copy; 2022. JobBox all right reserved</span></div>
                 <div class="col-md-6 text-md-end text-start">
                     <div class="footer-social">
+                        <a class="font-xs color-text-paragraph" href="javascript:Didomi.preferences.show()">Gestion du consentement</a>
                         <a class="font-xs color-text-paragraph" href="<?= PAGES_URLS->ProtectionDonnees ?>">Protection des données</a>
                         <a class="font-xs color-text-paragraph mr-30 ml-30" href="<?= PAGES_URLS->MentionsLegales ?>">Mentions légales</a>
                         <a class="font-xs color-text-paragraph" href="<?= PAGES_URLS->Sitemap ?>">Sitemap</a>
