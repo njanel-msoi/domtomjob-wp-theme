@@ -199,3 +199,36 @@ function get_age($date)
     $interval = $now->diff($date);
     return $interval->y . ' ans';
 }
+
+/**
+ * Function to be used inside payment plugin (e.g. BankTransfer plugin)
+ */
+function getPaymentAmountFromPaymentFormDefault()
+{
+    $defaults = Daq_Request::getInstance()->post("defaults");
+    if (isset($defaults['payment_hash'])) {
+        $payment = Wpjb_Model_Payment::getFromHash($defaults['payment_hash']);
+        $pricing = new Wpjb_Model_Pricing($payment->pricing_id);
+        $cArr = Wpjb_List_Currency::getByCode($payment->payment_currency);
+        $currency = strtolower($cArr['code']);
+    } else {
+        $payment = null;
+        $pricing = new Wpjb_Model_Pricing($defaults['pricing_id']);
+        $cArr = Wpjb_List_Currency::getByCode($pricing->currency);
+        $currency = strtolower($cArr['code']);
+    }
+
+    $discount = Daq_Request::getInstance()->post("discount");
+    if ($discount) {
+        try {
+            $pricing->applyCoupon($discount);
+        } catch (Wpjb_Model_PricingException $e) {
+            // do nothing
+        }
+    }
+
+    $taxer = new Wpjb_Utility_Taxer();
+    $taxer->setFromPricing($pricing);
+
+    return $taxer->value->total;
+}

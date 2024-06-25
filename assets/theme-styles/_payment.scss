@@ -1,0 +1,50 @@
+#wpjb-checkout {
+  padding-top: 30px;
+
+  .wpjb-grid-row {
+    background-color: #fff;
+  }
+}
+
+// the box where payment ajax content is loaded
+.wpjb-checkout-form.wpjb-tab-content {
+  margin-top: 0;
+  padding-bottom: 0 !important;
+  background-color: #fff;
+
+  .group-default,
+  .group-invoice,
+  .submit-box {
+    display: none;
+  }
+
+  .group-notice {
+    .banktransfer-info-notice {
+      b {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+#gateway-container {
+  position: relative;
+  .backdrop-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background-color: rgba(255, 255, 255, 0.616);
+
+    display: none;
+
+    text-align: center;
+
+    .wpjb-icon-spinner {
+      font-size: 30px;
+      margin-top: 133px;
+    }
+  }
+}

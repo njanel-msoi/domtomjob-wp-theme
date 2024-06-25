@@ -36,33 +36,39 @@ $hasBeenSubmited = isset($_POST['submitted']);
     <div class="row justify-content-center">
         <?php foreach ($form->getReordered() as $group) : ?>
             <?php if ($group->isTrashed()) continue; ?>
+            <?php $isNoticeGroup = $group->getName() == 'notice'; ?>
+            <?php $noBoxDisplay = $noGroups || $isNoticeGroup; ?>
             <div class="col-12 <?= in_array($group->getName(), $groupsHalfSize) ? 'col-md-6' : '' ?> <?= in_array($group->getName(), $groupsToHide) ? 'd-none' : '' ?>">
-                <div class="<?= $noGroups ? '' : 'box-border-single mb-30' ?> group-<?= esc_attr($group->getName()) ?> <?= $noGroups ? 'mb-30' : '' ?>">
+                <div class="<?= $noBoxDisplay ? '' : 'box-border-single mb-30' ?> group-<?= esc_attr($group->getName()) ?> <?= $noBoxDisplay ? 'mb-30' : '' ?>">
                     <?php /* Check groups on half or full width */
-                    $colClass =  in_array($group->getName(), $groupsWithFullSizeInput) ? 'col-12' : 'col-md-6' ?>
+                    $colClass = $isNoticeGroup || in_array($group->getName(), $groupsWithFullSizeInput) ? 'col-12' : 'col-md-6' ?>
                     <!-- One bloc per group -->
-                    <?php if (!$noGroups) : ?>
+                    <?php if (!$noBoxDisplay) : ?>
                         <h6 class="pb-10 mb-10 border-bottom">
                             <?= esc_attr($group->title) ?>
                         </h6>
                     <?php endif ?>
                     <div class="row g-3">
                         <?php foreach ($group->getReordered() as $field) : ?>
-                            <?php $isRadioOrCheckbox = in_array($field->getType(), ['radio', 'checkbox']); ?>
+                            <?php $isRadioOrCheckbox = in_array($field->getType(), ['radio', 'checkbox']);
+                            $isLabel = $field->getType() == 'label'; ?>
                             <?php if (in_array($field->getName(), $fieldsToHide)) $colClass .= ' d-none'; ?>
 
                             <?php /* @var $field Daq_Form_Element Daq_Form_Element_Select */ ?>
                             <div class="<?= $colClass ?> field-container <?php wpjb_form_input_features($field) ?>">
 
-                                <?php if ($field->getType() != 'label') : ?>
-
+                                <?php
+                                // hide label except in groupe "notice"
+                                $typeToHide = $isLabel && !$isNoticeGroup;
+                                if (!$typeToHide) :
+                                ?>
                                     <?php // for radio/checkbox, label is inside input rendering 
-                                    if (!$isRadioOrCheckbox) : ?>
+                                    if (!$isLabel && !$isRadioOrCheckbox) : ?>
                                         <label class="form-label <?= $field->isRequired() ? 'required' : '' ?>"><?= esc_html($field->getLabel()) ?></label>
                                     <?php endif ?>
 
                                     <div>
-                                        <?php if (!$isRadioOrCheckbox) $field->addClass('form-control'); ?>
+                                        <?php if (!$isLabel && !$isRadioOrCheckbox) $field->addClass('form-control'); ?>
 
                                         <?php if (!$hasBeenSubmited && isset($defaultValues[$field->getName()])) $field->setValue($defaultValues[$field->getName()]); ?>
 
@@ -77,7 +83,7 @@ $hasBeenSubmited = isset($_POST['submitted']);
                     </div>
                 </div>
             </div>
-            <?php if ($noGroups) : ?><div class="w-100"></div><?php endif ?>
+            <?php if ($noBoxDisplay) : ?><div class="w-100"></div><?php endif ?>
         <?php endforeach; ?>
     </div>
 

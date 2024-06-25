@@ -22,7 +22,7 @@ function taxFromRegion($region_key)
         case 6: //'Nouvelle Calédonie'
             return 8.5;
         case 7: //'Polynésie Française'
-            return 5.5;
+            return 3.25;
         case 4: //'Réunion'
             return 8.5;
         case 18: //'Saint Barthélémy'

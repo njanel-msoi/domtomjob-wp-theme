@@ -187,9 +187,12 @@ ul.wpjb-tabs {
 
 ul.wpjb-tabs li.current {
   color: #222;
+  background-color: #fff;
   border: 3px solid #eff0f2;
-  border-bottom: 3px solid #f8f9f9;
+  border-bottom: 3px solid #fff;
+  border-bottom-color: #fff !important;
   top: 0px;
+  padding-bottom: 10px !important;
 }
 
 ul.wpjb-tabs li {
@@ -729,6 +732,21 @@ div.wpjb-page-company-products div.wpjb-company-product-additional div.wpjb-comp
   margin: 0;
 }
 
+/* ANIMATED SPINNER */
+.wpjb-animate-spin,
+.wpjb-spin {
+  animation: spin 2s infinite linear;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
 main.main {
   background-color: #f8faff;
   padding-bottom: 40px;
@@ -1317,6 +1335,46 @@ footer.footer a {
   right: 9%;
   top: 23%;
   width: unset;
+}
+
+#wpjb-checkout {
+  padding-top: 30px;
+}
+#wpjb-checkout .wpjb-grid-row {
+  background-color: #fff;
+}
+
+.wpjb-checkout-form.wpjb-tab-content {
+  margin-top: 0;
+  padding-bottom: 0 !important;
+  background-color: #fff;
+}
+.wpjb-checkout-form.wpjb-tab-content .group-default,
+.wpjb-checkout-form.wpjb-tab-content .group-invoice,
+.wpjb-checkout-form.wpjb-tab-content .submit-box {
+  display: none;
+}
+.wpjb-checkout-form.wpjb-tab-content .group-notice .banktransfer-info-notice b {
+  font-weight: bold;
+}
+
+#gateway-container {
+  position: relative;
+}
+#gateway-container .backdrop-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: rgba(255, 255, 255, 0.616);
+  display: none;
+  text-align: center;
+}
+#gateway-container .backdrop-loader .wpjb-icon-spinner {
+  font-size: 30px;
+  margin-top: 133px;
 }
 
 .box-view-type > .btn {

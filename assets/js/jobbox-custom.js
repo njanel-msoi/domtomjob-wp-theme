@@ -198,5 +198,20 @@
     //   $(".daq-date-picker").datepicker();
   });
 
-  // select first package in "add job"
+  /** BLOCK ALL "gateway" UI WHEN A GATEWAY IS SELECTED (payment page) */
+  $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+    if (!options.data) return;
+    var actions = options.data.split("&").filter((p) => p.includes("action="));
+    if (!actions.length) return;
+    var action = actions[0].split("=").pop();
+    if (action != "wpjb_payment_render") return;
+
+    // here we are on "payment gateway UI ajax loading"
+    var backdrop = $("#gateway-container .backdrop-loader");
+    backdrop.show();
+    // on ajax complete, hide backdrop
+    options.complete = function () {
+      backdrop.hide();
+    };
+  });
 })(jQuery);
