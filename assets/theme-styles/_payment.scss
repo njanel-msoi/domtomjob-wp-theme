@@ -27,6 +27,12 @@
   }
 }
 
+.label-banktransfer,
+.value-banktransfer,
+.value-total-withbanktransfer {
+  display: none;
+}
+
 #gateway-container {
   position: relative;
   .backdrop-loader {
@@ -45,6 +51,15 @@
     .wpjb-icon-spinner {
       font-size: 30px;
       margin-top: 133px;
+    }
+  }
+
+  &.loading {
+    .backdrop-loader {
+      display: block;
+    }
+    .wpjb-checkout-form > * {
+      visibility: hidden;
     }
   }
 }

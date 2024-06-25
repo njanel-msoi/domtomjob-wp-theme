@@ -201,17 +201,29 @@
   /** BLOCK ALL "gateway" UI WHEN A GATEWAY IS SELECTED (payment page) */
   $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
     if (!options.data) return;
-    var actions = options.data.split("&").filter((p) => p.includes("action="));
-    if (!actions.length) return;
-    var action = actions[0].split("=").pop();
-    if (action != "wpjb_payment_render") return;
+    // handle "action" for payment form
+    if (!options.data.includes("action=wpjb_payment_render")) return;
+
+    var optionsMap = {};
+    options.data.split("&").forEach((element) => {
+      var parts = element.split("=");
+      if (parts.length < 2) return;
+      optionsMap[parts[0]] = parts[1];
+    });
+
+    // some lines in payment table are visible only with banktransfer gateway
+    var showBankTransfer = optionsMap.gateway == "BankTransferPayment";
+    $(
+      ".label-banktransfer, .value-banktransfer, .value-total-withbanktransfer"
+    ).toggle(showBankTransfer);
+    $(".value-total").toggle(!showBankTransfer);
 
     // here we are on "payment gateway UI ajax loading"
-    var backdrop = $("#gateway-container .backdrop-loader");
-    backdrop.show();
+    var backdrop = $("#gateway-container");
+    backdrop.addClass("loading");
     // on ajax complete, hide backdrop
     options.complete = function () {
-      backdrop.hide();
+      backdrop.removeClass("loading");
     };
   });
 })(jQuery);

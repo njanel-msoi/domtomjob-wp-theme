@@ -232,3 +232,18 @@ function getPaymentAmountFromPaymentFormDefault()
 
     return $taxer->value->total;
 }
+
+function amountWithBankTransferPayment($amount, $onlyBankTransferPrice = false)
+{
+    $multiplyBy = BankTransferPayment::$TRANSFER_EXTRA_PERCENTAGE_PRICE  / 100;
+    if (!$onlyBankTransferPrice)
+        $multiplyBy += 1;
+    $amount *= $multiplyBy;
+
+    return round($amount, 2);
+}
+
+function price($num)
+{
+    return number_format($num, 2, ".", " ") . '€';
+}

@@ -21,6 +21,9 @@ $price = $taxer->getPrice();
 
 wp_enqueue_script("wpjb-payment");
 wp_enqueue_script("wpjb-stripe-main");
+
+$bankTransferCost = amountWithBankTransferPayment($taxer->value->total, true);
+$totalWithBankTransfer = amountWithBankTransferPayment($taxer->value->total);
 ?>
 
 <div class="wpjb wpjb-page-default-payment">
@@ -37,11 +40,11 @@ wp_enqueue_script("wpjb-stripe-main");
         </div>
         <div class="wpjb-grid-row wpjb-payment-item">
             <div class="wpjb-col-65"><?php esc_html_e($pricing_item) ?></div>
-            <div class="wpjb-col-30 wpjb-grid-col-right"><span class="wpjb-value" data-price-default="<?php esc_html_e(wpjb_price($taxer->value->price, $pricing->currency)) ?>" data-pricing-id="<?php echo $pricing->id ?>"><?php esc_html_e(wpjb_price($taxer->value->price, $pricing->currency)) ?></span></div>
+            <div class="wpjb-col-30 wpjb-grid-col-right"><span class="wpjb-value" data-price-default="<?php esc_html_e(price($taxer->value->price)) ?>" data-pricing-id="<?php echo $pricing->id ?>"><?php esc_html_e(price($taxer->value->price)) ?></span></div>
         </div>
         <div class="wpjb-grid-row wpjb-payment-discount wpjb-none">
             <div class="wpjb-col-65"><?php _e("Discount", "wpjobboard") ?></strong></div>
-            <div class="wpjb-col-30 wpjb-grid-col-right"><span class="wpjb-value" data-price-default="<?php esc_html_e(wpjb_price($taxer->value->discount, $pricing->currency)) ?>"><?php esc_html_e(wpjb_price($taxer->value->discount, $pricing->currency)) ?></span></div>
+            <div class="wpjb-col-30 wpjb-grid-col-right"><span class="wpjb-value" data-price-default="<?php esc_html_e(price($taxer->value->discount)) ?>"><?php esc_html_e(price($taxer->value->discount)) ?></span></div>
         </div>
         <div class="wpjb-grid-row wpjb-payment-total">
             <div class="wpjb-col-65">
@@ -49,14 +52,26 @@ wp_enqueue_script("wpjb-stripe-main");
                     <span class="wpjb-payment-tax-label"><?php _e("Subtotal", "wpjobboard") ?></span>
                     <span class="wpjb-payment-tax-label"><?php echo sprintf(__('%1$s @ %2$s', "wpjobboard"), __("Tax", "wpjobboard"), $taxer->value->rate . "%") ?></span>
                 <?php endif; ?>
-                <strong style="font-size: larger"><?php _e("Total", "wpjobboard") ?></strong>
+
+                <div class="wpjb-payment-tax-label label-banktransfer">Frais de gestion virement (<?= BankTransferPayment::$TRANSFER_EXTRA_PERCENTAGE_PRICE ?>%)</div>
+
+                <strong class="label-wpjb-value" style="font-size: larger"><?php _e("Total", "wpjobboard") ?></strong>
             </div>
             <div class="wpjb-col-30 wpjb-grid-col-right">
+
                 <?php if ($taxer->isEnabled()) : ?>
-                    <span class="wpjb-payment-tax-label wpjb-value-subtotal" data-price-default="<?php esc_html_e(wpjb_price($taxer->value->subtotal, $pricing->currency)) ?>"><?php esc_html_e(wpjb_price($taxer->value->subtotal, $pricing->currency)) ?></span>
-                    <span class="wpjb-payment-tax-label wpjb-value-tax" data-price-default="<?php esc_html_e(wpjb_price($taxer->value->tax, $pricing->currency)) ?>"><?php esc_html_e(wpjb_price($taxer->value->tax, $pricing->currency)) ?></span>
+                    <span class="wpjb-payment-tax-label wpjb-value-subtotal" data-price-default="<?php esc_html_e(price($taxer->value->subtotal)) ?>"><?php esc_html_e(price($taxer->value->subtotal)) ?></span>
+                    <span class="wpjb-payment-tax-label wpjb-value-tax" data-price-default="<?php esc_html_e(price($taxer->value->tax)) ?>"><?php esc_html_e(price($taxer->value->tax)) ?></span>
                 <?php endif; ?>
-                <strong class="wpjb-value" style="font-size:larger" data-price-default="<?php esc_html_e(wpjb_price($taxer->value->total, $pricing->currency)) ?>"><?php esc_html_e(wpjb_price($taxer->value->total, $pricing->currency)) ?></strong>
+                <strong class="wpjb-value value-total" style="font-size:larger" data-price-default="<?php esc_html_e(price($taxer->value->total)) ?>">
+                    <?php esc_html_e(price($taxer->value->total)) ?>
+                </strong>
+
+                <div class="wpjb-payment-tax-label value-banktransfer"><?= price($bankTransferCost) ?></div>
+                <strong class="wpjb-value value-total-withbanktransfer" style="font-size:larger" data-price-default="<?php esc_html_e(price($taxer->value->total)) ?>">
+                    <?php esc_html_e(price($totalWithBankTransfer)) ?>
+                </strong>
+
             </div>
         </div>
     </div>
