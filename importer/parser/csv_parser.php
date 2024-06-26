@@ -67,6 +67,6 @@ function importCompanyFromCSV($csvFile, $mappingFields)
                 $fileXML->addChild('content', $content);
             }
         }
-    }, true);
+    });
     print($xml->asXML());
 }
