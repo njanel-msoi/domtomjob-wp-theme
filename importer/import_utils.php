@@ -14,10 +14,16 @@ function map_job($sourceJob, $fieldsMapping, $company)
 
 function map_and_import_job($sourceJob, $fieldsMapping, $company)
 {
-    // map jobs fields
-    $job = map_job($sourceJob, $fieldsMapping, $company);
-    // here we got a job in the correct format for API
-    dtj_import_job($job);
+    try {
+        // map jobs fields
+        $job = map_job($sourceJob, $fieldsMapping, $company);
+        // here we got a job in the correct format for API
+        dtj_import_job($job);
+    } catch (Exception $ex) {
+        // display error and go for next job
+        print_r($ex->getMessage());
+        echo '<br>';
+    }
 }
 
 function map_fields($source, $dest, $fieldsMapping, $param1 = null)
@@ -30,10 +36,25 @@ function map_fields($source, $dest, $fieldsMapping, $param1 = null)
         } else {
             $value = $fieldMapping ? $source[$fieldMapping] : "";
         }
-        $dest[$destField] = $value;
+        // do not override if no value
+        if ($value == "NULL" || $value == "") $value = null;
+        if ($value)
+            $dest[$destField] = $value;
     }
 
     return $dest;
+}
+
+function get_wpjb_metas($meta_id, $value)
+{
+    global $wpdb;
+    $results = $wpdb->get_results("SELECT * FROM wpdtj_wpjb_meta_value WHERE meta_id = $meta_id AND value = $value");
+
+    $results = array_filter($results, function ($c) {
+        return !!$c->object_id;
+    });
+
+    return $results;
 }
 
 function get_company_from_old_id($oldId)
@@ -41,18 +62,22 @@ function get_company_from_old_id($oldId)
     // "l'id de l'employeur est la valeur de la colonne object_id, dans la table wpdtj_wpjb_meta_value où meta_id=220 et value est égal à l'ancien id de l'employeur
     // SELECT value FROM wpdtj_wpjb_meta_value WHERE meta_id=220 AND value =  ""valeur de off_ent"""
 
-    global $wpdb;
-    $results = $wpdb->get_results("SELECT * FROM wpdtj_wpjb_meta_value WHERE meta_id = 220 AND value = $oldId");
+    $results = get_wpjb_metas(220, $oldId);
 
-    $results = array_filter($results, function ($c) {
-        return !!$c->object_id;
-    });
-
-    if (count($results) == 0) exit("missing reference from old company ID in meta company description");
-    if (count($results) > 1) exit("multiple company for same old ID, need correction");
+    if (count($results) == 0) throw ("missing reference from old company ID in meta company description");
+    if (count($results) > 1) throw ("multiple company for same old ID, need correction");
 
     $id = array_pop($results)->object_id;
     return get_company($id);
+}
+
+function has_job_from_old_id($oldId)
+{
+    $results = get_wpjb_metas(225, $oldId);
+
+    if (count($results) > 1) throw  new Exception("multiple company for same old ID, need correction");
+
+    return count($results) > 0;
 }
 
 function get_company($companyId)
@@ -117,7 +142,7 @@ function fillJobCompanyFromCompany($job, $company, $copyLogo = false)
     // company
 }
 
-function readCSVAndHandleEachLine($csvFile, $callback)
+function readCSVAndHandleEachLine($csvFile, $callback, $oneOnly = false)
 {
     $handle = fopen($csvFile, "r");
     if ($handle === FALSE) exit("problem with file opening");
@@ -125,6 +150,7 @@ function readCSVAndHandleEachLine($csvFile, $callback)
     $headers = fgetcsv($handle, 10000, ";");
     if ($headers === FALSE) exit("headers are missing");
 
+    $nb = 0;
     while (($data = fgetcsv($handle, 10000, ";")) !== FALSE) {
         $source = [];
         foreach ($headers as $id => $field) {
@@ -134,8 +160,9 @@ function readCSVAndHandleEachLine($csvFile, $callback)
 
         $callback($source);
 
-        // TODO: remove to handle all lines
-        break;
+        if ($oneOnly)
+            break;
+        $nb++;
     }
     fclose($handle);
 }

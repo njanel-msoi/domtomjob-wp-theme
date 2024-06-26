@@ -1,8 +1,10 @@
 <?php
+define('REUNION_CODE', 4);
+define('FRANCE_METROPOLE_CODE', 17);
 
 // Liste des éléments
 $REGIONS = array(
-    17 => 'France métropolitaine',
+    FRANCE_METROPOLE_CODE => 'France métropolitaine',
     1 => 'Guadeloupe',
     3 => 'Guyane',
     14 => 'Île Maurice',
@@ -12,7 +14,7 @@ $REGIONS = array(
     5 => 'Mayotte',
     6 => 'Nouvelle Calédonie',
     7 => 'Polynésie Française',
-    4 => 'Réunion',
+    REUNION_CODE => 'Réunion',
     18 => 'Saint Barthélémy',
     10 => 'Saint-Martin',
     9 => 'Saint-Pierre et Miquelon',

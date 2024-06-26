@@ -69,12 +69,6 @@
     $(event.target).children("a").click();
   });
 
-  /*==== Add css to payment btn */
-  $("a.wpjb-button.wpjb-place-order")
-    .addClass("btn btn-default hover-up submit-btn mb-50")
-    .parent()
-    .addClass("text-center");
-
   /*====== Dashbaord profile on hover ======*/
   $(".to-be-revealed").hide();
   $(".reveal-child-on-hover").mouseenter(function () {
@@ -212,11 +206,13 @@
     });
 
     // some lines in payment table are visible only with banktransfer gateway
-    var showBankTransfer = optionsMap.gateway == "BankTransferPayment";
-    $(
-      ".label-banktransfer, .value-banktransfer, .value-total-withbanktransfer"
-    ).toggle(showBankTransfer);
-    $(".value-total").toggle(!showBankTransfer);
+    if ($(".label-banktransfer").length > 0) {
+      var showBankTransfer = optionsMap.gateway == "BankTransferPayment";
+      $(
+        ".label-banktransfer, .value-banktransfer, .value-total-withbanktransfer"
+      ).toggle(showBankTransfer);
+      $(".value-total").toggle(!showBankTransfer);
+    }
 
     // here we are on "payment gateway UI ajax loading"
     var backdrop = $("#gateway-container");

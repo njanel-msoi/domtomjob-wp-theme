@@ -16,70 +16,57 @@ function importJobFromCSV($csvFile, $mappingFields, $companyFunc)
         // the parser common method
         map_and_import_job($sourceJob, $mappingFields, $company);
 
+        ob_start();
         echo 'job imported<br>';
+        ob_flush();
     });
 }
 
 function importCompanyFromCSV($csvFile, $mappingFields)
 {
-    echo '<?xml version="1.0" encoding="UTF-8"?>
-<wpjb>
-    <companies>';
+    $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><wpjb/>');
+    $companiesXML = $xml->addChild('companies');
 
-    readCSVAndHandleEachLine($csvFile, function ($sourceCompany) use ($mappingFields) {
+    $GLOBALS['startCompanyID'] = 1001;
+
+    readCSVAndHandleEachLine($csvFile, function ($sourceCompany) use ($mappingFields, $companiesXML) {
         // called for each company to import
         $destCompany = map_fields($sourceCompany, [], $mappingFields);
         $company = dtj_import_company($destCompany);
 
-        echo '
-        <company>';
+        $companyXML = $companiesXML->addChild('company');
+        $companyXML->addChild('id', $GLOBALS['startCompanyID']++);
 
         foreach ($company as $key => $value) {
             if (!is_array($value)) {
-                // root keys
-                echo "
-            <$key>$value</$key>";
+                $companyXML->addChild($key, $value);
             }
         }
 
         if (isset($company['metas'])) {
-            echo '
-            <metas>';
+            $metasXML = $companyXML->addChild('metas');
             foreach ($company['metas'] as $meta) {
 
                 $name = $meta['name'];
                 $value = $meta['values'][0];
-                echo "
-                <meta>
-                    <name>$name</name>
-                    <value>$value</value>
-                </meta>";
+
+                $metaXML = $metasXML->addChild('meta');
+
+                $metaXML->addChild('name', $name);
+                $metaXML->addChild('value', $value);
             }
-            echo '
-            </metas>';
         }
 
         if (isset($company['files'])) {
-            echo '
-            <files>';
+            $filesXML = $companyXML->addChild('files');
             foreach ($company['files'] as $file) {
                 extract($file);
-                echo "
-                <file>
-                    <path>$path</path>
-                    <content>$content</content>
-                </file>";
+                $fileXML = $filesXML->addChild('file');
+
+                $fileXML->addChild('path', $path);
+                $fileXML->addChild('content', $content);
             }
-            echo '
-            </files>';
         }
-
-        echo "
-        </company>
-";
-    });
-
-    echo '
-    </companies>
-</wpjb>';
+    }, true);
+    print($xml->asXML());
 }

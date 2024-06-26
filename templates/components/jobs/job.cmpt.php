@@ -59,9 +59,10 @@
                     <div class="row">
                         <?php
                         $salaries = (object)['min' => get_meta_value($job, 'salary_min'), 'max' => get_meta_value($job, 'salary_max')];
+                        if ($salaries->min == $salaries->max) $salaries->max = null;
                         $salary = $salaries->min && $salaries->max ? 'de ' . $salaries->min . 'k€ à ' . $salaries->max . 'k€' : ($salaries->min ? $salaries->min . 'k€' : ($salaries->max ? $salaries->max . 'k€' : ''));
                         $salaryTxt = get_meta_value($job, 'job_salary_txt');
-                        if ($salaryTxt) $salary ? $salary .= $salaryTxt : $salaryTxt;
+                        if ($salaryTxt) $salary ? $salary .= '<br>' . $salaryTxt : $salaryTxt;
 
                         // icones : industry job-level salary experience job-type deadline updated location
                         $job_infos = [

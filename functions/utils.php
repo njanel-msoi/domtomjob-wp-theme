@@ -209,13 +209,9 @@ function getPaymentAmountFromPaymentFormDefault()
     if (isset($defaults['payment_hash'])) {
         $payment = Wpjb_Model_Payment::getFromHash($defaults['payment_hash']);
         $pricing = new Wpjb_Model_Pricing($payment->pricing_id);
-        $cArr = Wpjb_List_Currency::getByCode($payment->payment_currency);
-        $currency = strtolower($cArr['code']);
     } else {
         $payment = null;
         $pricing = new Wpjb_Model_Pricing($defaults['pricing_id']);
-        $cArr = Wpjb_List_Currency::getByCode($pricing->currency);
-        $currency = strtolower($cArr['code']);
     }
 
     $discount = Daq_Request::getInstance()->post("discount");

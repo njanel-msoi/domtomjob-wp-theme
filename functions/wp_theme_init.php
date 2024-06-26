@@ -134,3 +134,10 @@ add_filter('wpjb_taxer_tax_rate', function ($default, $pricing) {
     }
     return taxFromRegion($currentCompanyRegion);
 }, 20, 2);
+
+add_filter('query', function ($query) {
+    $a = 1;
+    return $query;
+
+    // TODO: add filter AFTER save and detect if it was banktransfer gateway, and if so, change payment
+});

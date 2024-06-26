@@ -8,3 +8,6 @@ include_once dirname(__FILE__) . '/import_jobs.php';
 include_once dirname(__FILE__) . '/import_company_xml.php';
 
 include_once dirname(__FILE__) . '/parser/csv_parser.php';
+include_once dirname(__FILE__) . '/parser/array_parser.php';
+
+include_once dirname(__FILE__) . '/import_from_config.php';

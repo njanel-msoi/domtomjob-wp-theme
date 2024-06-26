@@ -11,13 +11,17 @@
 $old_country_mapping = include dirname(__FILE__) . '/old_country_mapping.php';
 $country_reunion = 638;
 
+$olddb_ucwords = function ($source) {
+    return ucwords(strtolower($source['ent_lb']), " -\t\r\n\f\v'");
+};
+
 /**
  * Mapping for to import old DB company
  */
 return [
     "user_login" => "ent_email", // nécessite la liste des utilisateurs liés aux entreprises (requete / table de correspondance ?)
     "user_email" => "ent_email",
-    "company_name" => "ent_lb",
+    "company_name" => $olddb_ucwords, //"ent_lb",
     "company_website" => "ent_url",
     "company_info" => "ent_description",
     "company_zip_code" => "ent_cp",
@@ -66,12 +70,12 @@ return [
         if ($effectif && $effectif > 0) return $effectif;
         return null;
     },
-    "company_contact_company_name" => "ent_lb",
+    "company_contact_company_name" => $olddb_ucwords, //"ent_lb",
     "company_contact_name" => "ent_contact",
     "company_contact_function" => "",
     "company_phone" => "ent_tel",
     "company_address" => "ent_adresse",
-    "billing_company_name" => "ent_lb",
+    "billing_company_name" => $olddb_ucwords, // "ent_lb",  
     "billing_contact_name" => "ent_contact",
     "billing_contact_function" => "",
     "billing_email" => "ent_email",

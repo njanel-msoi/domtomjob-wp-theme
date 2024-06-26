@@ -75,5 +75,74 @@ function post($path, $body)
 
 function postJob($job)
 {
-    return post('/jobs/', $job);
+    return postAction(["wpjb-job" => $job]);
+}
+
+
+function postAction($request = array())
+{
+    $import = new stdClass;
+
+    $meta = array();
+    $tags = array();
+    $files = array();
+
+    foreach ($request["wpjb-job"] as $k => $v) {
+        if (in_array($k, array("meta", "tags", "files"))) {
+            $$k = $v;
+            continue;
+        }
+        $import->$k = (string)$v;
+    }
+
+    $import->metas = new stdClass();
+    $import->metas->meta =  array();
+
+    $import->tags = new stdClass();
+    $import->tags->tag = array();
+
+    $import->files = new stdClass();
+    $import->files->file = array();
+
+    foreach ($meta as $k => $v) {
+        $meta = new stdClass();
+        $meta->name = "";
+        $meta->value = "";
+        $meta->values = new stdClass;
+        $meta->values->value = array();
+        foreach ($v as $vk => $vv) {
+            if ($vk == "values") {
+                $meta->$vk->value = $vv;
+            } else {
+                $meta->$vk = $vv;
+            }
+        }
+        $import->metas->meta[] = $meta;
+    }
+
+    foreach ($tags as $k => $v) {
+        $tag = new stdClass;
+        $tag->id = null;
+        $tag->type = "";
+        $tag->slug = "";
+        $tag->title = "";
+        foreach ($v as $vk => $vv) {
+            $tag->$vk = $vv;
+        }
+        $import->tags->tag[] = $tag;
+    }
+
+    foreach ($files as $k => $v) {
+        $file = new stdClass;
+        foreach ($v as $vk => $vv) {
+            $file->$vk = $vv;
+        }
+        $import->files->file[] = $file;
+    }
+
+    $result = apply_filters("wpjb_api_job_post", Wpjb_Model_Job::import($import), $import);
+
+    $object = new Wpjb_Model_Job($result["id"]);
+
+    return $object->toArray();
 }

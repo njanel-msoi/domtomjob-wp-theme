@@ -52,7 +52,8 @@ $JOB_META_FIELDS = [
     "billing_zipcode",
     "billing_city",
     "billing_country",
-    "optin_group"
+    "optin_group",
+    "old_job_id"
 ];
 $JOB_TAG_FIELDS = ['category', 'type'];
 $JOB_FILE_FIELDS = ['company_logo'];
@@ -65,10 +66,10 @@ $JOB_PROTECTED_VALUES = [
     "job_modified_at"   => date("Y-m-d"),
     "job_expires_at"    => date("Y-m-d", JOB_EXPIRATION),
     'is_approved' =>    0,
-    'is_active' =>    1,
+    'is_active' =>    0,
     'is_filled' =>    0,
     'is_featured' =>    0,
-    'job_is_anonymous' =>    0
+    'job_is_anonymous' => 0
 ];
 
 $JOB_DEFAULT_VALUES = array_merge($JOB_PROTECTED_VALUES, [
@@ -84,10 +85,14 @@ $JOB_DEFAULT_VALUES = array_merge($JOB_PROTECTED_VALUES, [
  */
 function dtj_import_job($plainJob)
 {
+    // is this job already in DB ?
+    $old_id = $plainJob['old_job_id'];
+    if (has_job_from_old_id($old_id)) {
+        throw new Exception("Job with old_id " . $plainJob['old_job_id'] . " has already been imported");
+    }
+
     global $JOB_ROOT_FIELDS, $JOB_META_FIELDS, $JOB_TAG_FIELDS, $JOB_FILE_FIELDS, $JOB_PROTECTED_VALUES;
     $apiJob = ["meta" => [], "tags" => [], "files" => []];
-
-    // convert job plain data to api format
 
     // field at root level
     foreach ($JOB_ROOT_FIELDS as $field) {
@@ -123,7 +128,10 @@ function dtj_import_job($plainJob)
         preDump($apiJob);
         return $apiJob;
     }
-    return post('/jobs/', ["wpjb-job" => $apiJob]);
+    $result = postJob($apiJob);
+    if (!$result) throw new Exception('problem with job insertion ' . $apiJob['job_title']);
+
+    echo 'Job added to queue : ' . $apiJob['job_title'] . '<br>';
 }
 
 /**

@@ -53,7 +53,7 @@ $totalWithBankTransfer = amountWithBankTransferPayment($taxer->value->total);
                     <span class="wpjb-payment-tax-label"><?php echo sprintf(__('%1$s @ %2$s', "wpjobboard"), __("Tax", "wpjobboard"), $taxer->value->rate . "%") ?></span>
                 <?php endif; ?>
 
-                <div class="wpjb-payment-tax-label label-banktransfer">Frais de gestion virement (<?= BankTransferPayment::$TRANSFER_EXTRA_PERCENTAGE_PRICE ?>%)</div>
+                <!-- <div class="wpjb-payment-tax-label label-banktransfer">Frais de gestion virement (<?= BankTransferPayment::$TRANSFER_EXTRA_PERCENTAGE_PRICE ?>%)</div> -->
 
                 <strong class="label-wpjb-value" style="font-size: larger"><?php _e("Total", "wpjobboard") ?></strong>
             </div>
@@ -67,22 +67,23 @@ $totalWithBankTransfer = amountWithBankTransferPayment($taxer->value->total);
                     <?php esc_html_e(price($taxer->value->total)) ?>
                 </strong>
 
-                <div class="wpjb-payment-tax-label value-banktransfer"><?= price($bankTransferCost) ?></div>
+                <!-- <div class="wpjb-payment-tax-label value-banktransfer"><?= price($bankTransferCost) ?></div>
                 <strong class="wpjb-value value-total-withbanktransfer" style="font-size:larger" data-price-default="<?php esc_html_e(price($taxer->value->total)) ?>">
                     <?php esc_html_e(price($totalWithBankTransfer)) ?>
-                </strong>
+                </strong> -->
 
             </div>
         </div>
     </div>
 
     <!-- this container is used to block edition of inside component when gateway is loading -->
-    <div id="gateway-container">
+    <div id="gateway-container" class="loading">
         <div class="backdrop-loader">
             <span class="wpjb-glyphs wpjb-icon-spinner wpjb-animate-spin"></span>
         </div>
 
-        <div class="" style="padding:0 1% 0 1%; border-color: whitesmoke; margin-top:30px; margin-bottom: 30px">
+        <div class="mb-20"></div>
+        <div class="discount-container d-none" style="padding:0 1% 0 1%; border-color: whitesmoke; margin-top:30px; margin-bottom: 30px">
 
             <span class="wpjb-enter-discount-start">
                 <?php _e("Have a discount code?", "wpjobboard") ?>
@@ -168,8 +169,8 @@ $totalWithBankTransfer = amountWithBankTransferPayment($taxer->value->total);
 
             <div id="wpjb-checkout-success" class="wpjb-none"></div>
 
-            <div class="wpjb-place-order-wrap" style="margin-top:30px;">
-                <a href="#" class="wpjb-button wpjb-place-order"><?php _e("Place Order", "wpjobboard") ?></a>
+            <div class="wpjb-place-order-wrap text-center" style="margin-top:30px;">
+                <a href="#" class="btn btn-default hover-up submit-btn mb-50 wpjb-place-order"><?php _e("Place Order", "wpjobboard") ?></a>
                 <span class="wpjb-glyphs wpjb-icon-spinner wpjb-animate-spin" style="visibility:hidden; font-size: 18px; vertical-align: middle; color: black;"></span>
             </div>
 
