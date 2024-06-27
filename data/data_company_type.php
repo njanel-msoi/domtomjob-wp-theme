@@ -1,6 +1,7 @@
 <?php
 
 // Liste des éléments
+// Note : keys are the same than old DB
 $COMPANY_TYPE = array(
     3 => "Entreprise privée",
     4 => "Entreprise publique ou para-publique",

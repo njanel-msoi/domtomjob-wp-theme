@@ -1,6 +1,10 @@
 <?php
 
 /**
+ * Mapping for to import old DB job offers
+ */
+
+/**
  * A mapping file should return an array with list of fields of DTJ Job
  * For each field you can set a value which can be :
  * - the name of a key of the source job
@@ -9,15 +13,8 @@
  * Please note that jobs are already prefilled with data from the company. So no need to map contact & billing fields from company, it's already done by "fillJobCompanyFromCompany"
  */
 
-/**
- * Mapping for to import old DB job offers
- * 
- * // TODO: correspondance d'id pôur les champs suivants :
- * type > off_contrat (type de contrat)
- * category	> off_secteur (domaine d'activité)
- * job_experience > off_exp (expérience demandée)
- * job_study_level > off_diplome (diplome attendu)
- */
+$old_contracttype_mapping = include dirname(__FILE__) . '/old_contract_type_mapping.php';
+
 return [
     "company_name" => "off_societe",
 
@@ -25,7 +22,12 @@ return [
     "job_title" => function ($source) {
         return str_replace('f/h', 'F/H', ucfirst(strtolower($source["off_lb"])));
     },
-    "type" => "off_contrat",
+    "type" => function ($source) {
+        global $old_contracttype_mapping;
+        $oldType = $source['odd_contrat'];
+        if (!$oldType) return null;
+        return $old_contracttype_mapping[$oldType];
+    }, // "off_contrat",
     "job_city" => function ($source) {
         return ucfirst(strtolower($source["off_lieu_travail"]));
     },
@@ -56,7 +58,7 @@ return [
         $status = $source["off_statut"];
         return $status == "2" || $status == 2 ? 0 : 1;
     },
-    "is_filled" => "",
+    // "is_filled" => "",
     "is_featured" => function ($source) {
         $mea = $source['off_mea'];
         return $mea && $mea != 0 && $mea != '0' && $mea != 'Aucune' ? 1 : 0;
@@ -64,7 +66,7 @@ return [
     "job_is_anonymous" => function ($source) {
         return $source['off_societe'] == "Confidentiel" ? "1" : "0";
     },
-    "category" => "off_secteur",
+    "category" => "off_secteur", //TODO need mapping
     "job_profile" => function ($source) {
         return str_replace('__br__', '<br>', $source["off_profile"]);
     },
@@ -72,7 +74,7 @@ return [
         return (str_contains(strtolower($source['off_description']), 'temps partiel'))
             ? "PARTTIME" : "FULLTIME";
     },
-    "job_function" => "",
+    "job_function" => "fon_code", // TODO need mapping
     "salary_min" => "off_salaire_min",
     "salary_max" => function ($source) {
         return $source['off_salaire_min'] ? $source['off_salaire'] : '';
@@ -83,8 +85,8 @@ return [
     "job_experience" => "off_exp",
     "job_study_level" => "off_diplome",
     "job_duration" => "off_cdd_duree",
-    "company_siret" => "",
-    "job_phone" => "",
+    // "company_siret" => "",
+    "job_phone" => "off_rep_tel",
     "job_apply_type" => function ($source) {
         if ($source['off_reponsepar_web'] == "1") return "URL";
         if ($source['off_reponsepar_courrier'] == "1" || $source['off_reponsepar_tel'] == "1") return "TEXT";
@@ -107,5 +109,5 @@ return [
         }));
     },
 
-    "optin_group" => ""
+    //"optin_group" => ""
 ];

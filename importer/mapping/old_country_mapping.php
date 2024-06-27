@@ -1,4 +1,7 @@
 <?php
+/**
+ * Mapping from the old DB of domtomjob for countries to region
+ */
 // key = old site country code, value = new site country code
 return [
     17 => 250,

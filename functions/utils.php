@@ -8,6 +8,11 @@ function preDump($var)
     echo '</pre>';
 }
 
+function dtj_ucwords($value)
+{
+    return ucwords(strtolower($value), " -\t\r\n\f\v'");
+};
+
 function isRecruteurPage()
 {
     $pagesRecruteur = array(222, 16, 8, 95, 12, 10, 239);

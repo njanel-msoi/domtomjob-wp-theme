@@ -1,16 +1,17 @@
 <?php
 
 // Liste des éléments
+// NOTE : the key are the same than old DB
 $STUDY_LEVEL = array(
-    'CollegeouLycee' => 'Collège ou Lycée',
-    'NiveauBac' => 'Niveau Bac',
-    'BacProBEP' => 'Bac Pro, BEP, CAP',
-    'DUTBTSBac2' => 'DUT, BTS, Bac 2',
-    'LicenceIEPBac3' => 'Licence, IEP, Bac 3',
-    'MaitriseIUPBac4' => 'Maîtrise, IUP, Bac 4',
-    'DESSDEAGrandesEcolesBac5' => 'DESS, DEA, Grandes Ecoles, Bac 5',
-    'Doctorat3emecycle' => 'Doctorat, 3ème cycle',
-    'ExpertRecherche' => 'Expert, Recherche'
+    1 => "Collège ou lycée",
+    2 => "Niveau BAC",
+    3 => "BAC pro, BEP, CAP",
+    4 => "DUT, BTS, BAC +2",
+    5 => "Licence, IEP, BAC +3",
+    6 => "Maîtrise, IUP, BAC +4",
+    7 => "DESS, DEA, Grandes Ecoles, BAC +5",
+    8 => "Doctorat, 3ème cycle",
+    9 => "Expert, Recherche"
 );
 
 // build a format compatible with wpjb plugin
