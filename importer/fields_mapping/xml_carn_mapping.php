@@ -37,16 +37,35 @@ return [
         else FRANCE_METROPOLE_CODE;
     },
     "job_profile" => "exigences_partculieres", //<exigences_partculieres><![CDATA[ Capacité d'observation, Compréhension et respect des normes techniques, Curiosité, Savoir passer une consigne, Sens du relationnel, Connaissance des règles d'hygiène et de sécurité. ]]></exigences_partculieres>
-    "type_fulltime", // TODO: mapping <horaires><![CDATA[ 1 ]]></horaires>
-    "job_function",
+    // "type_fulltime", // mapping <horaires><![CDATA[ 1 ]]></horaires>
+    "job_function" => function ($source) {
+        $domaine = $source['domaine'];
+        if (!$domaine) return null;
+        return import_oldFunctionToJobFunctionCode($domaine);
+    }, // <domaine>
     "salary_min" => "salaire_min", // <salaire_min><![CDATA[ 1783 ]]></salaire_min>
     "salary_max" => "salaire_max", // <salaire_max><![CDATA[ 1783 ]]></salaire_max>
-    "job_experience", // TODO: mapping <experiences><![CDATA[ 1 ]]></experiences>
-    "job_study_level", // TODO: mapping <niveau_etude><![CDATA[ Sans niveau sp&eacute;cifique ]]></niveau_etude>
+    "job_experience" => function ($source) {
+        if ($source['experiences']) return $source['experiences'];
+        return 1;
+    }, // mapping <experiences><![CDATA[ 1 ]]></experiences>
+    // "job_study_level", // mapping <niveau_etude><![CDATA[ Sans niveau sp&eacute;cifique ]]></niveau_etude>
     "job_apply_url" => "url", //<url><![CDATA[ http://www.cnarm.fr/offres_emplois/conducteur-de-lignes-automatis-es-de-conditionnement-h-f,48768.do ]]></url>
-    "category", //TODO: mapping<secteur><![CDATA[ Artisanat (alimentation) ]]></secteur>
-    "type", //TODO: mapping <type_de_contrat><![CDATA[ CDI ]]></type_de_contrat>
+    "category" => function ($source) {
+        $secteur = $source['secteur'];
+        if (!$secteur) return null;
+        return import_oldSectorsNameToCategoryId($secteur);
+    }, // mapping<secteur><![CDATA[ Artisanat (alimentation) ]]></secteur>
+    "type" => function ($source) {
+        $contractName = $source['type_de_contrat'];
+        if (!$contractName) $contractName = 'CDI';
+        return import_contractNameToCode($contractName);
+    }, // mapping <type_de_contrat><![CDATA[ CDI ]]></type_de_contrat>
 ];
+
+// TODO: handle job duration :         $off_date_lim = (isset($offre->visibilite) && $offre->visibilite == '1 mois') ? 1 : 2;
+
+
 // <date_embauche>23/09/2024</date_embauche>
 // <mission_profil><![CDATA[ ]]></mission_profil>
 // <activites_profil><![CDATA[ ]]></activites_profil>

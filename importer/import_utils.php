@@ -166,3 +166,192 @@ function readCSVAndHandleEachLine($csvFile, $callback, $oneOnly = false)
     }
     fclose($handle);
 }
+
+function import_regionNameToCode($region)
+{
+    $jsonRegions = [
+        "GUADELOUPE" => 1,
+        "MARTINIQUE" => 2,
+        "GUYANE" => 3,
+        "REUNION" => REUNION_CODE,
+        "MAYOTTE" => 5,
+        "NOUVELLE CALÉDONIE" => 6,
+        "POLYNESIE FRANÇAISE" => 7,
+        "WALLIS ET FUTUNA" => 8,
+        "SAINT-PIERRE ET MIQUELON" => 9,
+        "SAINT-MARTIN" => 10,
+        "T.A.A.F." => 11,
+        "OUTRE-MER" => 99,
+        "PAYS VOISINS" => 99,
+        "ILE MAURICE" => 14,
+        "MADAGASCAR" => 15,
+        "LES COMORES" => 16,
+        "MÉTROPOLE" => FRANCE_METROPOLE_CODE,
+        "SAINT BARTHÉLÉMY" => 18,
+        "FRANCE" => FRANCE_METROPOLE_CODE,
+        "SEYCHELLES" => 20,
+    ];
+    if (isset($jsonRegions[$region])) return $jsonRegions[$region];
+    else return REUNION_CODE;
+}
+
+function import_oldFunctionToJobFunctionCode($function)
+{
+    if (!$function) return null;
+
+    $jobFunctions = [
+        1    => "Indifférent",
+        2    => "Administration / Secrétariat",
+        3    => "BTP & second oeuvre",
+        4    => "Commercial / Vente",
+        5    => "Formation / Enseignement",
+        6    => "Gestion / Comptabilité / Finance",
+        7    => "Hôtellerie / Restauration / Tourisme",
+        8    => "Informatique & Technologies / Telecom",
+        9    => "Installation / Maintenance / Réparation",
+        10    => "Juridique",
+        11    => "Logistique / Approvisionnement / Transport",
+        12    => "e-Marketing - Marketing",
+        13    => "Qualité / Inspection",
+        14    => "Recherche & Analyses",
+        15    => "Ressources Humaines",
+        16    => "Santé / Social",
+        17    => "Sécurité",
+        18    => "Services clientèle & aux particuliers",
+        19    => "Ingénierie / Industrie / Production",
+        20    => "Direction, Stratégie & Management",
+        21    => "Architecture / Création / Spectacle",
+        22    => "Edition & Ecriture",
+        23    => "Gestion de projet, programme / Environnement",
+        24    => "Communication",
+        25    => "Agricole",
+        26    => "Emplois verts"
+    ];
+
+    $ID = null;
+    foreach ($jobFunctions as $oldId => $oldText) {
+        if (str_contains($function, $oldText) || str_contains($oldText, $function)) {
+            $ID = $oldId;
+        }
+    }
+    if (!$ID) return null;
+
+    $oldJobFunctions = include './old_job_function_mapping.php';
+    return $oldJobFunctions[$ID];
+}
+
+function import_contractNameToCode($contract)
+{
+    $contractName = [,
+        "CDI" =>    1,
+        "CDD" =>    2,
+        "INT" =>    3,
+        "INTERIM" =>    3,
+        "STAGE" =>    4,
+        "FREELANCE / INDÉPENDANT" =>    5,
+        "FRANCHISE" =>    6,
+        "FORMATION" =>    7,
+        "VIE" =>    8,
+        "APPRENTISSAGE" =>    9,
+        "CONTRAT D&#X27;APPRENTISSAGE" =>    9,
+        "CONTRAT D'APPRENTISSAGE" =>    9,
+        "INDÉPENDANT" =>    10,
+        "AUTRE" =>    11,
+        "CONTRAT EN ALTERNANCE" =>    12,
+        "CONTRAT PRO" => 2
+    ];
+    $oldContract = 1;
+    if (isset($contractName[$contract])) $oldContract = $contractName[$contract];
+
+    $contractTypeMapping = include './old_contract_type_mapping.php';
+    return $contractTypeMapping[$oldContract];
+}
+
+function import_clientSectorToCategory($clientSector)
+{
+    if (!$clientSector) return null;
+
+    // TODO map from client sector to NEW IDX
+    $sectors = [
+        13 => 99, //'Services Administratifs et Commerciaux',
+        40 => 99,  'Distribution Et Vente',
+        7  => 99,  'Services aux Personnes et Collectivité',
+        39 => 99,  'Transport et Logistique',
+        27 => 99,  'Industrie Mécanique et des métaux',
+        21 => 99,  'Batiment, Travaux Publics',
+        37 => 99,  'Santé',
+        28 => 99,  'Formation',
+        17 => 99,  'Type Artisanal',
+        38 => 99,  'Hôtellerie – Restauration',
+        33 => 99,  'Autres Industries'
+    ];
+    if (isset($sectors[$clientSector])) return $sectors[$clientSector];
+
+    $categoryMapping = include './old_category_mapping.php';
+    if (isset($categoryMapping[$clientSector])) return $categoryMapping[$clientSector];
+
+    return null;
+}
+
+function import_oldSectorsNameToCategoryId($secteurName)
+{
+    $secteurs = [
+        1 => "Indifférent",
+        2 => "Administration / Services publics",
+        3 => "Aéronautique / Espace",
+        4 => "Agriculture / Pêche / Navigation",
+        5 => "Agroalimentaire",
+        6 => "Architecture",
+        7 => "Art / Culture",
+        8 => "Artisanat / Commerce",
+        9 => "Automobile",
+        10 => "Banque / Assurance / Finance",
+        11 => "Biologie / Biochimie / Botanique / Zoologie",
+        12 => "BTP / Génie civil",
+        13 => "Matières plastiques",
+        14 => "Commerce - Distribution",
+        15 => "Electricité / Electronique",
+        16 => "Energie / Pétrole / Gaz",
+        17 => "Enseignement / Education / Formation",
+        18 => "Environnement",
+        19 => "Etudes / Conseil",
+        20 => "Immobilier",
+        21 => "Industrie",
+        22 => "Informatique / Internet / Télécom",
+        23 => "Luxe",
+        24 => "Mécanique / Métallurgie",
+        25 => "Optique",
+        26 => "Presse / Edition / Média / Publicité",
+        27 => "Restauration / Hôtellerie",
+        28 => "Santé / Médical / Social",
+        29 => "Sécurité",
+        30 => "Textile / Mode",
+        31 => "Transport",
+        32 => "Tourisme / Sports / Loisirs",
+        33 => "Services Administratifs et Commerciaux",
+        34 => "Distribution Et Vente",
+        35 => "Services aux Personnes et Collectivité",
+        36 => "Transport et Logistique",
+        37 => "Industrie Mécanique et des métaux",
+        38 => "Batiment, Travaux Publics",
+        39 => "Santé",
+        40 => "Formation",
+        41 => "Type Artisanal",
+        42 => "Hôtellerie – Restauration",
+        43 => "Autres Industries",
+        44 => "Agricole",
+        45 => "Assistanat - Secrétariat",
+        46 => "Commercial - Vente"
+    ];
+
+    $ID = null;
+    foreach ($secteurs as $oldId => $oldText) {
+        if (str_contains($secteurName, $oldText) || str_contains($oldText, $secteurName)) {
+            $ID = $oldId;
+        }
+    }
+    if (!$ID) return null;
+
+    $categoryMapping = include './old_category_mapping.php';
+    return $categoryMapping[$ID];
+}

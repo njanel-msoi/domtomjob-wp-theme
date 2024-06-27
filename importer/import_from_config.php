@@ -16,7 +16,7 @@ function importFromConfig()
         $companyId = $recruteurConfig['recruteur'];
         $company = wpjb_get_object_from_post_id($companyId);
 
-        $mappingFile = dirname(__FILE__) . '/mapping/' . $recruteurConfig['mapping'] . '_mapping.php';
+        $mappingFile = dirname(__FILE__) . '/fields_mapping/' . $recruteurConfig['mapping'] . '_mapping.php';
         $mapping = include $mappingFile;
 
         switch ($recruteurConfig['import_type']) {
