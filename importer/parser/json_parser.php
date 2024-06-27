@@ -1,15 +1,14 @@
 <?php
 include_once dirname(__FILE__) . '/../importer.php';
 
-function importJobsFromJSON($json, $company, $mappingFields)
+function importJobsFromJsonURL($json_url, $company, $mappingFields)
 {
-    // browse JSON
-    foreach ($json as $data) {
-        $sourceJob = [];
-        foreach ($headers as $id => $field) {
-            $sourceJob[$field] = $data[$id];
-        }
-        // here we got an associative array with source fields & value
-        map_and_import_job($sourceJob, $mappingFields, $company);
-    }
+    $jsonStr = file_get_contents($json_url);
+    importJobsFromJSON($jsonStr, $company, $mappingFields);
+}
+
+function importJobsFromJSON($jsonStr, $company, $mappingFields)
+{
+    $json = json_decode($jsonStr);
+    importJobsFromObjects($json, $company, $mappingFields);
 }

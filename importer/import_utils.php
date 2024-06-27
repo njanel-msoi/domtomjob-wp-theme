@@ -1,7 +1,6 @@
 <?php
 include_once '../functions/utils.php';
 
-
 function map_job($sourceJob, $fieldsMapping, $company)
 {
     // initialize with company field as most are missing
@@ -30,6 +29,9 @@ function map_fields($source, $dest, $fieldsMapping, $param1 = null)
 {
     // for each field of the group, we map the linked field
     foreach ($fieldsMapping as $destField => $fieldMapping) {
+        // for html chars
+        // if ($source[$destField]) $source[$destField] = html_entity_decode($source[$destField]);
+
         $value = null;
         if (is_callable($fieldMapping)) {
             $value = $fieldMapping($source, $param1);
@@ -189,7 +191,7 @@ function import_regionNameToCode($region)
         "MÉTROPOLE" => FRANCE_METROPOLE_CODE,
         "SAINT BARTHÉLÉMY" => 18,
         "FRANCE" => FRANCE_METROPOLE_CODE,
-        "SEYCHELLES" => 20,
+        "SEYCHELLES" => 20
     ];
     if (isset($jsonRegions[$region])) return $jsonRegions[$region];
     else return REUNION_CODE;
@@ -236,13 +238,13 @@ function import_oldFunctionToJobFunctionCode($function)
     }
     if (!$ID) return null;
 
-    $oldJobFunctions = include './old_job_function_mapping.php';
+    $oldJobFunctions = include dirname(__FILE__) . '/mapping/old_job_function_mapping.php';
     return $oldJobFunctions[$ID];
 }
 
 function import_contractNameToCode($contract)
 {
-    $contractName = [,
+    $contractName = [
         "CDI" =>    1,
         "CDD" =>    2,
         "INT" =>    3,
@@ -263,8 +265,33 @@ function import_contractNameToCode($contract)
     $oldContract = 1;
     if (isset($contractName[$contract])) $oldContract = $contractName[$contract];
 
-    $contractTypeMapping = include './old_contract_type_mapping.php';
+    $contractTypeMapping = include dirname(__FILE__) . '/mapping/old_contract_type_mapping.php';
     return $contractTypeMapping[$oldContract];
+}
+
+function import_simple_study_level($level)
+{
+    $level = strtolower($level);
+    $simpleLevels = [
+        1 => ['collège', 'lycée'],
+        3 => ['bac pro', 'bep', 'cap'],
+        4 => ['dut', 'bts', 'bac +2', 'bac+2', 'bac + 2'],
+        5 => ['license', 'iep', 'bac +3', 'bac+3', 'bac + 3'],
+        6 => ['maitrise', 'iup', 'bac +4', 'bac+4', 'bac + 4'],
+        7 => ['dess', 'dea', 'grandes écoles', 'grandes ecoles', 'bac +5', 'bac+5'],
+
+        // this one after all which include larger word with "bac"
+        2 => ['bac'],
+
+        8 => ['doctorat', '3ème cycle', '3e cycle'],
+        9 => ['expert', 'recherche', 'thèse']
+    ];
+    foreach ($simpleLevels as $id => $words) {
+        foreach ($words as $word) {
+            if (str_contains($level, $word)) return $id;
+        }
+    }
+    return null;
 }
 
 function import_clientSectorToCategory($clientSector)
@@ -287,7 +314,7 @@ function import_clientSectorToCategory($clientSector)
     ];
     if (isset($sectors[$clientSector])) return $sectors[$clientSector];
 
-    $categoryMapping = include './old_category_mapping.php';
+    $categoryMapping = include dirname(__FILE__) . '/mapping/old_category_mapping.php';
     if (isset($categoryMapping[$clientSector])) return $categoryMapping[$clientSector];
 
     return null;
@@ -352,6 +379,11 @@ function import_oldSectorsNameToCategoryId($secteurName)
     }
     if (!$ID) return null;
 
-    $categoryMapping = include './old_category_mapping.php';
+    $categoryMapping = include dirname(__FILE__) . '/mapping/old_category_mapping.php';
     return $categoryMapping[$ID];
+}
+
+function import_jobtitle($title)
+{
+    return str_replace('h/f', 'H/F', str_replace('f/h', 'H/F', ucfirst(strtolower($title))));
 }

@@ -102,6 +102,7 @@ function dtj_import_job($plainJob)
     // field at meta level
     foreach ($JOB_META_FIELDS as $field) {
         $value = __get_field_value($plainJob, $field);
+        // $meta = ["name" => $field, "values" => [$value]];
         $meta = ["name" => $field, "values" => [$value]];
         $apiJob['meta'][] = $meta;
     }

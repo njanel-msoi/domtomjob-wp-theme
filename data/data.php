@@ -11,6 +11,7 @@ include 'data_company_type.php';
 include 'data_contract_type.php';
 include 'data_apply_type.php';
 include 'data_anonymous.php';
+include 'data_urgent.php';
 include 'data_fulltime_type.php';
 include 'data_civility.php';
 include 'data_job_experience.php';

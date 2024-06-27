@@ -4,17 +4,22 @@
 
 return [
     "old_job_id" => "ref", //<ref>48768</ref>
-    "job_title" => "offre", //<offre><![CDATA[ Conducteur de lignes automatis&eacute;es de conditionnement - H/F ]]></offre>
-    "job_city" => "lieu_travail", //<lieu_travail><![CDATA[ Loire Atlantique - Nantes - Ancenis - 44 ]]></lieu_travail>
+    "job_title" => function ($source) {
+        return import_jobtitle($source['offre']);
+    }, // "offre", //<offre><![CDATA[ Conducteur de lignes automatis&eacute;es de conditionnement - H/F ]]></offre>
+    "job_city" => "lieu_travail", // ? avec <localite> ?<lieu_travail><![CDATA[ Loire Atlantique - Nantes - Ancenis - 44 ]]></lieu_travail>
     "job_description" => function ($source) {
         $entreprise_name = $source['entreprise'];
-        $description = $source['description'];
+
+        $job_description = [];
 
         if (str_contains($entreprise_name, ' - RECRUTEMENT DU')) {
             $parts = explode(" - ", $entreprise_name);
-            return array_pop($parts) . "<br><br>";
+            $job_description[] = ucfirst(strtolower(array_pop($parts))) . "<br><br>";
         }
-        return $description;
+        $job_description[] = $source['description'];
+
+        return implode('', $job_description);
     }, // EUREDEN - AUBRET - RECRUTEMENT DU 16/07/24 AU 19/07/24 ]]></entreprise> //<description><![CDATA[ Vous pilotez la ligne de conditionnement en respectant des standards de production (sécurité / qualité / coût / délai / animation / environnement) ]]></description>
     "company_name" => function ($source) {
         $entreprise_name = $source['entreprise'];
@@ -34,7 +39,7 @@ return [
         //<localite><![CDATA[ 44540 LE PIN FRANCE ]]></localite>
         // if localite include 974 we're in reunion, else we're in metropole
         if (str_contains($source['localite'], '974')) return REUNION_CODE;
-        else FRANCE_METROPOLE_CODE;
+        else return FRANCE_METROPOLE_CODE;
     },
     "job_profile" => "exigences_partculieres", //<exigences_partculieres><![CDATA[ Capacité d'observation, Compréhension et respect des normes techniques, Curiosité, Savoir passer une consigne, Sens du relationnel, Connaissance des règles d'hygiène et de sécurité. ]]></exigences_partculieres>
     // "type_fulltime", // mapping <horaires><![CDATA[ 1 ]]></horaires>
@@ -45,11 +50,17 @@ return [
     }, // <domaine>
     "salary_min" => "salaire_min", // <salaire_min><![CDATA[ 1783 ]]></salaire_min>
     "salary_max" => "salaire_max", // <salaire_max><![CDATA[ 1783 ]]></salaire_max>
-    "job_experience" => function ($source) {
-        if ($source['experiences']) return $source['experiences'];
-        return 1;
-    }, // mapping <experiences><![CDATA[ 1 ]]></experiences>
-    // "job_study_level", // mapping <niveau_etude><![CDATA[ Sans niveau sp&eacute;cifique ]]></niveau_etude>
+    // NOTE : we don't have the mapping from cran for all the "experiences" fields
+    // "job_experience" => function ($source) {
+    //     if ($source['experiences']) return $source['experiences'];
+    //     return 1;
+    // }, // mapping <experiences><![CDATA[ 1 ]]></experiences>
+    "job_study_level" => function ($source) {
+        if (!$source['niveau_etude']) return null;
+        $source['niveau_etude'] = html_entity_decode($source['niveau_etude']);
+        return import_simple_study_level($source['niveau_etude']);
+    }, // mapping <niveau_etude><![CDATA[ Sans niveau sp&eacute;cifique ]]></niveau_etude>
+    "job_apply_type" => "URL",
     "job_apply_url" => "url", //<url><![CDATA[ http://www.cnarm.fr/offres_emplois/conducteur-de-lignes-automatis-es-de-conditionnement-h-f,48768.do ]]></url>
     "category" => function ($source) {
         $secteur = $source['secteur'];
