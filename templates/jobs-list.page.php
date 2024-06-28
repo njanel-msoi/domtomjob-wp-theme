@@ -23,6 +23,8 @@ get_header();
     </div>
 </section>
 
-<?php echo do_shortcode('[wpjb_jobs_list]'); ?>
+<?php
+// list jobs by date, include featured job but not sorted by featured status (by job_created_at)
+echo do_shortcode('[wpjb_jobs_list sort_order="job_created_at DESC"]'); ?>
 
 <?php get_footer(); ?>

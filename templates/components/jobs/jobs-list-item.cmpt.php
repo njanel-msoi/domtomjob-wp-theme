@@ -13,34 +13,42 @@
 /* @var $job Wpjb_Model_Job */
 
 ?>
-<?php $isFeaturedList = $param["is_featured"] == "1" ?>
 
-<div class="card-grid-2 job-item-box hover-up <?= $job->is_featured && !$isFeaturedList ? 'job-featured' : '' ?>">
+<div class="card-grid-2 job-item-box hover-up">
 
-    <span class="flash"></span>
+    <?php if (is_job_featured($job)) : ?>
+        <span class="flash"></span>
+    <?php endif ?>
+
     <div class="card-grid-2-image-left">
         <div class="image-box">
             <?php job_company_img($job) ?>
         </div>
         <div class="right-info">
-            <a class="name-job" href="<?= $job->getCompany(true) ? wpjb_link_to("company", $job->getCompany(true)) : '#' ?>">
+            <a class="name-job mr-10" href="<?= $job->getCompany(true) ? wpjb_link_to("company", $job->getCompany(true)) : '#' ?>">
                 <?= esc_html($job->company_name) ?>
             </a>
-            <span class="location-small"><?= get_meta_region($job); ?></span>
+            <span class="card-time">
+                <?= wpjb_date_display("d M Y", $job->job_created_at, false) ?>
+            </span>
+            <span class="location-small mr-10"><?= get_meta_region($job); ?></span>
+            <?php if ($job->isNew()) : ?>
+                <span class="job-new-tag card-briefcase">Nouveau</span>
+            <?php endif; ?>
         </div>
     </div>
     <div class="card-block-info">
-        <h4>
+        <h4 class="job-item-title">
             <a href="<?= wpjb_link_to("job", $job) ?>" class="job-link"><?php esc_html_e($job->job_title) ?></a>
         </h4>
-        <div class="mt-5">
+        <!-- <div class="mt-5">
             <span class="card-time">
                 <?= wpjb_date_display("d M Y", $job->job_created_at, false) ?>
             </span>
             <?php if ($job->isNew()) : ?>
                 <span class="card-briefcase">Nouveau</span>
             <?php endif; ?>
-        </div>
+        </div> -->
         <!-- <p class="font-sm color-text-paragraph mt-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur</p> -->
         <!-- <div class="card-2-bottom mt-20">
                 <div class="row">

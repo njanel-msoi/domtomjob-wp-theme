@@ -16,3 +16,5 @@ include_once 'data/data.php';
 include_once 'functions/enqueue_style_scripts.php';
 include_once 'functions/wp_theme_init.php';
 include_once 'functions/routes.php';
+
+include_once 'importer/importer.php';

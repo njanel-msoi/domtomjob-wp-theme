@@ -15,7 +15,8 @@
 
 <?php if ($isFeaturedList) : ?>
     <div class="row">
-        <?php include 'job-list-loop.cmpt.php' ?>
+        <?php $maxJob = 6;
+        include 'job-list-loop.cmpt.php' ?>
     </div>
 <?php else : ?>
 
@@ -28,7 +29,6 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-5">
                                 <span class="text-small text-showing">Page <strong><?= $result->page ?> </strong>sur <strong><?= $result->pages ?></strong></span>
-
                             </div>
 
                             <div class="col-xl-6 col-lg-7 text-lg-end mt-sm-15">
@@ -40,6 +40,9 @@
                             </div>
                         </div>
                     </div>
+                    <?php if ($result->page == 1) : ?>
+                        <?php echo do_shortcode('[wpjb_jobs_list is_featured="1" sort_order="job_created_at ASC"]'); ?>
+                    <?php endif ?>
                     <div class="row">
                         <?php include 'job-list-loop.cmpt.php' ?>
                     </div>

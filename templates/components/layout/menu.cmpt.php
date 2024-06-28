@@ -14,6 +14,7 @@
                 <nav class="nav-main-menu">
                     <ul class="main-menu large-screen">
                         <li><a href="<?= PAGES_URLS->ListeOffres ?>">Offres d'emploi</a></li>
+                        <li><a href="https://seformer.re" target="_blank">Formation</a></li>
                         <li><a href="<?= PAGES_URLS->ListeEntreprises ?>">Les recruteurs</a></li>
                         <li><a href="<?= PAGES_URLS->PublierAnnonce ?>">Publier une offre</a></li>
                         <!-- <li><a href="<?= PAGES_URLS->NosOffres ?>">Tarifs</a></li> -->
@@ -83,6 +84,7 @@
                             <li class="has-children"><a>Candidats</a>
                                 <ul class="sub-menu">
                                     <li><a href="<?= PAGES_URLS->ListeOffres ?>">Offres d'emploi</a></li>
+                                    <li><a href="https://seformer.re" target="_blank">Formation</a></li>
                                     <li><a href="<?= PAGES_URLS->ListeEntreprises ?>">Découverte des entreprises</a></li>
                                     <li><a href="<?= PAGES_URLS->EspaceCandidat ?>" class="fw-bold">Espace candidat</a></li>
                                 </ul>

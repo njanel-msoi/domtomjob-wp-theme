@@ -248,3 +248,8 @@ function price($num)
 {
     return number_format($num, 2, ".", " ") . '€';
 }
+
+function is_job_featured($job)
+{
+    return $job->is_featured && $job->isNew();
+}

@@ -10,12 +10,11 @@ include_once dirname(__FILE__) . '/../importer/importer.php';
 
 ///// READ IMPORTERS FROM CONFIG /////
 $GLOBALS['PROTECT_JOB_FIELDS'] = true;
-// $GLOBALS['FAKE_IMPORT'] = true;
+$GLOBALS['FAKE_IMPORT'] = true;
 importFromConfig();
 
 
 //include_once dirname(__FILE__) . '/../importer/users/create_old_company_account.php';
-
 
 //create company from csv (user are needed)
 /*$companyCSVFile = get_field('old_companies_import_csv_file');

@@ -34,5 +34,7 @@ function importJobsFromObjects($dataArr, $company, $mappingFields)
         // convert object to associative array as supported by import job
         $sourceJob = (array)$sourceJob;
         map_and_import_job($sourceJob, $mappingFields, $company);
+
+        break;
     }
 }

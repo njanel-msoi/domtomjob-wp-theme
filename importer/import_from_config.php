@@ -3,6 +3,7 @@
 /**
  * Import jobs with a WP Cron from the config defined in the admin page
  */
+add_action('import_from_config_action', 'importFromConfig');
 
 function importFromConfig()
 {
@@ -14,11 +15,22 @@ function importFromConfig()
 
     // TODO: one by one to avoid memory & timeout issue
 
+    ob_start(function ($output) {
+        // TODO : AJOUTER DATE ET HEURE, Probleme de company name
+        file_put_contents(WP_ROOT_DIR . '/output_' . $GLOBALS['import_company_name'] . '.log', $output);
+        return $output;
+    });
+
     foreach ($recruteursConfigs as $recruteurConfig) {
         if (!$recruteurConfig['actif']) continue;
 
         $companyId = $recruteurConfig['recruteur'];
         $company = wpjb_get_object_from_post_id($companyId);
+
+        $GLOBALS['import_company_name'] = $company->company_name;
+        echo '<hr><br>
+        Start import for ' . $company->company_name . '<br>
+        ';
 
         $mappingFile = dirname(__FILE__) . '/fields_mapping/' . $recruteurConfig['mapping'] . '_mapping.php';
         $mapping = include $mappingFile;
@@ -26,7 +38,7 @@ function importFromConfig()
         switch ($recruteurConfig['import_type']) {
             case 'json_url':
                 $file_url = $recruteurConfig['file_url'];
-                importJobsFromJSON($file_url, $company, $mapping);
+                importJobsFromJsonURL($file_url, $company, $mapping);
                 break;
             case 'xml_url':
                 $file_url = $recruteurConfig['file_url'];
@@ -34,5 +46,6 @@ function importFromConfig()
                 importJobsFromXMLFile($file_url, $xpath, $company, $mapping);
                 break;
         }
+        ob_flush();
     }
 }

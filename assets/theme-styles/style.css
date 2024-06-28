@@ -1336,6 +1336,9 @@ footer.footer a {
   top: 23%;
   width: unset;
 }
+.login-register .box-border-single {
+  background-color: #ecf0f9;
+}
 
 #wpjb-checkout {
   padding-top: 30px;
@@ -1405,13 +1408,6 @@ footer.footer a {
   width: 85px;
 }
 
-.card-grid-2.job-item-box:not(.job-featured) {
-  background-color: #fff;
-}
-.card-grid-2.job-item-box:not(.job-featured) .flash {
-  display: none;
-}
-
 .pagination .page-numbers {
   font-weight: bold;
   color: #a0abb8;
@@ -1431,6 +1427,39 @@ footer.footer a {
   text-align: center;
   color: #000;
   margin-top: 9px;
+}
+
+.job-item-box .card-grid-2-image-left {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.job-item-box .card-block-info {
+  padding-bottom: 15px !important;
+}
+.job-item-box .job-item-title {
+  font-size: 20px;
+}
+.job-item-box .card-grid-2-image-left .right-info {
+  width: calc(100% - 45px);
+}
+.job-item-box .card-grid-2-image-left .right-info .name-job {
+  font-size: 15px;
+  line-height: 22px;
+  color: #74797f;
+  margin-right: 20px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.job-item-box .flash {
+  display: none;
+}
+
+.job-featured .job-new-tag {
+  display: none;
+}
+.job-featured .flash {
+  display: block;
 }
 
 /* Job detail page */

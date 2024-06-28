@@ -24,6 +24,7 @@ function importJobsFromXMLFile($xmlFile, $pathToFields, $company, $mappingFields
 
         $count++;
         // TODO: remove
+        break;
         if ($count > 10)
             break;
     }

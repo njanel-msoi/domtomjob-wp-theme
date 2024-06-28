@@ -62,7 +62,9 @@ get_header();
     <!-- <p class="font-lg color-text-paragraph-2 wow animate__ animate__fadeInUp mb-30">
         Découvrez les annonces mises en avant par les recruteurs.
     </p> -->
+    <div class="job-homepage">
     <?php echo do_shortcode('[wpjb_jobs_list is_featured="1"]'); ?>
+    </div>
 
 
     <div class="border-bottom mb-40 mt-20"></div>
