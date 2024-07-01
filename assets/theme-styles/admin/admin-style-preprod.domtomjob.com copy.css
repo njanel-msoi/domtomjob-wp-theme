@@ -1,0 +1,6 @@
+#wpadminbar {
+  background: #9e1fd9;
+}
+#wpadminbar::after {
+  content: "PREPROD SERVER";
+}/*# sourceMappingURL=admin-style-preprod.domtomjob.com copy.css.map */

@@ -5,7 +5,7 @@
  * 
  * @idxImport : the id in the employer config array
  */
-add_action('import_from_config_action', 'importFromConfig');
+add_action('import_from_config_action', 'importFromConfig', 10, 1);
 
 function importFromConfig($idxImport)
 {

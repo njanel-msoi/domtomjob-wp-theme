@@ -1,0 +1,6 @@
+#wpadminbar {
+  background: #261bc7;
+}
+#wpadminbar::after {
+  content: "PROD SERVER";
+}/*# sourceMappingURL=admin-style-domtomjob.com.css.map */
