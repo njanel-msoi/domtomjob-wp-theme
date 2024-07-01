@@ -35,7 +35,7 @@ function map_fields($source, $dest, $fieldsMapping, $param1 = null)
         $value = null;
         if (is_callable($fieldMapping)) {
             $value = $fieldMapping($source, $param1);
-        } else {
+        } else if (isset($source[$fieldMapping])) {
             $value = $fieldMapping ? $source[$fieldMapping] : "";
         }
         // do not override if no value
