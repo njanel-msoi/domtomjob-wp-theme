@@ -116,7 +116,7 @@ function get_job_tag($job, $tag)
 
 function get_job_type($job)
 {
-    return get_job_tag($job, 'type');
+    return dtj_get_contract_from_key(get_meta_value($job, 'contract_type'));
 }
 
 function job_company_img($job, $forList = true)

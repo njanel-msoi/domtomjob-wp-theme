@@ -67,7 +67,7 @@ return [
         if (!$secteur) return null;
         return import_oldSectorsNameToSecteurId($secteur);
     }, // mapping<secteur><![CDATA[ Artisanat (alimentation) ]]></secteur>
-    "type" => function ($source) {
+    "contract_type" => function ($source) {
         $contractName = $source['type_de_contrat'];
         if (!$contractName) $contractName = 'CDI';
         return import_contractNameToCode($contractName);

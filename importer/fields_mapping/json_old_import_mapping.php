@@ -53,7 +53,7 @@ return [
 
         return import_oldSecteurIdToSecteurId($id);
     }, //"secteur", 
-    "type" => function ($source) {
+    "contract_type" => function ($source) {
         return import_contractNameToCode($source['contrat']);
     } //"contrat", // ? => "INT",,
     // "company_logo" => "logo" //=> "service_interim.png",

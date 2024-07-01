@@ -159,7 +159,7 @@
                 </div>
                 <div class="sidebar-list-job">
                     <ul class="ul-disc">
-                        <?php $company_fields = [get_meta_value($job, 'secteur'), $job->company_url]; ?>
+                        <?php $company_fields = [dtj_get_secteur_from_key(get_meta_value($job, 'secteur')), $job->company_url]; ?>
                         <?php foreach ($company_fields as $field) : ?>
                             <?php if ($field) : ?>
                                 <li><?= $field ?></li>

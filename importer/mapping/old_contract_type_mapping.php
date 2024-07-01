@@ -7,16 +7,16 @@
  * value = new DB id
  */
 return [
-    1    =>    3, //	CDI
-    2    =>    4, //	CDD
-    3    =>    108, //	Interim
-    4    =>    6, //	Stage
+    1    =>    1, //	CDI
+    2    =>    2, //	CDD
+    3    =>    3, //	Interim
+    4    =>    4, //	Stage
     5    =>    5, //	Freelance
-    6    =>    142, //	Franchise
-    7    =>    142, //	Formation
-    8    =>    143, //	VIE
-    9    =>    109, //	Apprentissage
+    6    =>    99, //	Franchise
+    7    =>    99, //	Formation
+    8    =>    8, //	VIE
+    9    =>    9, //	Apprentissage
     10    =>    5, //	Indépendant
-    11    =>    142, //	Autre
-    12    =>    109, //	Alternance
+    11    =>    99, //	Autre
+    12    =>    9, //	Alternance
 ];

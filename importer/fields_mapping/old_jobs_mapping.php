@@ -22,7 +22,7 @@ return [
     "job_title" => function ($source) {
         return str_replace('f/h', 'F/H', ucfirst(strtolower($source["off_lb"])));
     },
-    "type" => function ($source) {
+    "contract_type" => function ($source) {
         global $old_contracttype_mapping;
         $oldType = $source['odd_contrat'];
         if (!$oldType) return null;

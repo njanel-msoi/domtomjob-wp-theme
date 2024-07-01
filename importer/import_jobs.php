@@ -35,6 +35,7 @@ $JOB_META_FIELDS = [
     "company_siret",
     "company_description",
     'secteur',
+    'contract_type',
     "job_phone",
     "job_apply_type",
     "job_apply_url",
@@ -56,7 +57,6 @@ $JOB_META_FIELDS = [
     "optin_group",
     "old_job_id"
 ];
-$JOB_TAG_FIELDS = ['type'];
 $JOB_FILE_FIELDS = ['company_logo'];
 
 /* This values are used for job imported from external source in order to keep job engine and rules correct 
@@ -106,12 +106,6 @@ function dtj_import_job($plainJob)
         // $meta = ["name" => $field, "values" => [$value]];
         $meta = ["name" => $field, "values" => [$value]];
         $apiJob['meta'][] = $meta;
-    }
-    // field at tag level
-    foreach ($JOB_TAG_FIELDS as $field) {
-        $value = __get_field_value($plainJob, $field);
-        $tag = ["type" => $field, "id" => $value];
-        $apiJob['tags'][] = $tag;
     }
     // files
     foreach ($JOB_FILE_FIELDS as $field) {

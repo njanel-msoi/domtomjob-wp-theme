@@ -55,6 +55,8 @@ function dtj_get_categories()
 
 function dtj_get_secteur_from_key($key)
 {
+    if (!$key) return '';
+
     global $CATEGORIES_MAP;
     return data_value_from_key($key, $CATEGORIES_MAP);
 }

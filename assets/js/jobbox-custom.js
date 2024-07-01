@@ -133,7 +133,6 @@
     window.location.href = $(this).find(".company-link").attr("href");
   });
 
-  console.log("bonjour");
   /** WAIT FOR ALERT LOAD */
   setTimeout(function () {
     /** REMOVE USELESS PARAM FROM USER ALERTS IN APPLICANT DASHBOARD */
