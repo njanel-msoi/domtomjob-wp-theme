@@ -1,5 +1,5 @@
 <?php
-include_once '../functions/utils.php';
+include_once dirname(__FILE__) . '/../functions/utils.php';
 
 function map_job($sourceJob, $fieldsMapping, $company)
 {

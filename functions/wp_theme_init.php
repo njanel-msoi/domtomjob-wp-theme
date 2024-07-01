@@ -141,3 +141,18 @@ add_filter('query', function ($query) {
 
     // TODO: add filter AFTER save and detect if it was banktransfer gateway, and if so, change payment
 });
+
+// emailer smpt init (credentials stored in wp_config.php)
+add_action('phpmailer_init', 'send_smtp_email');
+function send_smtp_email($phpmailer)
+{
+    $phpmailer->isSMTP();
+    $phpmailer->Host =       SMTP_HOST;
+    $phpmailer->Username =   SMTP_USER;
+    $phpmailer->Password =   SMTP_PASSWORD;
+    $phpmailer->From =       SMTP_FROM;
+    $phpmailer->FromName =   SMTP_FROMNAME;
+    $phpmailer->Port =       SMTP_PORT;
+    $phpmailer->SMTPAuth =   SMTP_AUTH;
+    $phpmailer->SMTPSecure = SMTP_SECURE;
+}

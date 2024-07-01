@@ -7,14 +7,14 @@ $VERSION = "0.1.3";
  * This file is responsible to call the data initialization, homemade helper functions and wp related initialization
  */
 
-include_once 'functions/utils.php';
-include_once 'functions/pages-urls.php';
-include_once 'functions/renderers.php';
+include_once dirname(__FILE__) . '/functions/utils.php';
+include_once dirname(__FILE__) . '/functions/pages-urls.php';
+include_once dirname(__FILE__) . '/functions/renderers.php';
 
-include_once 'data/data.php';
+include_once dirname(__FILE__) . '/data/data.php';
 
-include_once 'functions/enqueue_style_scripts.php';
-include_once 'functions/wp_theme_init.php';
-include_once 'functions/routes.php';
+include_once dirname(__FILE__) . '/functions/enqueue_style_scripts.php';
+include_once dirname(__FILE__) . '/functions/wp_theme_init.php';
+include_once dirname(__FILE__) . '/functions/routes.php';
 
-include_once 'importer/importer.php';
+include_once dirname(__FILE__) . '/importer/importer.php';
