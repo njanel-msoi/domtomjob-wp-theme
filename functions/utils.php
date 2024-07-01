@@ -113,10 +113,6 @@ function get_job_tag($job, $tag)
         return $tag[0]->title;
     return '';
 }
-function get_job_category($job)
-{
-    return get_job_tag($job, 'category');
-}
 
 function get_job_type($job)
 {

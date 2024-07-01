@@ -1,0 +1,6 @@
+#wpadminbar {
+  background: #261bc7;
+  &::after {
+    content: "PROD SERVER";
+  }
+}

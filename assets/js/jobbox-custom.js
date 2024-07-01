@@ -147,8 +147,8 @@
         .find(".wpjb-alert-params> .wpjb-grid-row> .wpjb-grid-col:first-child")
         .each(function (idx, dom) {
           var elt = $(dom);
-          var category = elt.text().trim();
-          if (alertParamToDisplay.includes(category)) {
+          var secteur = elt.text().trim();
+          if (alertParamToDisplay.includes(secteur)) {
             var value = elt.find("+.wpjb-grid-col").text().trim().split(", ");
             paramDisplay.push(value);
           }

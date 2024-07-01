@@ -1,0 +1,6 @@
+#wpadminbar {
+  background: #9e1fd9;
+  &::after {
+    content: "PREPROD SERVER";
+  }
+}

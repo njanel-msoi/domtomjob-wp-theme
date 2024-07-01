@@ -1,6 +1,6 @@
 @charset "UTF-8";
 #wpadminbar {
-  background: #d17000;
+  background: #e60606;
 }
 #wpadminbar::after {
   content: "LOCAL SERVER";

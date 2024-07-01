@@ -66,7 +66,7 @@ return [
     "job_is_anonymous" => function ($source) {
         return $source['off_societe'] == "Confidentiel" ? "1" : "0";
     },
-    "category" => "off_secteur", //TODO need mapping
+    "secteur" => "off_secteur", //TODO need mapping
     "job_profile" => function ($source) {
         return str_replace('__br__', '<br>', $source["off_profile"]);
     },

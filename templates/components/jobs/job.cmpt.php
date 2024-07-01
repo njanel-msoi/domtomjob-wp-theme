@@ -159,7 +159,7 @@
                 </div>
                 <div class="sidebar-list-job">
                     <ul class="ul-disc">
-                        <?php $company_fields = [get_job_category($job), $job->company_url]; ?>
+                        <?php $company_fields = [get_meta_value($job, 'secteur'), $job->company_url]; ?>
                         <?php foreach ($company_fields as $field) : ?>
                             <?php if ($field) : ?>
                                 <li><?= $field ?></li>

@@ -156,3 +156,33 @@ function send_smtp_email($phpmailer)
     $phpmailer->SMTPAuth =   SMTP_AUTH;
     $phpmailer->SMTPSecure = SMTP_SECURE;
 }
+
+// create cron jobs if they don't exists
+/*add_filter('after_setup_theme', 'my_cron_activation');
+function my_cron_activation()
+{
+    $now = getdate();
+
+    // create an import every 6 minutes starting 1 a.m till 5.am
+    $stepMin = 6;
+    $minutes = 0;
+    $hour = 1;
+    $idxCron = 0;
+    $nbTotalCron = 40;
+
+    do {
+        $minutes += $stepMin;
+        if ($minutes >= 60) {
+            $minutes -= 60;
+            $hour++;
+        }
+        $args = array($idxCron);
+        $time = mktime($hour, $minutes, 00, $now['mon'], $now['mday'], $now['year']);
+        if (!wp_next_scheduled('import_from_config_action', $args)) {
+            wp_schedule_event($time, 'daily', 'import_from_config_action', $args);
+        }
+
+        $idxCron++;
+    } while ($idxCron < $nbTotalCron);
+}
+*/

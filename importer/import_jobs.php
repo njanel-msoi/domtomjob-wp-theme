@@ -34,6 +34,7 @@ $JOB_META_FIELDS = [
     "job_duration",
     "company_siret",
     "company_description",
+    'secteur',
     "job_phone",
     "job_apply_type",
     "job_apply_url",
@@ -55,7 +56,7 @@ $JOB_META_FIELDS = [
     "optin_group",
     "old_job_id"
 ];
-$JOB_TAG_FIELDS = ['category', 'type'];
+$JOB_TAG_FIELDS = ['type'];
 $JOB_FILE_FIELDS = ['company_logo'];
 
 /* This values are used for job imported from external source in order to keep job engine and rules correct 

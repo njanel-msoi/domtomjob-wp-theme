@@ -108,7 +108,7 @@ $is_company_visible = $company->isVisible() || (Wpjb_Model_Company::current() &&
                             <li>
                                 <div class="sidebar-icon-item"><i class="fi-rr-briefcase"></i></div>
                                 <div class="sidebar-text-info"><span class="text-description">Domaine d'activité</span>
-                                    <strong class="small-heading"><?= _or(dtj_get_category_from_key(get_meta_value($company, 'category'))) ?></strong>
+                                    <strong class="small-heading"><?= _or(dtj_get_secteur_from_key(get_meta_value($company, 'secteur'))) ?></strong>
                                 </div>
                             </li>
                             <li>

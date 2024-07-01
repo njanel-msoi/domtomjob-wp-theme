@@ -294,33 +294,15 @@ function import_simple_study_level($level)
     return null;
 }
 
-function import_clientSectorToCategory($clientSector)
+function import_oldSecteurIdToSecteurId($clientSectorId)
 {
-    if (!$clientSector) return null;
-
-    // TODO map from client sector to NEW IDX
-    $sectors = [
-        13 => 99, //'Services Administratifs et Commerciaux',
-        40 => 99,  'Distribution Et Vente',
-        7  => 99,  'Services aux Personnes et Collectivité',
-        39 => 99,  'Transport et Logistique',
-        27 => 99,  'Industrie Mécanique et des métaux',
-        21 => 99,  'Batiment, Travaux Publics',
-        37 => 99,  'Santé',
-        28 => 99,  'Formation',
-        17 => 99,  'Type Artisanal',
-        38 => 99,  'Hôtellerie – Restauration',
-        33 => 99,  'Autres Industries'
-    ];
-    if (isset($sectors[$clientSector])) return $sectors[$clientSector];
-
-    $categoryMapping = include dirname(__FILE__) . '/mapping/old_category_mapping.php';
-    if (isset($categoryMapping[$clientSector])) return $categoryMapping[$clientSector];
+    $secteurMapping = include dirname(__FILE__) . '/mapping/old_secteurs_mapping.php';
+    if (isset($secteurMapping[$clientSectorId])) return $secteurMapping[$clientSectorId];
 
     return null;
 }
 
-function import_oldSectorsNameToCategoryId($secteurName)
+function import_oldSectorsNameToSecteurId($secteurName)
 {
     $secteurs = [
         1 => "Indifférent",
@@ -379,8 +361,7 @@ function import_oldSectorsNameToCategoryId($secteurName)
     }
     if (!$ID) return null;
 
-    $categoryMapping = include dirname(__FILE__) . '/mapping/old_category_mapping.php';
-    return $categoryMapping[$ID];
+    return import_oldSecteurIdToSecteurId($ID);
 }
 
 function import_jobtitle($title)

@@ -30,8 +30,28 @@ return [
         if (!$source["contact_email"]) return null;
         return 'Envoyez votre candidature à <a target="_blank" href="mailto:' . $source["contact_email"] . '">' . $source["contact_email"] . '</a>'; //=> "",
     },
-    "category" => function ($source) {
-        return import_clientSectorToCategory($source['secteur']);
+    "secteur" => function ($source) {
+        // handle special code sector for this client
+        $id = $source['secteur'];
+        if (!$id) return null;
+
+        // from client import id to new id
+        $specialSectors = [
+            13 => 33, //'Services Administratifs et Commerciaux',
+            40 => 14, // 'Distribution Et Vente',
+            7  => 35, // 'Services aux Personnes et Collectivité',
+            39 => 3, // 'Transport et Logistique',
+            27 => 5, // 'Industrie Mécanique et des métaux',
+            21 => 6, // 'Batiment, Travaux Publics',
+            37 => 28, // 'Santé',
+            28 => 17, // 'Formation',
+            17 => 8, // 'Type Artisanal',
+            38 => 27, // 'Hôtellerie – Restauration',
+            33 => 5, // 'Autres Industries'
+        ];
+        if (isset($specialSectors[$id])) return $specialSectors[$id];
+
+        return import_oldSecteurIdToSecteurId($id);
     }, //"secteur", 
     "type" => function ($source) {
         return import_contractNameToCode($source['contrat']);

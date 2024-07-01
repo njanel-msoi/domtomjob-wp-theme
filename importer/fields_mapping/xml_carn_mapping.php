@@ -62,10 +62,10 @@ return [
     }, // mapping <niveau_etude><![CDATA[ Sans niveau sp&eacute;cifique ]]></niveau_etude>
     "job_apply_type" => "URL",
     "job_apply_url" => "url", //<url><![CDATA[ http://www.cnarm.fr/offres_emplois/conducteur-de-lignes-automatis-es-de-conditionnement-h-f,48768.do ]]></url>
-    "category" => function ($source) {
+    "secteur" => function ($source) {
         $secteur = $source['secteur'];
         if (!$secteur) return null;
-        return import_oldSectorsNameToCategoryId($secteur);
+        return import_oldSectorsNameToSecteurId($secteur);
     }, // mapping<secteur><![CDATA[ Artisanat (alimentation) ]]></secteur>
     "type" => function ($source) {
         $contractName = $source['type_de_contrat'];

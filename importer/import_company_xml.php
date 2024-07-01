@@ -16,7 +16,7 @@ $COMPANY_ROOT_FIELDS = [
 $COMPANY_META_FIELDS = [
     "region",
     "company_type",
-    "category",
+    "secteur",
     "company_siret",
     "billing_tax",
     "company_size",

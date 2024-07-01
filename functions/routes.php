@@ -9,7 +9,8 @@ add_action('init', function () {
     add_rewrite_rule('emploi-[A-Za-z0-9]+-[0-9]+-([0-9]+)[.]html$', 'index.php?oldJobId=$matches[1]', 'top');
 
     add_rewrite_rule('regions/(.+)[/]?$', 'index.php?regions=$matches[1]', 'top');
-    add_rewrite_rule('categories/(.+)[/]?/(.+)[/]?$', 'index.php?categoryId=$matches[1]&category=$matches[2]', 'top');
+
+    add_rewrite_rule('secteurs/(.+)[/]?/(.+)[/]?$', 'index.php?secteurId=$matches[1]&secteur=$matches[2]', 'top');
 });
 
 add_filter('query_vars', function ($query_vars) {
@@ -17,8 +18,8 @@ add_filter('query_vars', function ($query_vars) {
     $query_vars[] = 'oldJobId';
 
     $query_vars[] = 'regions';
-    $query_vars[] = 'category';
-    $query_vars[] = 'categoryId';
+    $query_vars[] = 'secteur';
+    $query_vars[] = 'secteurId';
     return $query_vars;
 });
 
@@ -31,8 +32,8 @@ add_filter('template_include', function ($template) {
     if (is_from_rewrite_rule('regions')) {
         return get_theme_file_path() . '/templates/jobs-by-region.page.php';
     }
-    if (is_from_rewrite_rule('categoryId')) {
-        return get_theme_file_path() . '/templates/jobs-by-category.page.php';
+    if (is_from_rewrite_rule('secteurId')) {
+        return get_theme_file_path() . '/templates/jobs-by-secteur.page.php';
     }
     return $template;
 });

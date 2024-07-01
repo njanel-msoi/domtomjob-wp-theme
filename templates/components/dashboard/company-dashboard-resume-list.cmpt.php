@@ -15,7 +15,7 @@
 <?php
 $all_null = true;
 
-foreach (array("query", "category", "type", "fullname") as $p) {
+foreach (array("query", "secteur", "type", "fullname") as $p) {
     if (!isset($param[$p])) {
         $param[$p] = null;
     } else {

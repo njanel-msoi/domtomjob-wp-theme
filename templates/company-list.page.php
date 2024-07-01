@@ -9,7 +9,7 @@ get_header();
 <?php
 $region = isset($_GET['region']) ? $_GET['region'] : '';
 $query = isset($_GET['query']) ? $_GET['query'] : '';
-$category = isset($_GET['category']) ? $_GET['category'] : '';
+$secteur = isset($_GET['secteur']) ? $_GET['secteur'] : '';
 ?>
 <section class="section-box">
     <div class="banner-hero banner-single banner-single-bg">
@@ -23,10 +23,10 @@ $category = isset($_GET['category']) ? $_GET['category'] : '';
             <div class="form-find text-start mt-40 ">
 
                 <form action="" method="get" class="bar-search-form">
-                    <select class="form-input mr-10 select-active" name="category">
+                    <select class="form-input mr-10 select-active" name="secteur">
                         <option value="">Domaine</option>
                         <?php foreach (dtj_get_categories() as $r) : ?>
-                            <option value="<?= $r['key'] ?>" <?= $r['key'] == $category ? 'selected="selected"' : '' ?>>
+                            <option value="<?= $r['key'] ?>" <?= $r['key'] == $secteur ? 'selected="selected"' : '' ?>>
                                 <?= $r['description'] ?>
                             </option>
                         <?php endforeach; ?>
@@ -54,7 +54,7 @@ $category = isset($_GET['category']) ? $_GET['category'] : '';
 $shortCodeParams = [];
 if ($query) $shortCodeParams[] = 'query="' . $query . '"';
 if ($region) $shortCodeParams[] = 'meta__region="' . $region . '"';
-if ($category) $shortCodeParams[] = 'meta__category="' . $category . '"';
+if ($secteur) $shortCodeParams[] = 'meta__secteur="' . $secteur . '"';
 $shortcode = '[wpjb_employers_list filter="public" ' . implode(' ', $shortCodeParams) . ']';
 echo do_shortcode($shortcode);
 ?>

@@ -31,7 +31,7 @@
             'region' => get_meta_value($company, 'region'),
             'company_siret' => get_meta_value($company, 'company_siret'),
             'company_kbis' => get_meta_file($company, 'company_kbis'),
-            'category' => get_meta_value($company, 'category'),
+            'secteur' => get_meta_value($company, 'secteur'),
             'company_description' => $company->get('company_info'),
 
             'company_contact' => get_meta_value($company, 'company_contact_name'),

@@ -37,8 +37,7 @@
             //     $defaultValues = [
             //         'region' => get_meta_region($company),
             //         'company_siret' => get_meta_value($company, 'company_siret'),
-            //         // TODO: pourquoi l'import default ne marche pas pour category ? Pas meme format default & data categories ?
-            //         'category' => get_meta_value($company, 'category'),
+            //         'secteur' => get_meta_value($company, 'secteur'),
             //         'company_description' => $company->get('company_info'),
 
             //         'company_contact' => get_meta_value($company, 'company_contact_name'),

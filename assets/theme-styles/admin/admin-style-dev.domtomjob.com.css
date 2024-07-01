@@ -1,5 +1,5 @@
 #wpadminbar {
-  background: #681fd9;
+  background: #d9791f;
 }
 #wpadminbar::after {
   content: "DEV SERVER";

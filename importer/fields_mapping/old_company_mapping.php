@@ -37,7 +37,7 @@ return [
         return $region;
     },
     "company_type" => "ent_type", // meme id que l'ancienne table
-    "category" => function ($source) {
+    "secteur" => function ($source) {
         // TODO: "ent_secteur (lien vers T_secteur)", // utiliser la table de correspondance "catégorie"
         return null;
     },

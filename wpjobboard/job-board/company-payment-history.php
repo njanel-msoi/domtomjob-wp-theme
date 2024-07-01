@@ -4,7 +4,7 @@
  * Payment list
  * 
  * This template file is responsible for displaying list of jobs on job board
- * home page, category page, job types page and search results page.
+ * home page, secteur page, job types page and search results page.
  * 
  * 
  * @author Mark Winiarski
